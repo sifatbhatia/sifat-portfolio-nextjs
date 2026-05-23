@@ -1,0 +1,58 @@
+# Sifat Bhatia — Design Engineer & Creative Technologist
+
+## About
+
+Sifat Bhatia is a design engineer and creative technologist based in Los Angeles, California. He builds websites, brand identities, and digital experiences for artists, agencies, and creative brands who need more than templates.
+
+He holds a BS from Full Sail University (Valedictorian) and is currently completing an MS in Information Technology at Westcliff University. He is the founder of Siftion, an independent design and development studio.
+
+## Expertise
+
+- **Frontend Development:** React, Next.js, TypeScript, Tailwind CSS, GSAP, Framer Motion
+- **Design:** UI/UX, visual identity, design systems, typography, motion design
+- **No-Code/Low-Code:** Webflow, WordPress, Squarespace
+- **Branding:** Logo design, color systems, brand strategy
+- **Tools:** Figma, Adobe Creative Suite, Git, Vercel
+
+## Work Authorization
+
+F-1 student on CPT (Curricular Practical Training). Authorized for part-time and full-time employment.
+
+## Contact
+
+- Email: sifatbht@gmail.com
+- Website: https://sifat.tech
+- Instagram: https://www.instagram.com/sifatxo/
+- GitHub: https://github.com/sifatbhatia
+- Location: Los Angeles, CA
+
+## Notable Projects
+
+### J. Worra
+Artist website and web identity for a DJ/producer. Dark, motion-driven design that translates the energy of electronic music into scroll-driven experiences. Built with React, GSAP, and Lenis. Result: 3x increase in average session duration.
+
+### L'Affaire Musicale
+Full rebrand and website rebuild for a music agency. Editorial layout, CMS-backed roster management, typography-first approach. Built with Next.js, Sanity CMS, and Framer Motion.
+
+### ClipKeep
+A clipboard manager PWA built for speed and zero friction. Under 50KB initial load. React, TypeScript, Tailwind. Ships as installable PWA.
+
+### QLO Agency
+Custom Webflow builds with advanced interactions, CMS collections, and client-friendly editing. Modular component systems.
+
+## Services
+
+- **Design:** Visual identity, UI/UX, design systems, motion design
+- **Development:** React, Next.js, GSAP, full-stack applications
+- **Branding:** Logos, typography, color systems, brand strategy
+- **Strategy:** Content architecture, user journeys, technical consulting
+
+## Availability
+
+Currently open for freelance projects and full-time opportunities. Prefers remote, hybrid, or in-person in Los Angeles.
+
+## Education
+
+- BS Full Sail University — Valedictorian
+- AS Los Angeles City College
+- MS Westcliff University (in progress)
