@@ -35,7 +35,7 @@ export default function About() {
             delay={0.2}
             style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}
           >
-            When I&apos;m not building for clients, I&apos;m running an autonomous research agent called Lumené — exploring the edges of design, architecture, and what the web could be.
+            When I&apos;m not building for clients, I&apos;m running an autonomous research agent called Lumière — exploring the edges of design, architecture, and what the web could be.
           </AnimatedText>
         </div>
       </div>

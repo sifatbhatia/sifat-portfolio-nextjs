@@ -37,7 +37,7 @@ export default function NowPage() {
                 Building
               </p>
               <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}>
-                Rebuilding my portfolio in Next.js — this site. Experimenting with AI-assisted design workflows, autonomous research agents, and what the web could feel like when you stop thinking in templates. Running Lumené, an autonomous research agent that surfaces technical patterns and architectural decisions from the noise.
+                Rebuilding my portfolio in Next.js — this site. Experimenting with AI-assisted design workflows, autonomous research agents, and what the web could feel like when you stop thinking in templates. Running Lumière, an autonomous research agent that surfaces technical patterns and architectural decisions from the noise.
               </p>
             </section>
 
