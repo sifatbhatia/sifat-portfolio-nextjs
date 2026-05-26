@@ -21,7 +21,7 @@ export default function About() {
             delay={0.1}
             style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}
           >
-            I&apos;m Sifat Bhatia — a design engineer based in Los Angeles, finishing my MS in Information Technology at Westcliff University. I work with artists, agencies, and creative brands who need more than a template. Every project I touch is built from the ground up, with intention.
+            I&apos;m Sifat Bhatia — a design engineer based in Los Angeles. I work with artists, agencies, and creative brands who need more than a template. Every project I touch is built from the ground up, with intention.
           </AnimatedText>
           <AnimatedText
             as="p"
@@ -35,7 +35,7 @@ export default function About() {
             delay={0.2}
             style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}
           >
-            When I&apos;m not building for clients, I&apos;m running an autonomous research agent called Lumière — exploring the edges of design, architecture, and what the web could be. Two shelter cats (Sima & Lia) keep me company, and I&apos;m always chasing a deeper understanding of how things work, and why.
+            When I&apos;m not building for clients, I&apos;m extending the capabilities of Lumière — a system I&apos;ve been developing that lives at the intersection of design, architecture, and synthetic cognition. Off hours, you&apos;ll find me exploring coffee shops, hiking trails, and whatever new AI tooling just dropped. Sima & Lia have been with me for about a year now, and I&apos;m always chasing a deeper understanding of how things work, and why.
           </AnimatedText>
         </div>
       </div>
