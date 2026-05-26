@@ -66,7 +66,7 @@ export default function AnimatedText({
     return (
       <Tag ref={ref as any} className={className} style={{ ...style, display: "inline-flex", flexWrap: "wrap", gap: "0.25em" }}>
         {words.map((word, wi) => (
-          <span key={wi} style={{ display: "inline-flex", overflow: "hidden" }}>
+          <span key={wi} style={{ display: "inline-flex", overflow: "hidden", padding: "0.12em 0" }}>
             {word.split("").map((char, ci) => (
               <span key={ci} className="at-char" style={{ display: "inline-block" }}>
                 {char}
