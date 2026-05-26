@@ -17,6 +17,15 @@ interface Entry {
 export default function LatestSignals() {
   const [entries, setEntries] = useState<Entry[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    setIsDesktop(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   useEffect(() => {
     fetch("/api/journal", { cache: "no-store" })
@@ -25,8 +34,10 @@ export default function LatestSignals() {
       .catch(() => setLoading(false));
   }, []);
 
+  const visible = isDesktop ? entries.slice(0, 3) : entries;
+
   if (loading) return null;
-  if (entries.length === 0) return null;
+  if (visible.length === 0) return null;
 
   return (
     <section style={{ padding: "clamp(4rem, 8vh, 8rem) clamp(1.5rem, 6vw, 4rem)", maxWidth: "1400px", margin: "0 auto" }}>
@@ -42,7 +53,7 @@ export default function LatestSignals() {
       </header>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 380px), 1fr))", gap: "1.5rem" }}>
-        {entries.map((entry, i) => (
+        {visible.map((entry, i) => (
           <motion.div
             key={entry.id}
             initial={{ opacity: 0, y: 20 }}
