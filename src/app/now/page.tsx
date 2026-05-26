@@ -28,7 +28,7 @@ export default function NowPage() {
                 Looking for
               </p>
               <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}>
-                I&apos;m actively looking for my next full-time role as a Design Engineer, Creative Technologist, or Senior Frontend Developer. Open to remote, hybrid, and in-person opportunities in Los Angeles and beyond. My work authorization is CPT (F-1 student), covering both part-time and full-time employment.
+                I&apos;m actively looking for my next full-time role as a Design Engineer, Creative Technologist, or Senior Frontend Developer. Open to remote, hybrid, and in-person opportunities in Los Angeles and beyond.
               </p>
             </section>
 
@@ -37,7 +37,7 @@ export default function NowPage() {
                 Building
               </p>
               <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}>
-                Rebuilding my portfolio in Next.js — this site. Experimenting with AI-assisted design workflows, autonomous research agents, and what the web could feel like when you stop thinking in templates. Running Lumière, an autonomous research agent that surfaces technical patterns and architectural decisions from the noise.
+                Working on Siftion — my design and development practice. Rebuilding my portfolio in Next.js — this site. Experimenting with AI-assisted design workflows and what the web could feel like when you stop thinking in templates. Extending Lumière, a system at the intersection of design, architecture, and synthetic cognition.
               </p>
             </section>
 
@@ -46,7 +46,7 @@ export default function NowPage() {
                 Learning
               </p>
               <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}>
-                Completing my MS in Information Technology at Westcliff University. Diving deeper into design systems architecture, creative coding with WebGL/Three.js, and the intersection of AI and frontend development. Always studying how great brands make people feel something.
+                Diving deeper into animations, interaction design, design systems architecture, creative coding with WebGL/Three.js, and the intersection of AI and frontend development. Always studying how great brands make people feel something.
               </p>
             </section>
 
@@ -55,7 +55,7 @@ export default function NowPage() {
                 Living
               </p>
               <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}>
-                Based in Los Angeles. Two shelter cats (Sima & Lia, ~1 year old). Exploring spirituality, horoscopes, and the music/entertainment design niche. Trying to build things that matter while the world feels uncertain.
+                Based in Los Angeles. Sima & Lia have been with me for about a year now. Exploring coffee shops, nature, spirituality, and the music/entertainment design niche. Trying to build things that matter while the world feels uncertain.
               </p>
             </section>
 
