@@ -23,7 +23,7 @@ export default function AnimatedText({
   className,
   split = "lines",
   delay = 0,
-  start = "top 85%",
+  start = "top 75%",
 }: AnimatedTextProps) {
   const ref = useRef<HTMLElement>(null);
 
