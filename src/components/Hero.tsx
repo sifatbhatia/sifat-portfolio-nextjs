@@ -7,14 +7,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const PROJECTS = [
-  { title: "J. Worra", sub: "Artist Website / Web Identity", img: "/assets/previews/j-worra/screenshot-1.webp" },
-  { title: "Sif's Utilities", sub: "Privacy-first Tool Suite", img: "/assets/previews/sifs-utilities/screenshot-1.webp" },
-  { title: "L'Affaire Musicale", sub: "Agency Rebrand", img: "/assets/previews/l-affaire-musicale/screenshot-1.webp" },
-  { title: "QLO Agency", sub: "Studio Identity", img: "/assets/previews/qlo-agency/screenshot-1.webp" },
-  { title: "ClipKeep", sub: "Social clip vault", img: "/assets/previews/clipkeep/screenshot-1.webp" },
-  { title: "Sam Blacky", sub: "Artist Platform", img: "/assets/previews/sam-blacky/screenshot-1.webp" },
-  { title: "Cherry Tooth", sub: "Brand Identity", img: "/assets/previews/cherry-tooth/screenshot-1.webp" },
-  { title: "Wicked Paradise", sub: "Event Experience", img: "/assets/previews/wicked-paradise/screenshot-1.webp" },
+  { slug: "j-worra", title: "J. Worra", sub: "Artist Website / Web Identity", img: "/assets/previews/j-worra/screenshot-1.webp" },
+  { slug: "sifs-utilities", title: "Sif's Utilities", sub: "Privacy-first Tool Suite", img: "/assets/previews/sifs-utilities/screenshot-1.webp" },
+  { slug: "l-affaire-musicale", title: "L'Affaire Musicale", sub: "Agency Rebrand", img: "/assets/previews/l-affaire-musicale/screenshot-1.webp" },
+  { slug: "qlo-agency", title: "QLO Agency", sub: "Studio Identity", img: "/assets/previews/qlo-agency/screenshot-1.webp" },
+  { slug: "clipkeep", title: "ClipKeep", sub: "Social clip vault", img: "/assets/previews/clipkeep/screenshot-1.webp" },
+  { slug: "sam-blacky", title: "Sam Blacky", sub: "Artist Platform", img: "/assets/previews/sam-blacky/screenshot-1.webp" },
+  { slug: "cherry-tooth", title: "Cherry Tooth", sub: "Brand Identity", img: "/assets/previews/cherry-tooth/screenshot-1.webp" },
+  { slug: "wicked-paradise", title: "Wicked Paradise", sub: "Event Experience", img: "/assets/previews/wicked-paradise/screenshot-1.webp" },
 ];
 const LOOP_ITEMS = [...PROJECTS, ...PROJECTS];
 
@@ -76,7 +76,7 @@ function Carousel() {
       <div ref={viewportRef} className="carousel-viewport" style={{ width: "100%", height: "30vh", minHeight: 240, overflowX: "clip", overflowY: "visible", position: "relative", display: "flex", alignItems: "center" }}>
         <div ref={trackRef} style={{ display: "flex", flexDirection: "row", flexWrap: "nowrap", alignItems: "center", height: "100%", flexShrink: 0, minWidth: "max-content", willChange: "transform", padding: "0 40px", gap: 0 }}>
           {PROJECTS.map((p, i) => (
-            <a key={i} ref={(el) => registerItem(el, i)} className="carousel-item" href={`/projects/${p.title.toLowerCase().replace(/\s+/g, "-")}`} style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", flexShrink: 0, width: "calc(18vw * var(--scale, 1))", padding: "0 8px", color: "inherit", textDecoration: "none", transition: "width 600ms cubic-bezier(0,0.4,0.6,1)" }}>
+            <a key={i} ref={(el) => registerItem(el, i)} className="carousel-item" href={`/projects/${p.slug}`} style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", flexShrink: 0, width: "calc(18vw * var(--scale, 1))", padding: "0 8px", color: "inherit", textDecoration: "none", transition: "width 600ms cubic-bezier(0,0.4,0.6,1)" }}>
               <div style={{ width: "100%", aspectRatio: "16/10", borderRadius: 14, border: "1px solid rgba(246,232,234,0.10)", overflow: "hidden", background: "rgba(246,232,234,0.02)" }}>
                 <img src={p.img} alt={p.title} style={{ width: "100%", height: "100%", display: "block", objectFit: "cover" }} />
               </div>
