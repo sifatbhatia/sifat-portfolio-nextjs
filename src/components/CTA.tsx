@@ -1,36 +1,64 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import AnimatedText from "./AnimatedText";
 
 function PrimaryButton({ href, children }: { href: string; children: React.ReactNode }) {
   const [hovered, setHovered] = useState(false);
+  const [toast, setToast] = useState(false);
+  const [icon, setIcon] = useState("→");
+
+  const handleClick = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText("sifatbht@gmail.com");
+    setToast(true);
+    setIcon("✓");
+    setTimeout(() => { setToast(false); setIcon("→"); }, 2000);
+  }, []);
+
+  const handleDblClick = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = "mailto:sifatbht@gmail.com";
+  }, []);
 
   return (
-    <a
-      href={href}
-      style={{
-        display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
-        padding: "0.85rem 2.5rem", borderRadius: "999px", minWidth: 200,
-        background: hovered ? "#282821" : "#141412",
-        color: "#f1eee7",
-        fontSize: "0.9rem", fontFamily: "var(--font-body)", textDecoration: "none",
-        fontWeight: 500, letterSpacing: "0.02em",
-        boxShadow: hovered ? "0 4px 16px rgba(0,0,0,0.2)" : "0 2px 8px rgba(0,0,0,0.1)",
-        transition: "background 200ms ease, box-shadow 200ms ease, transform 200ms ease",
-        transform: hovered ? "translateY(-2px)" : "translateY(0)",
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {children}
-      <span style={{
-        display: "inline-block",
-        transition: "transform 200ms ease, opacity 200ms ease",
-        transform: hovered ? "translateX(4px)" : "translateX(0)",
-        opacity: hovered ? 1 : 0.5,
-      }}>→</span>
-    </a>
+    <div style={{ position: "relative" }}>
+      <button
+        onClick={handleClick}
+        onDoubleClick={handleDblClick}
+        style={{
+          display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
+          padding: "0.85rem 2.5rem", borderRadius: "999px", minWidth: 200,
+          background: hovered ? "#282821" : "#141412",
+          color: "#f1eee7", border: "none", cursor: "pointer",
+          fontSize: "0.9rem", fontFamily: "var(--font-body)", textDecoration: "none",
+          fontWeight: 500, letterSpacing: "0.02em",
+          boxShadow: hovered ? "0 4px 16px rgba(0,0,0,0.2)" : "0 2px 8px rgba(0,0,0,0.1)",
+          transition: "background 200ms ease, box-shadow 200ms ease, transform 200ms ease",
+          transform: hovered ? "translateY(-2px)" : "translateY(0)",
+        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        {children}
+        <span style={{
+          display: "inline-block",
+          transition: "transform 200ms ease, opacity 200ms ease",
+          transform: hovered && icon === "→" ? "translateX(4px)" : "translateX(0)",
+          opacity: icon === "→" ? (hovered ? 1 : 0.5) : 1,
+        }}>{icon}</span>
+      </button>
+      {toast && (
+        <span style={{
+          position: "absolute", bottom: "-2rem", left: "50%", transform: "translateX(-50%)",
+          fontSize: "0.75rem", color: "rgba(20,20,18,0.5)", fontFamily: "var(--font-body)",
+          whiteSpace: "nowrap", pointerEvents: "none",
+          animation: "toast-fade 2s ease forwards",
+        }}>
+          Copied to clipboard
+        </span>
+      )}
+    </div>
   );
 }
 
