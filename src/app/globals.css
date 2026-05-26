@@ -575,38 +575,4 @@ button { font: inherit; color: inherit; cursor: pointer; }
   }
 }
 
-/* ── Journal Hero ─────────────────────────── */
-.signal-pulse::after {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background: rgba(74, 158, 107, 0.25);
-  animation: signal-pulse-ripple 2s ease-out infinite;
-}
 
-@keyframes signal-pulse-ripple {
-  0%   { transform: scale(1); opacity: 1; }
-  100% { transform: scale(2.5); opacity: 0; }
-}
-
-.journal-quote p {
-  position: relative;
-  z-index: 1;
-}
-
-/* ── Mobile journal hero ── */
-@media (max-width: 767px) {
-  .journal-header {
-    padding-top: 1rem;
-  }
-  .journal-hero-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .journal-quote {
-    padding: 1rem 0 0.25rem 1.25rem !important;
-  }
-  .journal-deco {
-    display: none !important;
-  }
-}
