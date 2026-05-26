@@ -64,9 +64,9 @@ export default function AnimatedText({
 
   if (split === "chars") {
     return (
-      <Tag ref={ref as any} className={className} style={{ ...style, display: "inline-flex", flexWrap: "wrap", gap: "0.25em" }}>
+      <Tag ref={ref as any} className={className} style={{ ...style, display: "inline-flex", flexWrap: "wrap", gap: "0.15em", justifyContent: "center" }}>
         {words.map((word, wi) => (
-          <span key={wi} style={{ display: "inline-flex", overflow: "hidden", paddingBottom: "0.04em" }}>
+          <span key={wi} style={{ display: "inline-flex", overflow: "hidden", paddingBottom: "0.12em" }}>
             {word.split("").map((char, ci) => (
               <span key={ci} className="at-char" style={{ display: "inline-block" }}>
                 {char}

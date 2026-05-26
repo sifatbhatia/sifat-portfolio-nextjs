@@ -55,7 +55,7 @@ function PrimaryButton({ href, children }: { href: string; children: React.React
           whiteSpace: "nowrap", pointerEvents: "none",
           animation: "toast-fade 2s ease forwards",
         }}>
-          Copied to clipboard
+          Copied — double-click to open mail
         </span>
       )}
     </div>
@@ -116,7 +116,7 @@ export default function CTA() {
             split="chars"
             style={{
               fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 400, lineHeight: 0.95,
-              letterSpacing: "-0.03em", fontFamily: "var(--font-display)",
+              letterSpacing: "-0.04em", fontFamily: "var(--font-display)",
               justifyContent: "center",
             }}
           >
