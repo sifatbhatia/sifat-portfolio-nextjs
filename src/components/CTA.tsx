@@ -111,18 +111,16 @@ export default function CTA() {
         }}>
           Get in touch
         </p>
-        <div style={{ display: "flex", justifyContent: "center", width: "100%", marginBottom: "2rem" }}>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <AnimatedText
-              split="chars"
-              style={{
-                fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 400, lineHeight: 0.95,
-                letterSpacing: "-0.03em", fontFamily: "var(--font-display)",
-              }}
-            >
-              Let&apos;s build something that matters.
-            </AnimatedText>
-          </div>
+        <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+          <AnimatedText
+            split="chars"
+            style={{
+              fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 400, lineHeight: 0.95,
+              letterSpacing: "-0.03em", fontFamily: "var(--font-display)",
+            }}
+          >
+            Let&apos;s build something that matters.
+          </AnimatedText>
         </div>
         <AnimatedText
           as="p"
