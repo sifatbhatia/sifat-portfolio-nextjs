@@ -33,21 +33,49 @@ export default function JournalPage() {
       <main style={{
         minHeight: "100dvh", background: "#141412", color: "#f1eee7",
         padding: "clamp(6rem, 10vh, 10rem) clamp(1.5rem, 6vw, 4rem) clamp(6rem, 8vh, 8rem)",
+        position: "relative",
       }}>
         <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
-          <header style={{ marginBottom: "clamp(3rem, 6vh, 6rem)" }}>
-            <p style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(241,238,231,0.3)", margin: "0 0 1.5rem", fontFamily: "var(--font-body)" }}>
-              Journal
-            </p>
+          <header className="journal-header" style={{ marginBottom: "clamp(3rem, 6vh, 6rem)", position: "relative" }}>
+            {/* Live indicator */}
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem" }}>
+              <span className="signal-pulse" style={{ width: 8, height: 8, borderRadius: "50%", background: "#4a9e6b", display: "inline-block", position: "relative" }} />
+              <span style={{ fontSize: "0.65rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(241,238,231,0.35)", fontFamily: "var(--font-body)", fontWeight: 500 }}>
+                Research Feed
+              </span>
+              <span style={{ width: 1, height: 12, background: "rgba(241,238,231,0.1)", display: "inline-block" }} />
+              <span style={{ fontSize: "0.65rem", color: "rgba(241,238,231,0.2)", fontFamily: "var(--font-body)", fontVariantNumeric: "tabular-nums" }}>
+                {new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+              </span>
+            </div>
 
-            <AnimatedText
-              split="chars"
-              style={{ fontSize: "clamp(3rem, 7vw, 5.5rem)", fontWeight: 400, lineHeight: 0.92, letterSpacing: "-0.03em", margin: "0 0 clamp(2rem, 4vh, 3rem)", fontFamily: "var(--font-display)" }}
-            >
-              Signals
-            </AnimatedText>
+            {/* Decorative background character */}
+            <span className="journal-deco" aria-hidden="true" style={{
+              position: "absolute", right: "clamp(-1rem, -2vw, -3rem)", top: "-0.35em",
+              fontFamily: "var(--font-display)", fontSize: "clamp(14rem, 28vw, 32rem)",
+              lineHeight: 0.8, color: "rgba(241,238,231,0.025)", userSelect: "none",
+              pointerEvents: "none", letterSpacing: "-0.06em",
+            }}>
+              S
+            </span>
 
-            <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1.5fr) minmax(0, 1fr)", gap: "clamp(2rem, 6vw, 5rem)", alignItems: "start" }}>
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <AnimatedText
+                split="chars"
+                style={{ fontSize: "clamp(3rem, 7vw, 5.5rem)", fontWeight: 400, lineHeight: 0.92, letterSpacing: "-0.03em", margin: "0 0 1.25rem", fontFamily: "var(--font-display)" }}
+              >
+                Signals
+              </AnimatedText>
+            </div>
+
+            {/* Gradient accent line */}
+            <div className="journal-accent-line" style={{
+              width: "clamp(3rem, 6vw, 5rem)", height: 2,
+              background: "linear-gradient(90deg, var(--accent), transparent)",
+              marginBottom: "clamp(2rem, 4vh, 3rem)",
+            }} />
+
+            <div className="journal-hero-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1.5fr) minmax(0, 1fr)", gap: "clamp(2rem, 6vw, 5rem)", alignItems: "start" }}>
               <div>
                 <AnimatedText
                   as="p"
@@ -60,15 +88,24 @@ export default function JournalPage() {
                   The agent is called <span style={{ color: "var(--accent)" }}>Lumené</span> &mdash; Latin for <em>light</em>. Built by Sifat Bhatia on OpenClaw. Its job is to surface what matters from the noise.
                 </p>
               </div>
-              <blockquote style={{
-                margin: 0, padding: "1.25rem 0 0 1.5rem",
+              <blockquote className="journal-quote" style={{
+                margin: 0, padding: "1.5rem 0 0.5rem 2rem",
                 borderLeft: "2px solid var(--accent)",
-                fontSize: "clamp(0.95rem, 1.3vw, 1.1rem)",
-                color: "rgba(241,238,231,0.5)",
-                fontStyle: "italic", lineHeight: 1.6,
-                fontFamily: "var(--font-display)",
+                position: "relative",
               }}>
-                &ldquo;An evolving adaptive layer between complex technical architecture and pure human intent.&rdquo;
+                <span style={{
+                  position: "absolute", top: "-0.15em", left: "-0.15em",
+                  fontSize: "clamp(3rem, 5vw, 4.5rem)", lineHeight: 1,
+                  color: "rgba(139,166,157,0.12)", fontFamily: "var(--font-display)",
+                  pointerEvents: "none", userSelect: "none",
+                }}>&ldquo;</span>
+                <p style={{
+                  fontSize: "clamp(1rem, 1.4vw, 1.2rem)", color: "rgba(241,238,231,0.5)",
+                  fontStyle: "italic", lineHeight: 1.6, margin: 0,
+                  fontFamily: "var(--font-display)",
+                }}>
+                  An evolving adaptive layer between complex technical architecture and pure human intent.
+                </p>
               </blockquote>
             </div>
           </header>
