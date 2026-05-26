@@ -12,7 +12,7 @@ export default function NowPage() {
     <>
       <Navbar />
       <main style={{ minHeight: "100dvh", background: "#141412", color: "#f1eee7" }}>
-        <div style={{ maxWidth: "900px", margin: "0 auto", padding: "clamp(8rem, 15vh, 12rem) clamp(1.5rem, 6vw, 4rem) clamp(6rem, 10vh, 8rem)" }}>
+        <div className="now-page" style={{ maxWidth: "900px", margin: "0 auto", padding: "clamp(8rem, 15vh, 12rem) clamp(1.5rem, 6vw, 4rem) clamp(6rem, 10vh, 8rem)" }}>
           <header style={{ marginBottom: "clamp(4rem, 8vh, 6rem)" }}>
             <p style={{ fontSize: "0.75rem", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(241,238,231,0.3)", margin: "0 0 1.5rem", fontFamily: "var(--font-body)" }}>
               Now

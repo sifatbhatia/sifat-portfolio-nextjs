@@ -56,10 +56,11 @@ export default function ServicesPage() {
             </p>
           </header>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+          <div className="services-list" style={{ display: "flex", flexDirection: "column", gap: 0 }}>
             {SERVICES.map((svc, i) => (
               <div
                 key={svc.num}
+                className="services-item"
                 style={{
                   display: "grid",
                   gridTemplateColumns: "minmax(0, 0.5fr) minmax(0, 1.5fr) minmax(0, 1fr)",
@@ -99,8 +100,8 @@ export default function ServicesPage() {
             ))}
           </div>
 
-          <div style={{ marginTop: "clamp(4rem, 8vh, 6rem)", padding: "clamp(2.5rem, 5vh, 3.5rem)", borderRadius: 20, border: "1px solid rgba(241,238,231,0.08)", background: "rgba(241,238,231,0.02)" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)", gap: "clamp(2rem, 4vw, 4rem)", alignItems: "center" }}>
+          <div className="services-process" style={{ marginTop: "clamp(4rem, 8vh, 6rem)", padding: "clamp(2.5rem, 5vh, 3.5rem)", borderRadius: 20, border: "1px solid rgba(241,238,231,0.08)", background: "rgba(241,238,231,0.02)" }}>
+            <div className="services-process-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)", gap: "clamp(2rem, 4vw, 4rem)", alignItems: "center" }}>
               <div>
                 <p style={{ fontSize: "0.7rem", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--accent)", margin: "0 0 1rem", fontFamily: "var(--font-body)" }}>
                   Process
