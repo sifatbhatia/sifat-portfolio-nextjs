@@ -56,8 +56,9 @@ export default function CTA() {
       padding: "clamp(6rem, 12vh, 10rem) clamp(1.5rem, 6vw, 4rem)",
       background: "#f1eee7",
       color: "#141412",
+      textAlign: "center",
     }}>
-      <div style={{ maxWidth: "48rem" }}>
+      <div style={{ maxWidth: "48rem", margin: "0 auto" }}>
         <p style={{
           fontSize: "0.75rem", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase",
           color: "rgba(20,20,18,0.35)", margin: "0 0 2rem", fontFamily: "var(--font-body)",
@@ -79,12 +80,12 @@ export default function CTA() {
           style={{
             fontSize: "clamp(1rem, 1.4vw, 1.2rem)", lineHeight: 1.7,
             color: "rgba(20,20,18,0.55)", margin: "0 0 3rem", fontFamily: "var(--font-body)",
-            maxWidth: "32rem",
+            maxWidth: "32rem", marginLeft: "auto", marginRight: "auto",
           }}
         >
           I work with people who care deeply about what they make. If that&apos;s you, let&apos;s talk.
         </AnimatedText>
-        <div style={{ display: "flex", gap: "1.5rem", justifyContent: "flex-start", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap" }}>
           <PrimaryButton href="mailto:sifatbht@gmail.com">sifatbht@gmail.com</PrimaryButton>
           <SecondaryButton href="https://www.instagram.com/sifatxo/">Instagram</SecondaryButton>
         </div>
