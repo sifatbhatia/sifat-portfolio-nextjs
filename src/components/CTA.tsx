@@ -117,6 +117,7 @@ export default function CTA() {
             style={{
               fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 400, lineHeight: 0.95,
               letterSpacing: "-0.03em", fontFamily: "var(--font-display)",
+              justifyContent: "center",
             }}
           >
             Let&apos;s build something that matters.
