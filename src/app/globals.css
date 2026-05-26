@@ -582,3 +582,13 @@ button { font: inherit; color: inherit; cursor: pointer; }
   100% { opacity: 0; transform: translateX(-50%) translateY(-4px); }
 }
 
+.bottom-bar-item {
+  color: rgba(247,247,242,0.58);
+  font-size: clamp(0.85rem, 1.3vw, 1.3rem);
+  font-weight: 750;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-family: var(--font-body);
+}
+

@@ -122,6 +122,25 @@ export default function Footer() {
           ))}
         </a>
       </div>
+
+      {/* Bottom bar */}
+      <div style={{
+        width: "100vw", marginLeft: "calc(50% - 50vw)",
+        padding: "clamp(1rem, 2vh, 1.5rem) clamp(1.5rem, 6vw, 4rem)",
+        boxSizing: "border-box", borderTop: "1px solid rgba(247,247,242,0.06)",
+      }}>
+        <div style={{
+          maxWidth: "1400px", margin: "0 auto",
+          display: "flex", flexDirection: "column", alignItems: "flex-end",
+          gap: "0.15rem",
+        }}>
+          <span className="bottom-bar-item">LOS ANGELES</span>
+          <span className="bottom-bar-item">© SIFTION</span>
+          <a href="mailto:hi@sifat.tech" className="bottom-bar-item" style={{ textDecoration: "none", color: "rgba(247,247,242,0.58)" }}>HI@SIFAT.TECH</a>
+          <a href="https://sifat.tech" target="_blank" rel="noreferrer" className="bottom-bar-item" style={{ textDecoration: "none", color: "rgba(247,247,242,0.58)" }}>SIFAT.TECH</a>
+          <span className="bottom-bar-item" style={{ textAlign: "right" }}>DESIGN &amp; DEVELOPMENT</span>
+        </div>
+      </div>
     </footer>
   );
 }
