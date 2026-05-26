@@ -113,11 +113,11 @@ export default function Footer() {
           lineHeight: 0, textAlign: "center",
         }}>
           <img
-            src="/assets/Siftion.svg"
-            alt="Siftion"
+            src="/assets/Sifat-Bhatia.svg"
+            alt="Sifat Bhatia"
             style={{
-              display: "inline-block", width: "100%", maxWidth: "1200px",
-              maxHeight: "clamp(10rem, 28vh, 24rem)", height: "auto",
+              display: "inline-block", width: "100%", maxWidth: "800px",
+              maxHeight: "clamp(6rem, 18vh, 16rem)", height: "auto",
               objectFit: "contain", filter: "invert(1)",
             }}
           />
@@ -136,7 +136,7 @@ export default function Footer() {
         letterSpacing: "0.05em", fontFamily: "var(--font-body)",
       }}>
         <span>Los Angeles</span>
-        <span style={{ textAlign: "center" }}>&copy; SIFTION</span>
+        <span style={{ textAlign: "center" }}>&copy; SIFAT BHATIA</span>
         <span style={{ textAlign: "right" }}>Design &amp; Development</span>
       </div>
     </footer>
