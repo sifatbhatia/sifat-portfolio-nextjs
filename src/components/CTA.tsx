@@ -10,17 +10,26 @@ function PrimaryButton({ href, children }: { href: string; children: React.React
     <a
       href={href}
       style={{
-        display: "inline-block", padding: "0.85rem 2.5rem", borderRadius: "999px",
-        background: hovered ? "#282821" : "#141412", color: "#f1eee7",
+        display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
+        padding: "0.85rem 2.5rem", borderRadius: "999px", minWidth: 200,
+        background: hovered ? "#282821" : "#141412",
+        color: "#f1eee7",
         fontSize: "0.9rem", fontFamily: "var(--font-body)", textDecoration: "none",
         fontWeight: 500, letterSpacing: "0.02em",
-        transition: "background 200ms ease, transform 200ms ease",
+        boxShadow: hovered ? "0 4px 16px rgba(0,0,0,0.2)" : "0 2px 8px rgba(0,0,0,0.1)",
+        transition: "background 200ms ease, box-shadow 200ms ease, transform 200ms ease",
         transform: hovered ? "translateY(-2px)" : "translateY(0)",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       {children}
+      <span style={{
+        display: "inline-block",
+        transition: "transform 200ms ease, opacity 200ms ease",
+        transform: hovered ? "translateX(4px)" : "translateX(0)",
+        opacity: hovered ? 1 : 0.5,
+      }}>→</span>
     </a>
   );
 }
@@ -34,18 +43,27 @@ function SecondaryButton({ href, children }: { href: string; children: React.Rea
       target="_blank"
       rel="noreferrer"
       style={{
-        display: "inline-block", padding: "0.85rem 2.5rem", borderRadius: "999px",
+        display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
+        padding: "0.85rem 2.5rem", borderRadius: "999px", minWidth: 200,
         border: "1px solid rgba(20,20,18,0.2)",
         color: hovered ? "#141412" : "rgba(20,20,18,0.6)",
         background: hovered ? "rgba(20,20,18,0.06)" : "transparent",
         fontSize: "0.9rem", fontFamily: "var(--font-body)", textDecoration: "none",
         fontWeight: 500, letterSpacing: "0.02em",
-        transition: "background 200ms ease, color 200ms ease",
+        boxShadow: hovered ? "0 4px 16px rgba(0,0,0,0.08)" : "none",
+        transition: "background 200ms ease, color 200ms ease, box-shadow 200ms ease, transform 200ms ease",
+        transform: hovered ? "translateY(-2px)" : "translateY(0)",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       {children}
+      <span style={{
+        display: "inline-block",
+        transition: "transform 200ms ease, opacity 200ms ease",
+        transform: hovered ? "translateX(4px)" : "translateX(0)",
+        opacity: hovered ? 1 : 0.5,
+      }}>↗</span>
     </a>
   );
 }
@@ -89,7 +107,7 @@ export default function CTA() {
         </AnimatedText>
         <div style={{ display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap" }}>
           <PrimaryButton href="mailto:sifatbht@gmail.com">sifatbht@gmail.com</PrimaryButton>
-          <SecondaryButton href="https://www.instagram.com/sifatxo/">Instagram</SecondaryButton>
+          <SecondaryButton href="https://www.instagram.com/siftion/">Instagram</SecondaryButton>
         </div>
       </div>
     </section>

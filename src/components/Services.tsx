@@ -48,7 +48,7 @@ function ServiceCard({ service }: { service: typeof SERVICES[0] }) {
       <h3 style={{ fontSize: "clamp(1.25rem, 2vw, 1.5rem)", fontWeight: 400, margin: "0 0 1rem", fontFamily: "var(--font-display)", color: "#f1eee7" }}>
         {service.title}
       </h3>
-      <p style={{ fontSize: "0.9rem", lineHeight: 1.6, color: "rgba(241,238,231,0.45)", margin: 0, fontFamily: "var(--font-body)" }}>
+      <p style={{ fontSize: "0.9rem", lineHeight: 1.6, color: "rgba(241,238,231,0.55)", margin: 0, fontFamily: "var(--font-body)" }}>
         {service.desc}
       </p>
     </div>
@@ -62,12 +62,15 @@ function HoverLink({ href, children }: { href: string; children: React.ReactNode
     <Link
       href={href}
       style={{
-        display: "inline-block", padding: "0.75rem 2rem", borderRadius: "999px",
-        border: "1px solid rgba(241,238,231,0.12)",
-        color: hovered ? "#f1eee7" : "rgba(241,238,231,0.6)",
-        background: hovered ? "rgba(241,238,231,0.06)" : "transparent",
-        fontSize: "0.875rem", fontFamily: "var(--font-body)", textDecoration: "none",
-        transition: "background 200ms ease, color 200ms ease",
+        display: "inline-block", padding: "0.85rem 2.5rem", borderRadius: "999px",
+        border: "1px solid rgba(241,238,231,0.15)",
+        color: hovered ? "#f1eee7" : "rgba(241,238,231,0.7)",
+        background: hovered ? "rgba(241,238,231,0.10)" : "rgba(241,238,231,0.04)",
+        fontSize: "0.9rem", fontFamily: "var(--font-body)", textDecoration: "none",
+        fontWeight: 500, letterSpacing: "0.02em",
+        boxShadow: hovered ? "0 4px 16px rgba(0,0,0,0.3)" : "0 2px 8px rgba(0,0,0,0.1)",
+        transition: "background 200ms ease, color 200ms ease, box-shadow 200ms ease, transform 200ms ease",
+        transform: hovered ? "translateY(-2px)" : "translateY(0)",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

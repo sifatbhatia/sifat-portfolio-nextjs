@@ -7,7 +7,7 @@ function FooterLink({ href, children, external }: { href: string; children: Reac
   const [hovered, setHovered] = useState(false);
 
   const baseStyle = {
-    color: hovered ? "#f7f7f2" : "rgba(247,247,242,0.86)",
+    color: hovered ? "#f1eee7" : "rgba(241,238,231,0.5)",
     textDecoration: "none",
     fontSize: "clamp(1.25rem, 1.8vw, 2rem)",
     fontWeight: 750,
@@ -19,26 +19,16 @@ function FooterLink({ href, children, external }: { href: string; children: Reac
 
   if (external) {
     return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noreferrer"
-        style={baseStyle}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
+      <a href={href} target="_blank" rel="noreferrer" style={baseStyle}
+        onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
         {children}
       </a>
     );
   }
 
   return (
-    <Link
-      href={href}
-      style={baseStyle}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
+    <Link href={href} style={baseStyle}
+      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       {children}
     </Link>
   );
@@ -47,24 +37,23 @@ function FooterLink({ href, children, external }: { href: string; children: Reac
 export default function Footer() {
   return (
     <footer style={{
-      width: "100%", minHeight: "100svh",
-      display: "grid",
-      gridTemplateRows: "1fr auto auto",
-      background: "#030303", color: "#f7f7f2",
+      width: "100%", background: "#030303", color: "#f1eee7",
       fontFamily: "var(--font-display)",
       padding: "clamp(3rem, 6vh, 5rem) clamp(1.5rem, 6vw, 4rem) clamp(1.5rem, 3vw, 2.5rem)",
     }}>
-      {/* Top: Belief + Nav + Social */}
-      <div className="page-footer--inner" style={{
+      {/* Top: Nav / Connect / Philosophy */}
+      <div style={{
         display: "grid",
-        gridTemplateColumns: "minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 0.8fr)",
+        gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr)",
         gap: "clamp(2rem, 5vw, 6rem)", alignItems: "start",
+        maxWidth: "1400px", margin: "0 auto",
         paddingTop: "clamp(2rem, 4vh, 4rem)",
+        paddingBottom: "clamp(3rem, 5vh, 5rem)",
       }}>
         <div>
           <p style={{
             fontSize: "clamp(0.7rem, 1vw, 0.85rem)", fontWeight: 400, letterSpacing: "0.2em",
-            textTransform: "uppercase", color: "rgba(247,247,242,0.3)", margin: "0 0 1.5rem",
+            textTransform: "uppercase", color: "rgba(241,238,231,0.3)", margin: "0 0 1.5rem",
             fontFamily: "var(--font-body)",
           }}>
             Navigate
@@ -84,25 +73,27 @@ export default function Footer() {
         <div>
           <p style={{
             fontSize: "clamp(0.7rem, 1vw, 0.85rem)", fontWeight: 400, letterSpacing: "0.2em",
-            textTransform: "uppercase", color: "rgba(247,247,242,0.3)", margin: "0 0 1.5rem",
+            textTransform: "uppercase", color: "rgba(241,238,231,0.3)", margin: "0 0 1.5rem",
             fontFamily: "var(--font-body)",
           }}>
             Connect
           </p>
           <nav aria-label="Social links" style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-            <FooterLink href="https://www.instagram.com/sifatxo/" external>Instagram</FooterLink>
+            <FooterLink href="https://www.instagram.com/siftion/" external>Instagram</FooterLink>
             <FooterLink href="mailto:sifatbht@gmail.com">Email</FooterLink>
           </nav>
+        </div>
 
+        <div>
           <p style={{
             fontSize: "clamp(0.7rem, 1vw, 0.85rem)", fontWeight: 400, letterSpacing: "0.2em",
-            textTransform: "uppercase", color: "rgba(247,247,242,0.3)", margin: "2rem 0 0.75rem",
+            textTransform: "uppercase", color: "rgba(241,238,231,0.3)", margin: "0 0 1.5rem",
             fontFamily: "var(--font-body)",
           }}>
             Philosophy
           </p>
           <span style={{
-            display: "block", color: "rgba(247,247,242,0.5)",
+            display: "block", color: "rgba(241,238,231,0.5)",
             fontSize: "clamp(0.8rem, 1.1vw, 0.95rem)", fontWeight: 400,
             lineHeight: 1.5, letterSpacing: "0.02em", fontFamily: "var(--font-body)",
           }}>
@@ -111,30 +102,36 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Middle: SIFTION Logo */}
-      <a href="/" aria-label="Back to home" style={{
-        display: "block", width: "100%", padding: "clamp(2rem, 5vh, 5rem) 0",
-        lineHeight: 0, textAlign: "center",
+      {/* SIFTION Logo — full viewport width */}
+      <div style={{
+        width: "100vw", marginLeft: "calc(50% - 50vw)",
+        borderTop: "1px solid rgba(241,238,231,0.06)",
+        borderBottom: "1px solid rgba(241,238,231,0.06)",
       }}>
-        <img
-          src="/assets/Siftion.svg"
-          alt="Siftion"
-          style={{
-            display: "inline-block", width: "100%", maxWidth: "900px",
-            maxHeight: "clamp(10rem, 28vh, 24rem)", height: "auto",
-            objectFit: "contain", filter: "invert(1)",
-          }}
-        />
-      </a>
+        <a href="/" aria-label="Back to home" style={{
+          display: "block", width: "100%", padding: "clamp(2rem, 5vh, 5rem) clamp(1.5rem, 6vw, 4rem)",
+          lineHeight: 0, textAlign: "center",
+        }}>
+          <img
+            src="/assets/Siftion.svg"
+            alt="Siftion"
+            style={{
+              display: "inline-block", width: "100%", maxWidth: "1200px",
+              maxHeight: "clamp(10rem, 28vh, 24rem)", height: "auto",
+              objectFit: "contain", filter: "invert(1)",
+            }}
+          />
+        </a>
+      </div>
 
       {/* Bottom bar */}
-      <div className="page-footer--bottom" style={{
+      <div style={{
+        maxWidth: "1400px", margin: "0 auto",
         display: "grid",
         gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)",
         gap: "clamp(1rem, 3vw, 3rem)", alignItems: "end",
         paddingTop: "clamp(1.5rem, 3vh, 2.5rem)",
-        borderTop: "1px solid rgba(247,247,242,0.08)",
-        color: "rgba(247,247,242,0.4)",
+        color: "rgba(241,238,231,0.4)",
         fontSize: "clamp(0.75rem, 1vw, 0.9rem)", fontWeight: 400,
         letterSpacing: "0.05em", fontFamily: "var(--font-body)",
       }}>

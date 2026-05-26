@@ -21,7 +21,7 @@ export default function LatestSignals() {
   useEffect(() => {
     fetch("/api/journal", { cache: "no-store" })
       .then(r => r.ok ? r.json() : [])
-      .then(d => { setEntries(Array.isArray(d) ? d.slice(0, 3) : []); setLoading(false); })
+      .then(d => { setEntries(Array.isArray(d) ? d.slice(0, 4) : []); setLoading(false); })
       .catch(() => setLoading(false));
   }, []);
 
@@ -32,12 +32,12 @@ export default function LatestSignals() {
     <section style={{ padding: "clamp(4rem, 8vh, 8rem) clamp(1.5rem, 6vw, 4rem)", maxWidth: "1400px", margin: "0 auto" }}>
       <header style={{ marginBottom: "clamp(3rem, 6vh, 5rem)" }}>
         <p style={{ fontSize: "0.75rem", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(241,238,231,0.3)", margin: "0 0 1rem", fontFamily: "var(--font-body)" }}>
-          Signals
+          Journal
         </p>
         <AnimatedText
           style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", fontWeight: 400, lineHeight: 0.95, letterSpacing: "-0.02em", margin: 0, fontFamily: "var(--font-display)", color: "#f1eee7" }}
         >
-          Latest from the research feed.
+          Latest from the feed.
         </AnimatedText>
       </header>
 
@@ -65,7 +65,7 @@ export default function LatestSignals() {
             >
               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem" }}>
                 <span style={{ fontSize: "0.6rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#8ba69d", fontFamily: "var(--font-body)" }}>
-                  Signal
+                  Journal
                 </span>
                 <span style={{ color: "rgba(241,238,231,0.15)", fontSize: "0.6rem" }}>·</span>
                 <time style={{ fontSize: "0.7rem", color: "rgba(241,238,231,0.3)", fontFamily: "var(--font-body)", fontVariantNumeric: "tabular-nums" }}>
@@ -102,7 +102,7 @@ export default function LatestSignals() {
           onMouseEnter={e => { e.currentTarget.style.background = "rgba(241,238,231,0.06)"; e.currentTarget.style.color = "#f1eee7"; }}
           onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "rgba(241,238,231,0.6)"; }}
         >
-          Read all signals →
+          Read all →
         </Link>
       </div>
     </section>

@@ -27,7 +27,7 @@ function ProjectCard({ project, index, large }: { project: typeof projects[0]; i
           overflow: "hidden",
           borderRadius: large ? 20 : 14,
           aspectRatio: large ? "21/10" : "4/3",
-          background: "rgba(241,238,231,0.02)",
+          background: "rgba(241,238,231,0.03)",
           cursor: "pointer",
         }}
       >
@@ -35,9 +35,9 @@ function ProjectCard({ project, index, large }: { project: typeof projects[0]; i
           src={project.heroImage}
           alt={project.title}
           style={{
-            width: "100%", height: "100%", objectFit: "cover", display: "block",
+            width: "100%", height: "100%", objectFit: "contain", display: "block",
             transition: "transform 800ms cubic-bezier(0.16,1,0.3,1), filter 800ms ease",
-            transform: hovered ? "scale(1.05)" : "scale(1)",
+            transform: hovered ? "scale(1.03)" : "scale(1)",
             filter: hovered ? "none" : "grayscale(40%) contrast(0.85) brightness(0.75)",
           }}
         />
@@ -164,22 +164,27 @@ export default function SelectedWork() {
           href="/projects"
           style={{
             display: "inline-flex", alignItems: "center", gap: "0.75rem",
-            padding: "0.75rem 2rem", borderRadius: "999px",
-            border: "1px solid rgba(241,238,231,0.12)", color: "rgba(241,238,231,0.6)",
-            fontSize: "0.875rem", fontFamily: "var(--font-body)", textDecoration: "none",
-            transition: "background 200ms ease, color 200ms ease, border-color 200ms ease",
+            padding: "0.85rem 2.5rem", borderRadius: "999px",
+            background: "rgba(241,238,231,0.06)",
+            border: "1px solid rgba(241,238,231,0.15)",
+            color: "#f1eee7",
+            fontSize: "0.9rem", fontFamily: "var(--font-body)", textDecoration: "none",
+            fontWeight: 500, letterSpacing: "0.02em",
+            boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+            transition: "background 200ms ease, box-shadow 200ms ease, transform 200ms ease",
+            transform: "translateY(0)",
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.background = "rgba(241,238,231,0.06)";
-            e.currentTarget.style.color = "#f1eee7";
-            e.currentTarget.style.borderColor = "rgba(241,238,231,0.2)";
+            e.currentTarget.style.background = "rgba(241,238,231,0.12)";
+            e.currentTarget.style.boxShadow = "0 4px 20px rgba(0,0,0,0.25)";
+            e.currentTarget.style.transform = "translateY(-2px)";
             const arrow = e.currentTarget.querySelector("span");
             if (arrow) (arrow as HTMLElement).style.transform = "translateX(4px)";
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.background = "transparent";
-            e.currentTarget.style.color = "rgba(241,238,231,0.6)";
-            e.currentTarget.style.borderColor = "rgba(241,238,231,0.12)";
+            e.currentTarget.style.background = "rgba(241,238,231,0.06)";
+            e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.15)";
+            e.currentTarget.style.transform = "translateY(0)";
             const arrow = e.currentTarget.querySelector("span");
             if (arrow) (arrow as HTMLElement).style.transform = "translateX(0)";
           }}

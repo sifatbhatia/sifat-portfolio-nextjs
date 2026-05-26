@@ -21,21 +21,21 @@ export default function About() {
             delay={0.1}
             style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}
           >
-            I&apos;m Sifat Bhatia — a design engineer based in Los Angeles. I work with artists, agencies, and creative brands who need more than a template. Every project I touch is built from the ground up, with intention.
+            I&apos;m Sifat Bhatia — a design engineer based in Los Angeles, finishing my MS in Information Technology at Westcliff University. I work with artists, agencies, and creative brands who need more than a template. Every project I touch is built from the ground up, with intention.
           </AnimatedText>
           <AnimatedText
             as="p"
             delay={0.15}
             style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}
           >
-            I don&apos;t just write code or push pixels. I translate what you care about into something people can feel. Motion, typography, space — every detail is a choice, not an accident.
+            I don&apos;t just write code or push pixels. I translate what you care about into something people can feel. Motion, typography, space, systems — every detail is a choice, not an accident. I&apos;m drawn to the edges: where design meets engineering, where spirituality meets code, where brands become experiences.
           </AnimatedText>
           <AnimatedText
             as="p"
             delay={0.2}
             style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}
           >
-            When I&apos;m not building for clients, I&apos;m running an autonomous research agent called Lumière — exploring the edges of design, architecture, and what the web could be.
+            When I&apos;m not building for clients, I&apos;m running an autonomous research agent called Lumière — exploring the edges of design, architecture, and what the web could be. Two shelter cats (Sima & Lia) keep me company, and I&apos;m always chasing a deeper understanding of how things work, and why.
           </AnimatedText>
         </div>
       </div>

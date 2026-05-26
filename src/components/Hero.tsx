@@ -62,6 +62,13 @@ function Carousel() {
     rafRef.current = requestAnimationFrame(tick);
     const mm = (e: MouseEvent) => { if (isMobile.current) return; mouseInside.current = true; const r = viewport.getBoundingClientRect(); lerpTarget.current = -getMax() * Math.max(0, Math.min(1, (e.clientX - r.left) / Math.max(1, r.width))); };
     const me = () => { mouseInside.current = true; }; const ml = () => { mouseInside.current = false; };
+    let dragStartX = 0, dragStartTarget = 0, isDragging = false;
+    const md = (e: MouseEvent) => { if (isMobile.current) return; isDragging = true; dragStartX = e.clientX; dragStartTarget = lerpTarget.current; viewport.style.cursor = "grabbing"; };
+    const mu = () => { if (!isDragging) return; isDragging = false; viewport.style.cursor = ""; };
+    const mdrag = (e: MouseEvent) => { if (!isDragging || isMobile.current) return; const dx = e.clientX - dragStartX; const max = getMax(); lerpTarget.current = clamp(dragStartTarget - dx * (max / Math.max(1, viewport.clientWidth))); };
+    viewport.addEventListener("mousedown", md);
+    window.addEventListener("mouseup", mu);
+    window.addEventListener("mousemove", mdrag);
     const ih = (e: Event) => { if (isMobile.current) return; const it = (e.target as HTMLElement).closest(".carousel-item") as HTMLElement; if (!it) return; it.classList.add("is-hovered"); track.classList.add("has-hover"); it.style.setProperty("--scale", String(C.HOVER_SCALE)); };
     const il = (e: Event) => { const it = (e.target as HTMLElement).closest(".carousel-item") as HTMLElement; if (!it) return; it.classList.remove("is-hovered"); track.classList.remove("has-hover"); it.style.setProperty("--scale", "1"); };
     viewport.addEventListener("mousemove", mm); viewport.addEventListener("mouseenter", me); viewport.addEventListener("mouseleave", ml);
@@ -69,7 +76,8 @@ function Carousel() {
     const onR = () => { lerpCurrent.current = clamp(lerpCurrent.current); lerpTarget.current = clamp(lerpTarget.current); };
     const onM = (e: MediaQueryListEvent) => { isMobile.current = e.matches; if (!isMobile.current) { lerpTarget.current = clamp(lerpTarget.current); lerpCurrent.current = clamp(lerpCurrent.current); } };
     mql.addEventListener("change", onM); window.addEventListener("resize", onR);
-    return () => { cancelAnimationFrame(rafRef.current); viewport.removeEventListener("mousemove", mm); viewport.removeEventListener("mouseenter", me); viewport.removeEventListener("mouseleave", ml); track.removeEventListener("mouseenter", ih, true); track.removeEventListener("mouseleave", il, true); mql.removeEventListener("change", onM); window.removeEventListener("resize", onR); };
+    viewport.style.cursor = "grab";
+    return () => { cancelAnimationFrame(rafRef.current); viewport.removeEventListener("mousemove", mm); viewport.removeEventListener("mouseenter", me); viewport.removeEventListener("mouseleave", ml); track.removeEventListener("mouseenter", ih, true); track.removeEventListener("mouseleave", il, true); mql.removeEventListener("change", onM); window.removeEventListener("resize", onR); viewport.removeEventListener("mousedown", md); window.removeEventListener("mouseup", mu); window.removeEventListener("mousemove", mdrag); };
   }, []);
   return (
     <>
