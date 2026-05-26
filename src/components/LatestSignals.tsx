@@ -37,7 +37,7 @@ export default function LatestSignals() {
         <AnimatedText
           style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", fontWeight: 400, lineHeight: 0.95, letterSpacing: "-0.02em", margin: 0, fontFamily: "var(--font-display)", color: "#f1eee7" }}
         >
-          Latest from the feed.
+          Recent entries
         </AnimatedText>
       </header>
 
