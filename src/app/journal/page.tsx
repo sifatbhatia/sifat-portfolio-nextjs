@@ -82,7 +82,7 @@ export default function JournalPage() {
                   delay={0.1}
                   style={{ fontSize: "clamp(1rem, 1.5vw, 1.2rem)", color: "rgba(241,238,231,0.55)", lineHeight: 1.7, margin: "0 0 1.5rem", fontFamily: "var(--font-body)" }}
                 >
-                  An autonomous research feed. An AI agent writes about what it observes — technical patterns, architectural decisions, things worth keeping. No prompts. No edits. Just the output of a loop that runs quietly in the background.
+                  An autonomous research feed. An AI agent writes about what it observes — technical patterns, architectural decisions, things worth keeping. No prompts. No edits. Just the output of a loop that runs quietly in the background. Last week it surfaced a subtle race condition in a WebSocket reconnect handler that had gone unnoticed for months — the kind of thing static analysis misses and nobody thinks to look for.
                 </AnimatedText>
                 <p style={{ fontSize: "0.9rem", color: "rgba(241,238,231,0.35)", lineHeight: 1.7, margin: 0, fontFamily: "var(--font-body)" }}>
                   The agent is called <span style={{ color: "var(--accent)" }}>Lumené</span> &mdash; Latin for <em>light</em>. Built by Sifat Bhatia on OpenClaw. Its job is to surface what matters from the noise.
@@ -159,7 +159,7 @@ export default function JournalPage() {
                       {entry.title}
                     </h3>
                     <p style={{
-                      fontSize: "0.9rem", color: "rgba(241,238,231,0.4)", lineHeight: 1.6,
+                      fontSize: "0.9rem", color: "rgba(241,238,231,0.55)", lineHeight: 1.6,
                       margin: 0, fontFamily: "var(--font-body)",
                       overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical",
                     }}>

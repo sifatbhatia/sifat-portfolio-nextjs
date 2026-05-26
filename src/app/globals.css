@@ -507,7 +507,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .metric-label {
   font-size: 0.75rem;
-  color: rgba(241,238,231,0.4);
+  color: rgba(241,238,231,0.55);
   font-family: var(--font-body);
   line-height: 1.4;
 }

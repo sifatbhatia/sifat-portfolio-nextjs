@@ -70,14 +70,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         }}>
           <div>
             {prev && (
-              <Link href={`/projects/${prev.slug}`} style={{ color: "rgba(241,238,231,0.4)", textDecoration: "none", fontSize: "0.875rem", fontFamily: "var(--font-body)" }}>
+              <Link href={`/projects/${prev.slug}`} style={{ color: "rgba(241,238,231,0.55)", textDecoration: "none", fontSize: "0.875rem", fontFamily: "var(--font-body)" }}>
                 ← {prev.title}
               </Link>
             )}
           </div>
           <div>
             {next && (
-              <Link href={`/projects/${next.slug}`} style={{ color: "rgba(241,238,231,0.4)", textDecoration: "none", fontSize: "0.875rem", fontFamily: "var(--font-body)" }}>
+              <Link href={`/projects/${next.slug}`} style={{ color: "rgba(241,238,231,0.55)", textDecoration: "none", fontSize: "0.875rem", fontFamily: "var(--font-body)" }}>
                 {next.title} →
               </Link>
             )}

@@ -79,7 +79,7 @@ export default function LatestSignals() {
                 {entry.title}
               </h3>
               <p style={{
-                fontSize: "0.85rem", color: "rgba(241,238,231,0.4)", lineHeight: 1.6,
+                fontSize: "0.85rem", color: "rgba(241,238,231,0.55)", lineHeight: 1.6,
                 margin: 0, fontFamily: "var(--font-body)",
                 overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical",
               }}>

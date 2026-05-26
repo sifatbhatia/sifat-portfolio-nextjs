@@ -164,7 +164,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
               fontWeight: 400,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
-              color: "rgba(241,238,231,0.4)",
+              color: "rgba(241,238,231,0.55)",
               margin: 0,
               fontFamily: "var(--font-body)",
             }}
@@ -177,7 +177,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
             fontSize: "0.875rem",
             fontWeight: 400,
             letterSpacing: "0.05em",
-            color: "rgba(241,238,231,0.4)",
+            color: "rgba(241,238,231,0.55)",
           }}
         >
           {project.year}
@@ -237,7 +237,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
           <p style={{ margin: 0, color: "rgba(241,238,231,0.6)" }}>
             {project.role}
           </p>
-          <p style={{ margin: 0, color: "rgba(241,238,231,0.4)" }}>
+          <p style={{ margin: 0, color: "rgba(241,238,231,0.55)" }}>
             {project.year}
           </p>
           {project.url && (

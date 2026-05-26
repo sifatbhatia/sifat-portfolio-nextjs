@@ -67,23 +67,6 @@ export default function Footer() {
             textTransform: "uppercase", color: "rgba(247,247,242,0.3)", margin: "0 0 1.5rem",
             fontFamily: "var(--font-body)",
           }}>
-            Philosophy
-          </p>
-          <span style={{
-            display: "block", color: "rgba(247,247,242,0.86)",
-            fontSize: "clamp(1.25rem, 1.8vw, 2rem)", fontWeight: 750,
-            lineHeight: 0.92, letterSpacing: "-0.055em", textTransform: "uppercase",
-          }}>
-            This site is built on the belief<br />that real living is meeting.
-          </span>
-        </div>
-
-        <div>
-          <p style={{
-            fontSize: "clamp(0.7rem, 1vw, 0.85rem)", fontWeight: 400, letterSpacing: "0.2em",
-            textTransform: "uppercase", color: "rgba(247,247,242,0.3)", margin: "0 0 1.5rem",
-            fontFamily: "var(--font-body)",
-          }}>
             Navigate
           </p>
           <nav aria-label="Footer navigation" style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
@@ -110,6 +93,21 @@ export default function Footer() {
             <FooterLink href="https://www.instagram.com/sifatxo/" external>Instagram</FooterLink>
             <FooterLink href="mailto:sifatbht@gmail.com">Email</FooterLink>
           </nav>
+
+          <p style={{
+            fontSize: "clamp(0.7rem, 1vw, 0.85rem)", fontWeight: 400, letterSpacing: "0.2em",
+            textTransform: "uppercase", color: "rgba(247,247,242,0.3)", margin: "2rem 0 0.75rem",
+            fontFamily: "var(--font-body)",
+          }}>
+            Philosophy
+          </p>
+          <span style={{
+            display: "block", color: "rgba(247,247,242,0.5)",
+            fontSize: "clamp(0.8rem, 1.1vw, 0.95rem)", fontWeight: 400,
+            lineHeight: 1.5, letterSpacing: "0.02em", fontFamily: "var(--font-body)",
+          }}>
+            Built on the belief that real living is meeting.
+          </span>
         </div>
       </div>
 
@@ -132,7 +130,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="page-footer--bottom" style={{
         display: "grid",
-        gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)",
+        gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)",
         gap: "clamp(1rem, 3vw, 3rem)", alignItems: "end",
         paddingTop: "clamp(1.5rem, 3vh, 2.5rem)",
         borderTop: "1px solid rgba(247,247,242,0.08)",
@@ -141,8 +139,7 @@ export default function Footer() {
         letterSpacing: "0.05em", fontFamily: "var(--font-body)",
       }}>
         <span>Los Angeles</span>
-        <span>&copy; SIFTION</span>
-        <a href="mailto:sifatbht@gmail.com" style={{ color: "inherit", textDecoration: "none" }}>HI@SIFAT.TECH</a>
+        <span style={{ textAlign: "center" }}>&copy; SIFTION</span>
         <span style={{ textAlign: "right" }}>Design &amp; Development</span>
       </div>
     </footer>

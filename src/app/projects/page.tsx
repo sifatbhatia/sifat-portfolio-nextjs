@@ -42,7 +42,7 @@ export default function ProjectsPage() {
                   <h2 style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)", fontWeight: 400, margin: 0, fontFamily: "var(--font-display)", color: "#f1eee7" }}>
                     {p.title}
                   </h2>
-                  <p style={{ fontSize: "1rem", color: "rgba(241,238,231,0.4)", margin: "0.5rem 0 0", maxWidth: "36rem", fontFamily: "var(--font-body)" }}>
+                  <p style={{ fontSize: "1rem", color: "rgba(241,238,231,0.55)", margin: "0.5rem 0 0", maxWidth: "36rem", fontFamily: "var(--font-body)" }}>
                     {p.description}
                   </p>
                 </div>

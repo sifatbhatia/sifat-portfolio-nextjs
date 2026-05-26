@@ -19,7 +19,7 @@ const SERVICES = [
     num: "02",
     title: "Development",
     description:
-      "React, Next.js, GSAP, and everything in between. Fast, accessible, and built to last. I write production code that scales — no shortcuts, no technical debt you will regret later.",
+      "React, Next.js, GSAP, and everything in between. Fast, accessible, and built to last. I write production code that scales — no shortcuts, no compromises.",
     deliverables: ["React / Next.js applications", "Animation & interaction systems", "CMS integration", "Performance optimization", "PWA development"],
   },
   {
@@ -90,7 +90,7 @@ export default function ServicesPage() {
                   </p>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.35rem" }}>
                     {svc.deliverables.map((d) => (
-                      <li key={d} style={{ fontSize: "0.85rem", color: "rgba(241,238,231,0.4)", fontFamily: "var(--font-body)" }}>
+                      <li key={d} style={{ fontSize: "0.85rem", color: "rgba(241,238,231,0.55)", fontFamily: "var(--font-body)" }}>
                         {d}
                       </li>
                     ))}
@@ -124,7 +124,7 @@ export default function ServicesPage() {
                     <span style={{ fontSize: "0.7rem", color: "var(--accent)", fontFamily: "var(--font-body)", fontWeight: 600, minWidth: "5rem" }}>
                       {phase.step}
                     </span>
-                    <p style={{ fontSize: "0.85rem", color: "rgba(241,238,231,0.4)", margin: 0, fontFamily: "var(--font-body)", lineHeight: 1.6 }}>
+                    <p style={{ fontSize: "0.85rem", color: "rgba(241,238,231,0.55)", margin: 0, fontFamily: "var(--font-body)", lineHeight: 1.6 }}>
                       {phase.detail}
                     </p>
                   </div>
