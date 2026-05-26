@@ -3,17 +3,31 @@
 import { useState } from "react";
 import { Link } from "next-view-transitions";
 
+const letters = [
+  { char: "S", w: 181.34 },
+  { char: "I", w: 38.30 },
+  { char: "F", w: 148.11 },
+  { char: "A", w: 181.34 },
+  { char: "T", w: 155.96 },
+  { char: "B", w: 147.88 },
+  { char: "H", w: 148.11 },
+  { char: "A", w: 181.34 },
+  { char: "T", w: 122.51 },
+  { char: "I", w: 38.30 },
+  { char: "A", w: 147.65 },
+];
+
 function FooterLink({ href, children, external }: { href: string; children: React.ReactNode; external?: boolean }) {
   const [hovered, setHovered] = useState(false);
 
   const baseStyle = {
-    color: hovered ? "#f1eee7" : "rgba(241,238,231,0.5)",
+    color: hovered ? "#f7f7f2" : "rgba(247,247,242,0.86)",
     textDecoration: "none",
-    fontSize: "clamp(1.25rem, 1.8vw, 2rem)",
+    fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
     fontWeight: 750,
     lineHeight: 0.92,
-    letterSpacing: "-0.055em",
-    textTransform: "uppercase",
+    letterSpacing: "-0.04em",
+    textTransform: "uppercase" as const,
     transition: "color 200ms ease",
   } as React.CSSProperties;
 
@@ -38,106 +52,75 @@ export default function Footer() {
   return (
     <footer style={{
       width: "100%", background: "#030303", color: "#f1eee7",
-      fontFamily: "var(--font-display)",
-      padding: "clamp(3rem, 6vh, 5rem) clamp(1.5rem, 6vw, 4rem) clamp(1.5rem, 3vw, 2.5rem)",
+      padding: "clamp(3rem, 6vh, 5rem) clamp(1.5rem, 6vw, 4rem) 0",
     }}>
-      {/* Top: Nav / Connect / Philosophy */}
+      {/* Top: Philosophy / Nav / Connect */}
       <div style={{
-        display: "grid",
-        gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr)",
-        gap: "clamp(2rem, 5vw, 6rem)", alignItems: "start",
-        maxWidth: "1400px", margin: "0 auto",
-        paddingTop: "clamp(2rem, 4vh, 4rem)",
-        paddingBottom: "clamp(3rem, 5vh, 5rem)",
-      }}>
-        <div>
-          <p style={{
-            fontSize: "clamp(0.7rem, 1vw, 0.85rem)", fontWeight: 400, letterSpacing: "0.2em",
-            textTransform: "uppercase", color: "rgba(241,238,231,0.3)", margin: "0 0 1.5rem",
-            fontFamily: "var(--font-body)",
-          }}>
-            Navigate
-          </p>
-          <nav aria-label="Footer navigation" style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-            {[
-              { href: "/projects", label: "Projects" },
-              { href: "/journal", label: "Journal" },
-              { href: "/services", label: "Services" },
-              { href: "/now", label: "Now" },
-            ].map(link => (
-              <FooterLink key={link.label} href={link.href}>{link.label}</FooterLink>
-            ))}
-          </nav>
-        </div>
-
-        <div>
-          <p style={{
-            fontSize: "clamp(0.7rem, 1vw, 0.85rem)", fontWeight: 400, letterSpacing: "0.2em",
-            textTransform: "uppercase", color: "rgba(241,238,231,0.3)", margin: "0 0 1.5rem",
-            fontFamily: "var(--font-body)",
-          }}>
-            Connect
-          </p>
-          <nav aria-label="Social links" style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-            <FooterLink href="https://www.instagram.com/siftion/" external>Instagram</FooterLink>
-            <FooterLink href="mailto:sifatbht@gmail.com">Email</FooterLink>
-          </nav>
-        </div>
-
-        <div>
-          <p style={{
-            fontSize: "clamp(0.7rem, 1vw, 0.85rem)", fontWeight: 400, letterSpacing: "0.2em",
-            textTransform: "uppercase", color: "rgba(241,238,231,0.3)", margin: "0 0 1.5rem",
-            fontFamily: "var(--font-body)",
-          }}>
-            Philosophy
-          </p>
-          <span style={{
-            display: "block", color: "rgba(241,238,231,0.5)",
-            fontSize: "clamp(0.8rem, 1.1vw, 0.95rem)", fontWeight: 400,
-            lineHeight: 1.5, letterSpacing: "0.02em", fontFamily: "var(--font-body)",
-          }}>
-            Built on the belief that real living is meeting.
-          </span>
-        </div>
-      </div>
-
-      {/* SIFTION Logo — full viewport width */}
-      <div style={{
-        width: "100vw", marginLeft: "calc(50% - 50vw)",
-        borderTop: "1px solid rgba(241,238,231,0.06)",
-        borderBottom: "1px solid rgba(241,238,231,0.06)",
-      }}>
-        <a href="/" aria-label="Back to home" style={{
-          display: "block", width: "100%", padding: "clamp(2rem, 5vh, 5rem) clamp(1.5rem, 6vw, 4rem)",
-          lineHeight: 0, textAlign: "center",
-        }}>
-          <img
-            src="/assets/Sifat-Bhatia.svg"
-            alt="Sifat Bhatia"
-            style={{
-              display: "inline-block", width: "100%", maxWidth: "800px",
-              maxHeight: "clamp(6rem, 18vh, 16rem)", height: "auto",
-              objectFit: "contain", filter: "invert(1)",
-            }}
-          />
-        </a>
-      </div>
-
-      {/* Bottom bar */}
-      <div style={{
-        maxWidth: "1400px", margin: "0 auto",
         display: "grid",
         gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)",
-        gap: "clamp(1rem, 3vw, 3rem)", alignItems: "end",
-        paddingTop: "clamp(1.5rem, 3vh, 2.5rem)",
-        color: "rgba(241,238,231,0.4)",
-        fontSize: "clamp(0.75rem, 1vw, 0.9rem)", fontWeight: 400,
-        letterSpacing: "0.05em", fontFamily: "var(--font-body)",
+        gap: "clamp(2rem, 5vw, 6rem)", alignItems: "start",
+        maxWidth: "1400px", margin: "0 auto",
+        paddingBottom: "clamp(3rem, 6vh, 6rem)",
       }}>
-        <span>Los Angeles</span>
-        <span style={{ textAlign: "center" }}>&copy; SIFAT BHATIA</span>
-        <span style={{ textAlign: "right" }}>Design &amp; Development</span>
+        <div>
+          <div style={{
+            color: "rgba(247,247,242,0.86)",
+            fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+            fontWeight: 700,
+            lineHeight: 0.92,
+            letterSpacing: "-0.02em",
+            fontFamily: "var(--font-body)",
+          }}>
+            Built on the belief<br />
+            that real living<br />
+            is meeting.
+          </div>
+        </div>
+
+        <nav aria-label="Footer navigation" style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+          {[
+            { href: "/projects", label: "Projects" },
+            { href: "/journal", label: "Journal" },
+            { href: "/services", label: "Services" },
+            { href: "/now", label: "Now" },
+          ].map(link => (
+            <FooterLink key={link.label} href={link.href}>{link.label}</FooterLink>
+          ))}
+        </nav>
+
+        <nav aria-label="Social links" style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+          <FooterLink href="https://www.instagram.com/siftion/" external>Instagram</FooterLink>
+          <FooterLink href="mailto:sifatbht@gmail.com">Email</FooterLink>
+        </nav>
+      </div>
+
+      {/* Block-letter logo — full viewport width */}
+      <div style={{
+        width: "100vw", marginLeft: "calc(50% - 50vw)",
+        borderTop: "1px solid rgba(247,247,242,0.06)",
+        padding: "clamp(2rem, 4vh, 4rem) clamp(1.5rem, 6vw, 4rem)",
+        display: "flex", justifyContent: "center",
+        boxSizing: "border-box",
+      }}>
+        <a href="/" aria-label="Back to home" style={{
+          display: "flex", justifyContent: "center", alignItems: "center",
+          gap: "clamp(0.15rem, 0.4vw, 0.5rem)",
+          flexWrap: "wrap", textDecoration: "none",
+          maxWidth: "1200px", width: "100%",
+        }}>
+          {letters.map((l, i) => (
+            <div
+              key={i}
+              title={l.char}
+              style={{
+                width: `clamp(${l.w * 0.05}px, ${l.w / 1200 * 100}vw, ${l.w}px)`,
+                height: `clamp(0.8rem, 4vh, 2.4rem)`,
+                background: "#f7f7f2",
+                borderRadius: "1px",
+              }}
+            />
+          ))}
+        </a>
       </div>
     </footer>
   );
