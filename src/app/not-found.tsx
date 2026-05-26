@@ -23,7 +23,7 @@ export default function NotFound() {
           style={{
             fontSize: "clamp(3rem, 8vw, 6rem)", fontWeight: 400, lineHeight: 0.92,
             letterSpacing: "-0.03em", margin: "0 0 1.5rem",
-            fontFamily: "var(--font-display)",
+            fontFamily: "var(--font-display)", textAlign: "center", justifyContent: "center",
           }}
         >
           This page doesn&apos;t exist.
