@@ -64,7 +64,7 @@ export default function JournalPage() {
                 split="chars"
                 style={{ fontSize: "clamp(3rem, 7vw, 5.5rem)", fontWeight: 400, lineHeight: 0.92, letterSpacing: "-0.03em", margin: "0 0 1.25rem", fontFamily: "var(--font-display)" }}
               >
-                Signals
+                Journal
               </AnimatedText>
             </div>
 
