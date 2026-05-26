@@ -5,7 +5,6 @@ import { Link } from "next-view-transitions";
 import { projects } from "@/lib/projects";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AnimatedText from "./AnimatedText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -91,23 +90,41 @@ export default function SelectedWork() {
     if (!section) return;
 
     const ctx = gsap.context(() => {
+      const heading = section.querySelector("[data-heading]");
       const cards = section.querySelectorAll("[data-card]");
-      if (!cards.length) return;
 
-      gsap.fromTo(cards,
-        { opacity: 0, y: 50, scale: 0.97 },
-        {
-          opacity: 1, y: 0, scale: 1,
-          duration: 0.9,
-          ease: "power3.out",
-          stagger: 0.15,
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
+      if (heading) {
+        gsap.fromTo(heading,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1, y: 0,
+            duration: 0.8,
+            ease: "expo.out",
+            scrollTrigger: {
+              trigger: heading,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+
+      if (cards.length) {
+        gsap.fromTo(cards,
+          { opacity: 0, y: 50, scale: 0.97 },
+          {
+            opacity: 1, y: 0, scale: 1,
+            duration: 0.9,
+            ease: "power3.out",
+            stagger: 0.15,
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
     }, section);
 
     return () => ctx.revert();
@@ -122,14 +139,14 @@ export default function SelectedWork() {
         }}>
           Selected Work
         </p>
-        <AnimatedText
+        <h2 data-heading
           style={{
             fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)", fontWeight: 400, lineHeight: 0.95,
             letterSpacing: "-0.02em", margin: 0, fontFamily: "var(--font-display)", color: "#f1eee7",
           }}
         >
           Things I&apos;m proud of.
-        </AnimatedText>
+        </h2>
       </div>
 
       <div style={{ marginBottom: "clamp(1rem, 2vw, 1.5rem)" }}>
