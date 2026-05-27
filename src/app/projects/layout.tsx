@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Selected Work",
   description:
-    "Selected websites, brand systems, and digital products by Sifat Bhatia for artists, agencies, and creative teams.",
+    "Selected websites, identities, tools, and experiments by Sifat Bhatia for artists, agencies, and creative teams.",
   alternates: {
     canonical: "/projects",
   },
   openGraph: {
     title: "Selected Work | Sifat Bhatia",
     description:
-      "Selected websites, brand systems, and digital products by Sifat Bhatia for artists, agencies, and creative teams.",
+      "Selected websites, identities, tools, and experiments by Sifat Bhatia for artists, agencies, and creative teams.",
     url: "/projects",
     type: "website",
   },

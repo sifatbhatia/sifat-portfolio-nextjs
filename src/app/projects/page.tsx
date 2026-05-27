@@ -61,7 +61,7 @@ export default function ProjectsPage() {
             Selected work
           </AnimatedText>
           <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.5)", margin: "1.5rem 0 0", fontFamily: "var(--font-body)", maxWidth: "36rem" }}>
-            Websites, brand systems, and digital products built with artists, agencies, and creative teams. Each project here shows the problem, the role I played, what was built, and what changed after launch.
+            Websites, identities, and tools shaped with artists, agencies, and creative teams. Each project began with a person, a context, and a tension worth listening to.
           </p>
           <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "rgba(241,238,231,0.42)", margin: "1rem 0 0", fontFamily: "var(--font-body)", maxWidth: "34rem" }}>
             More case studies are being shaped as the work becomes ready to show: built things first, written up with care after.
@@ -75,10 +75,10 @@ export default function ProjectsPage() {
         <section style={{ marginTop: "clamp(5rem, 10vh, 8rem)" }}>
           <div style={{ marginBottom: "clamp(1.5rem, 4vh, 2.5rem)", maxWidth: "44rem" }}>
             <p style={{ fontSize: "0.75rem", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(139,166,157,0.75)", margin: "0 0 1rem", fontFamily: "var(--font-body)" }}>
-              Just for fun / experiments
+              Experiments / small worlds
             </p>
             <p style={{ fontSize: "clamp(0.95rem, 1.2vw, 1.05rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.48)", margin: 0, fontFamily: "var(--font-body)" }}>
-              Smaller studies, speculative builds, and playful tools where the goal was exploration, craft, or learning rather than a client brief.
+              Smaller studies, speculative builds, and playful tools where the goal was exploration, craft, or listening to an odd little idea long enough for it to answer back.
             </p>
           </div>
 

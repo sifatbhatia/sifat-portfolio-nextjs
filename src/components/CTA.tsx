@@ -130,7 +130,7 @@ export default function CTA() {
               justifyContent: "center",
             }}
           >
-            Need a custom website, brand system, or interactive product?
+            Building something that needs to feel more true?
           </AnimatedText>
         </div>
         <AnimatedText
@@ -142,7 +142,7 @@ export default function CTA() {
             maxWidth: "32rem", marginLeft: "auto", marginRight: "auto",
           }}
         >
-          Send a short note with what you are building, what is not working yet, and what you want the finished experience to do.
+          Send a short note with what you are making, what feels unresolved, and what kind of encounter the finished thing needs to create.
         </AnimatedText>
         <div style={{ display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap" }}>
           <PrimaryButton href="mailto:sifatbht@gmail.com">sifatbht@gmail.com</PrimaryButton>

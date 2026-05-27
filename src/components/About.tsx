@@ -28,14 +28,14 @@ export default function About() {
             delay={0.15}
             style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}
           >
-            I work best with artists, agencies, founders, and creative teams who care about how their digital presence feels and how it performs. I can shape the concept, design the system, build the front end, and help the final product stay coherent from first sketch to launch.
+            I work best with artists, agencies, founders, and creative teams who care about how their work is met. I can shape the concept, design the system, build the front end, and keep the experience coherent from first sketch to launch.
           </AnimatedText>
           <AnimatedText
             as="p"
             delay={0.2}
             style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}
           >
-            My strongest projects sit where design and engineering have to move together: custom websites, visual identities, interactive portfolios, editorial systems, internal tools, and digital products with a strong point of view.
+            My strongest projects sit where design and engineering have to move together: custom websites, visual identities, interactive portfolios, editorial systems, internal tools, and small software shaped around a real point of view.
           </AnimatedText>
         </div>
       </div>

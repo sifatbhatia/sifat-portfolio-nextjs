@@ -146,7 +146,7 @@ export default function Hero() {
         <Carousel />
       </div>
       <p className="hero-tagline" style={{ padding: "0rem 6rem",         color: "var(--text-soft, #b8b1a6)", fontSize: "clamp(1rem, 1.4vw, 1.2rem)", fontWeight: 400, letterSpacing: "-0.01em", lineHeight: 1.5, textAlign: "right" }}>
-        Design engineer and creative technologist for artists, agencies, and creative brands.
+        Design engineer and creative technologist building websites for people with worlds worth meeting.
       </p>
       <div className="hero-wordmark" style={{ width: "100vw", marginLeft: "calc(50% - 50vw)", flexShrink: 0, overflow: "visible" }}>
         <svg ref={svgRef} width="1380" height="374" viewBox="0 0 1380 374" fill="none" style={{ display: "block", width: "100%", height: "auto" }}>

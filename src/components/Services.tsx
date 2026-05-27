@@ -7,22 +7,22 @@ import AnimatedText from "./AnimatedText";
 const SERVICES = [
   {
     title: "Web Design and Development",
-    desc: "Custom React, Next.js, Webflow, and CMS-backed websites built for speed, accessibility, responsive behavior, and long-term maintainability.",
+    desc: "Custom React, Next.js, Webflow, and CMS-backed websites shaped around the people, content, and constraints they need to hold.",
     icon: "01",
   },
   {
     title: "Brand and Identity Systems",
-    desc: "Logos, typography, color systems, art direction, and reusable design rules that make a brand easier to recognize and easier to use.",
+    desc: "Logos, typography, color systems, art direction, and reusable rules that help a world become recognizable without sanding it flat.",
     icon: "02",
   },
   {
     title: "Creative Technology",
-    desc: "Motion systems, interactive interfaces, WebGL experiments, AI-assisted workflows, and custom tools for teams that need something more specific than off-the-shelf software.",
+    desc: "Motion systems, interactive interfaces, WebGL experiments, AI-assisted workflows, and custom tools for ideas that need a more specific form.",
     icon: "03",
   },
   {
     title: "Strategy and Structure",
-    desc: "Content architecture, user journeys, technical planning, and product thinking before the build starts.",
+    desc: "Content architecture, user journeys, technical planning, and close attention before the build starts.",
     icon: "04",
   },
 ];

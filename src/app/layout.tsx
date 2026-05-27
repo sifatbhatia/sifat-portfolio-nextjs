@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Sifat Bhatia",
   },
   description:
-    "Sifat Bhatia designs and builds custom websites, brand systems, and interactive digital products for artists, agencies, and creative brands.",
+    "Sifat Bhatia designs and builds websites, identities, and interactive tools for people with worlds worth meeting.",
   keywords: [
     "Sifat Bhatia",
     "design engineer",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     siteName: "Sifat Bhatia — Design Engineer",
     title: "Sifat Bhatia — Design Engineer & Creative Technologist",
     description:
-      "Design engineer based in Los Angeles. Building websites, brand identities, and digital experiences for artists, agencies, and creative brands.",
+      "Design engineer based in Los Angeles. Building websites, identities, and interactive tools for people with worlds worth meeting.",
     images: [
       {
         url: "/assets/og-image.png",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sifat Bhatia — Design Engineer & Creative Technologist",
     description:
-      "Design engineer based in Los Angeles. Building websites, brand identities, and digital experiences for artists, agencies, and creative brands.",
+      "Design engineer based in Los Angeles. Building websites, identities, and interactive tools for people with worlds worth meeting.",
     images: ["/assets/og-image.png"],
     creator: "@sifatxo",
   },
@@ -96,7 +96,7 @@ const personSchema = {
   name: "Sifat Bhatia",
   jobTitle: "Design Engineer & Creative Technologist",
   description:
-    "Sifat Bhatia is a design engineer and creative technologist based in Los Angeles. He specializes in building websites, brand identities, and digital experiences for artists, agencies, and creative brands.",
+    "Sifat Bhatia is a design engineer and creative technologist based in Los Angeles. He builds websites, identities, and interactive tools through close attention to people, context, and constraint.",
   url: "https://sifat.tech",
   sameAs: [
     "https://github.com/sifatbhatia",

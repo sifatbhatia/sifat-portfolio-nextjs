@@ -17,7 +17,7 @@ export const projects: ProjectData[] = [
     year: "2024-2026",
     url: "https://www.jworra.com/",
     description:
-      "Full artist website redesign and development for J. Worra, evolving the site from a plain legacy presence to a Webflow direction and finally a custom Next.js experience built around music, tour dates, social links, and booking access.",
+      "Artist website redesign and development for J. Worra, evolving the site from a plain legacy presence into a custom Next.js experience shaped around music, tour dates, social links, and the artist world visitors are trying to reach.",
     challenge: `The project was not just to make the site look better. The real challenge was to move J. Worra's web presence out of a generic artist-site format and into something that felt more current, more direct, and more aligned with the artist's music and live presence.
 
 The site needed to serve multiple audiences at once:
@@ -31,7 +31,7 @@ The site needed to serve multiple audiences at once:
 The structure was reduced to the essentials: upcoming dates, music, artist context, contact, and social/streaming access. The visual system moved toward dark atmosphere, large identity moments, high-contrast interface elements, and a more performance-minded front end.
 
 The Webflow version helped define the brand and layout direction. The Next.js version gave the final site more control, speed, flexibility, and polish.`,
-    outcome: `The current J. Worra site is a stronger central hub for the artist. It keeps the essential information accessible while giving the brand a more distinctive digital presence.
+    outcome: `The current J. Worra site is a clearer meeting point for the artist. It keeps the essential information accessible while giving the brand a more distinctive atmosphere.
 
 The redesign creates a clear progression from a plain legacy site to a custom-built artist experience: more atmospheric, more usable, and more aligned with a modern touring DJ and producer.`,
     stack: ["Webflow", "Next.js", "React", "Motion Systems", "Responsive Design"],
@@ -57,10 +57,10 @@ The redesign creates a clear progression from a plain legacy site to a custom-bu
     year: "2026",
     url: "https://www.laffairemusicale.com/",
     description:
-      "Full brand and website refresh for L'Affaire Musicale, including logo design, visual identity, creative direction, and a redesigned digital presence for the dance music management company.",
+      "Brand and website refresh for L'Affaire Musicale, including logo design, visual identity, creative direction, and a redesigned site for the people, artists, and relationships around the dance music management company.",
     challenge: `The previous site had useful information, but the brand felt dated and visually underpowered. It did not reflect the agency's taste, roster, relationships, or position inside the dance music world.
 
-The company needed to move away from an older events-page feeling and toward something that looked like a serious management house: clearer, more premium, more intentional, and easier to understand at a glance.`,
+The company needed to move away from an older events-page feeling and toward something that felt like a serious management house: clearer, more intentional, and easier to understand at a glance.`,
     approach: `The refresh uses a restrained editorial system: a redesigned wordmark, warm neutral palette, large serif typography, disciplined spacing, and a cleaner page structure.
 
 The site was reorganized around the signals that matter most for a management company:
@@ -71,7 +71,7 @@ The site was reorganized around the signals that matter most for a management co
 - Who leads the company
 - How artists, partners, and industry contacts can reach out
 
-The brand direction balances polish with music-industry edge. It needed to feel elevated without becoming sterile, and stylish without hiding the actual business information.`,
+The brand direction balances restraint with music-industry edge. It needed to feel elevated without becoming sterile, and stylish without hiding the people and relationships behind the business.`,
     outcome: `The refreshed site now gives L'Affaire Musicale a stronger first impression and a clearer business presence. It presents the agency as a modern management company rather than a dated event brand.
 
 The new identity can extend beyond the website into roster materials, pitch decks, social assets, booking conversations, and future brand collateral.`,
@@ -82,7 +82,7 @@ The new identity can extend beyond the website into roster materials, pitch deck
       "Established typography, color, spacing, and layout direction",
       "Reworked the website around roster, services, leadership, and inquiries",
       "Clarified the agency's management, booking, branding, and artist-development positioning",
-      "Created a more premium digital presence for the company and its artists",
+      "Created a clearer, more recognizable web presence for the company and its artists",
     ],
     heroImage: "/assets/previews/l-affaire-musicale/screenshot-1.webp",
     screenshots: [
@@ -96,7 +96,7 @@ The new identity can extend beyond the website into roster materials, pitch deck
     year: "2026",
     url: "https://samblacky.com/",
     description:
-      "Artist website refresh for Sam Blacky, focused on stronger visual identity, music-forward structure, bolder photography, and clearer paths for fans, brands, press, and booking contacts.",
+      "Artist website refresh for Sam Blacky, focused on stronger visual identity, music-forward structure, bolder photography, and clearer paths for fans, brands, press, and booking contacts to meet the world around the artist.",
     challenge: `The existing site had the right basic information, but it felt static and dated. The design leaned more toward a simple press page than a living artist world.
 
 Sam's brand sits across dance music, travel, fashion, nightlife, and global club culture. The website needed to carry more of that energy without making the core actions harder to find: listen, learn, contact, and explore brand/music work.`,
@@ -106,11 +106,11 @@ The site structure was reorganized around the content people actually look for o
 
 - Music and releases
 - Artist story
-- Brand presence
+- Brand world
 - Contact and management inquiries
 
 The direction intentionally feels less corporate and more direct. It gives the site more personality while keeping the page useful for industry visitors.`,
-    outcome: `The refreshed direction makes Sam Blacky's digital presence feel more current, more energetic, and more connected to her world as a DJ and producer.
+    outcome: `The refreshed direction makes Sam Blacky's site feel more current, more energetic, and more connected to her world as a DJ and producer.
 
 It turns the site from a basic information page into a stronger artist showcase that can support releases, bookings, brand conversations, and fan discovery.`,
     stack: ["Web Design", "Creative Direction", "Artist Website", "Responsive Design"],
@@ -221,16 +221,16 @@ It turns the site from a basic information page into a stronger artist showcase 
     challenge:
       "The original version, MeowGen, was a fun single-purpose experiment hosted at meowgen.vercel.app. The opportunity was to treat that energy as a starting point and expand it into a more useful utility surface without making it feel heavy or overbuilt.",
     approach:
-      "The refresh turns the idea into a small product system: individual tool cards, simple labels, direct entry points, and a light interface that lets each utility stand on its own. The structure is intentionally modular so new tools can be added without redesigning the whole experience.",
+      "The refresh turns the idea into a small tool system: individual cards, simple labels, direct entry points, and a light interface that lets each utility stand on its own. The structure is intentionally modular so new tools can be added without redesigning the whole experience.",
     outcome:
-      "The current version moves from a one-off generator into a broader creative toolkit. It keeps the playful spirit of the original while making the product easier to scan, extend, and use across multiple practical browser-based tasks.",
+      "The current version moves from a one-off generator into a broader creative toolkit. It keeps the playful spirit of the original while making the system easier to scan, extend, and use across multiple practical browser-based tasks.",
     stack: ["Next.js", "React", "Creative Tools", "Product Design"],
     highlights: [
       "Evolved the original MeowGen concept into a broader utility collection",
       "Created a modular card system for lightweight browser tools",
       "Added utilities for image compression, PDF compression, circle crops, video compression, metadata removal, grain, icons, and generation",
       "Kept the interface simple enough for quick repeated use",
-      "Built the refreshed version as a clearer, more extensible product surface",
+      "Built the refreshed version as a clearer, more extensible tool surface",
     ],
     heroImage: "/assets/previews/sifs-utilities/screenshot-1.webp",
     screenshots: [
@@ -244,7 +244,7 @@ It turns the site from a basic information page into a stronger artist showcase 
     year: "2024",
     client: "Petal & Stem (Fictional)",
     description:
-      "A refined artisan floral e-commerce concept for a Portland studio, built with vanilla HTML, CSS, and JavaScript around a full design token system, responsive shopping paths, accessible interactions, and a warm editorial brand presence.",
+      "An artisan floral e-commerce concept for a Portland studio, built with vanilla HTML, CSS, and JavaScript around a full design token system, responsive shopping paths, accessible interactions, and a warm editorial world.",
     challenge: `Design and develop a refined e-commerce experience for an artisan floral studio that conveys craftsmanship and elegance while providing a seamless shopping experience across devices.
 
 The site needed to communicate an intentional floral practice, present signature arrangements in a curated way, tell the founder's story, build trust through testimonials and social proof, and create clear purchase and inquiry paths without aggressive sales pressure.`,
@@ -252,8 +252,8 @@ The site needed to communicate an intentional floral practice, present signature
 
 The implementation uses semantic HTML, responsive grids, skip links, focus-visible states, ARIA labels, reduced-motion support, and vanilla JavaScript for cart states, toast feedback, form validation, animated counters, scroll-aware navigation, and micro-interactions.
 
-No external JavaScript framework was used. The goal was to prove that a polished, premium e-commerce experience can still be fast, accessible, and maintainable with native browser primitives.`,
-    outcome: `The final concept balances aesthetic refinement with functional clarity. It feels handcrafted and editorial while still supporting product discovery, trust-building, and conversion paths.
+No external JavaScript framework was used. The goal was to prove that a careful, refined e-commerce experience can still be fast, accessible, and maintainable with native browser primitives.`,
+    outcome: `The final concept balances aesthetic refinement with functional clarity. It feels handcrafted and editorial while still supporting discovery, trust, and gentle inquiry paths.
 
 Technically, the project demonstrates a zero-dependency front end, responsive behavior from mobile to desktop, accessible interaction patterns, and performance-minded animation choices using transforms, passive listeners, and IntersectionObserver.`,
     stack: ["HTML", "CSS", "Vanilla JavaScript", "Design Systems", "Accessibility"],
@@ -282,7 +282,7 @@ Technically, the project demonstrates a zero-dependency front end, responsive be
     role: "Creative Coding / Web Experiments",
     year: "2024",
     description:
-      "A set of experimental browser experiences exploring psychedelic WebGL visuals, procedural audio, particle systems, and deliberately chaotic retro web aesthetics as a technical and creative counterpoint to polished commercial work.",
+      "A set of experimental browser experiences exploring psychedelic WebGL visuals, procedural audio, particle systems, and deliberately chaotic retro web aesthetics as a technical and creative counterpoint to client work.",
     challenge: `Create immersive, unconventional web experiences that push browser visuals while maintaining performance, interaction, and a clear creative point of view.
 
 The work balanced visual complexity with 60fps rendering, mathematical precision with organic movement, user control with autonomous visuals, and modern browser capabilities with practical compatibility concerns.`,
