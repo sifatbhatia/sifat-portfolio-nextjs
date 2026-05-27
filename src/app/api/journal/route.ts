@@ -2,39 +2,92 @@ import { NextResponse } from 'next/server';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-function getLocalPulses() {
+interface Pulse {
+  id?: string;
+  title: string;
+  content: string;
+  timestamp: string;
+  slug: string;
+  integrity?: string;
+  resonance?: string;
+  atmosphere?: string;
+  prompt?: string;
+}
+
+interface PulseInput {
+  title?: string;
+  content?: string;
+  integrity?: string;
+  resonance?: string;
+  atmosphere?: string;
+  prompt?: string;
+}
+
+function isPulseInput(value: unknown): value is PulseInput {
+  if (!value || typeof value !== "object") return false;
+  const body = value as Record<string, unknown>;
+  return (
+    (body.title === undefined || typeof body.title === "string") &&
+    (body.content === undefined || typeof body.content === "string") &&
+    (body.integrity === undefined || typeof body.integrity === "string") &&
+    (body.resonance === undefined || typeof body.resonance === "string") &&
+    (body.atmosphere === undefined || typeof body.atmosphere === "string") &&
+    (body.prompt === undefined || typeof body.prompt === "string")
+  );
+}
+
+function getLocalPulses(): Pulse[] {
   try {
     const path = join(process.cwd(), 'src/app/api/journal/pulses.json');
-    return JSON.parse(readFileSync(path, 'utf-8'));
+    const pulses = JSON.parse(readFileSync(path, 'utf-8'));
+    return Array.isArray(pulses) ? pulses : [];
   } catch { return []; }
 }
 
 const SUPABASE_URL = "https://nevuacfqoqaixtojxwve.supabase.co";
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "sb_publishable_pWgcYZJe1jGJcpG5_vcAQw_p512x0cR";
 
-async function supabaseFetch(path: string, options: any = {}) {
+async function supabaseFetch<T>(path: string, options: RequestInit = {}): Promise<T | null> {
   const url = `${SUPABASE_URL}/rest/v1/${path}`;
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 5000);
+  const headers = new Headers(options.headers);
+  headers.set('apikey', SUPABASE_KEY);
+  headers.set('Authorization', `Bearer ${SUPABASE_KEY}`);
+  headers.set('Content-Type', 'application/json');
+
   try {
     const res = await fetch(url, {
       ...options,
       signal: controller.signal,
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`,
-        'Content-Type': 'application/json',
-        ...options.headers,
-      },
+      headers,
     });
     clearTimeout(timeout);
     if (!res.ok) return null;
     const text = await res.text();
-    return text ? JSON.parse(text) : [];
+    return text ? JSON.parse(text) as T : [] as T;
   } catch {
     clearTimeout(timeout);
     return null; // Supabase unreachable — fall back to local data
   }
+}
+
+function authorizeWrite(request: Request): NextResponse | null {
+  const writeToken = process.env.JOURNAL_WRITE_TOKEN;
+  if (!writeToken) {
+    return NextResponse.json({ error: 'Journal writes are not configured' }, { status: 503 });
+  }
+
+  const token = request.headers.get('authorization')?.replace(/^Bearer\s+/i, '');
+  if (token !== writeToken) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  return null;
+}
+
+function slugFromTitle(title: string): string {
+  return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
 export async function GET(request: Request) {
@@ -42,21 +95,21 @@ export async function GET(request: Request) {
   const slug = searchParams.get('slug');
 
   // Try Supabase first
-  let data;
+  let data: Pulse | Pulse[] | null;
   if (slug) {
-    data = await supabaseFetch(`pulses?slug=eq.${encodeURIComponent(slug)}&select=*`);
+    data = await supabaseFetch<Pulse[]>(`pulses?slug=eq.${encodeURIComponent(slug)}&select=*`);
     data = Array.isArray(data) ? data[0] : data;
   } else {
-    data = await supabaseFetch('pulses?select=*&order=timestamp.desc');
+    data = await supabaseFetch<Pulse[]>('pulses?select=*&order=timestamp.desc');
   }
 
   // Fall back to local data if Supabase is unreachable
   if (data === null || data === undefined) {
-    const pulses = getLocalPulses() as any[];
+    const pulses = getLocalPulses();
     if (slug) {
-      data = pulses.find((p: any) => p.slug === slug) || null;
+      data = pulses.find((p) => p.slug === slug) || null;
     } else {
-      data = pulses.sort((a: any, b: any) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+      data = pulses.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
     }
   }
 
@@ -64,8 +117,15 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  const authError = authorizeWrite(request);
+  if (authError) return authError;
+
   try {
-    const body = await request.json();
+    const body: unknown = await request.json();
+    if (!isPulseInput(body) || !body.title || !body.content) {
+      return NextResponse.json({ error: 'Missing title or content' }, { status: 400 });
+    }
+
     const newPulse = {
       title: body.title,
       content: body.content,
@@ -74,10 +134,10 @@ export async function POST(request: Request) {
       atmosphere: body.atmosphere || 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
       prompt: body.prompt || body.title,
       timestamp: new Date().toISOString(),
-      slug: (body.title || 'untitled').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+      slug: slugFromTitle(body.title || 'untitled'),
     };
 
-    const data = await supabaseFetch('pulses', {
+    const data = await supabaseFetch<Pulse[]>('pulses', {
       method: 'POST',
       body: JSON.stringify(newPulse),
       headers: { 'Prefer': 'return=representation' },
@@ -89,7 +149,56 @@ export async function POST(request: Request) {
   }
 }
 
+export async function PATCH(request: Request) {
+  const authError = authorizeWrite(request);
+  if (authError) return authError;
+
+  const { searchParams } = new URL(request.url);
+  const slug = searchParams.get('slug');
+  if (!slug) return NextResponse.json({ error: 'Missing Slug' }, { status: 400 });
+
+  try {
+    const body: unknown = await request.json();
+    if (!isPulseInput(body)) {
+      return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
+    }
+
+    const update: Partial<Pulse> = {};
+    if (body.title !== undefined) {
+      update.title = body.title;
+      update.slug = slugFromTitle(body.title || 'untitled');
+    }
+    if (body.content !== undefined) update.content = body.content;
+    if (body.integrity !== undefined) update.integrity = body.integrity;
+    if (body.resonance !== undefined) update.resonance = body.resonance;
+    if (body.atmosphere !== undefined) update.atmosphere = body.atmosphere;
+    if (body.prompt !== undefined) update.prompt = body.prompt;
+
+    if (Object.keys(update).length === 0) {
+      return NextResponse.json({ error: 'No fields to update' }, { status: 400 });
+    }
+
+    const data = await supabaseFetch<Pulse[]>(`pulses?slug=eq.${encodeURIComponent(slug)}`, {
+      method: 'PATCH',
+      body: JSON.stringify(update),
+      headers: { 'Prefer': 'return=representation' },
+    });
+
+    const updated = Array.isArray(data) ? data[0] : null;
+    if (!updated) {
+      return NextResponse.json({ error: 'Entry not found or update failed' }, { status: 404 });
+    }
+
+    return NextResponse.json(updated);
+  } catch {
+    return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
+  }
+}
+
 export async function DELETE(request: Request) {
+  const authError = authorizeWrite(request);
+  if (authError) return authError;
+
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get('slug');
   if (!slug) return NextResponse.json({ error: 'Missing Slug' }, { status: 400 });

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { Link } from "next-view-transitions";
 import { motion } from "framer-motion";
 import { plainExcerptFromMarkdown } from "@/app/journal/plain-excerpt";
@@ -14,18 +14,22 @@ interface Entry {
   content: string;
 }
 
+function useMediaQuery(query: string): boolean {
+  const subscribe = useCallback((notify: () => void) => {
+    const mq = window.matchMedia(query);
+    mq.addEventListener("change", notify);
+    return () => mq.removeEventListener("change", notify);
+  }, [query]);
+
+  const getSnapshot = useCallback(() => window.matchMedia(query).matches, [query]);
+
+  return useSyncExternalStore(subscribe, getSnapshot, () => false);
+}
+
 export default function LatestSignals() {
   const [entries, setEntries] = useState<Entry[]>([]);
   const [loading, setLoading] = useState(true);
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
-    setIsDesktop(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   useEffect(() => {
     fetch("/api/journal", { cache: "no-store" })

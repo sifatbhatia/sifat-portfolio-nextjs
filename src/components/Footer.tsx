@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCallback, useState, useSyncExternalStore } from "react";
+import Image from "next/image";
 import { Link } from "next-view-transitions";
 
 const primaryLinks = [
@@ -18,20 +19,20 @@ const socialLinks = [
 const bottomBarItems = [
   { label: "LOS ANGELES", href: null as string | null, external: false },
   { label: "© SIFTION", href: null as string | null, external: false },
-  { label: "HI@SIFAT.TECH", href: "mailto:hi@sifat.tech", external: false },
+  { label: "SIFATBHT@GMAIL.COM", href: "mailto:sifatbht@gmail.com", external: false },
   { label: "DESIGN & DEVELOPMENT", href: null as string | null, external: false },
 ];
 
 function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(false);
-  useEffect(() => {
+  const subscribe = useCallback((notify: () => void) => {
     const mq = window.matchMedia(query);
-    setMatches(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setMatches(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
+    mq.addEventListener("change", notify);
+    return () => mq.removeEventListener("change", notify);
   }, [query]);
-  return matches;
+
+  const getSnapshot = useCallback(() => window.matchMedia(query).matches, [query]);
+
+  return useSyncExternalStore(subscribe, getSnapshot, () => false);
 }
 
 function NavLink({ href, children, external }: { href: string; children: React.ReactNode; external?: boolean }) {
@@ -189,7 +190,7 @@ export default function Footer() {
         width: "100%",
         alignSelf: "stretch",
       }}>
-        <a
+        <Link
           href="/"
           aria-label="Back to home"
           style={{
@@ -202,10 +203,13 @@ export default function Footer() {
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
         >
-          <img
+          <Image
             src="/assets/footer__logo.svg"
             alt="SIFAT BHATIA"
-            loading="lazy"
+            width={1702}
+            height={203}
+            priority={false}
+            unoptimized
             style={{
               width: "100%",
               height: "auto",
@@ -213,7 +217,7 @@ export default function Footer() {
               maxWidth: "100%",
             }}
           />
-        </a>
+        </Link>
       </div>
 
       {/* Bottom bar */}

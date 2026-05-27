@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "next-view-transitions";
 import { useParams } from "next/navigation";
 import ReactMarkdown from "react-markdown";

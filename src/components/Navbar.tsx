@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { Link } from "next-view-transitions";
 import gsap from "gsap";
 
@@ -32,8 +33,10 @@ export default function Navbar() {
     const CLOSED = 88;
     const links = content.querySelectorAll("li");
     const contact = content.querySelector(".menu-contact");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     ctx.current = gsap.context(() => {});
+    content.inert = true;
 
     const setOpen = (open: boolean) => {
       if (openRef.current === open) return;
@@ -41,9 +44,25 @@ export default function Navbar() {
       button.setAttribute("aria-expanded", String(open));
       button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       content.setAttribute("aria-hidden", String(!open));
+      content.inert = !open;
       menu.classList.toggle("is-open", open);
 
       gsap.killTweensOf([shell, content]);
+
+      if (reduceMotion) {
+        gsap.set(shell, {
+          width: open ? Math.min(window.innerWidth - 24, 260) : CLOSED,
+          height: open ? "auto" : CLOSED,
+          borderColor: open ? "rgba(255,247,247,0.14)" : "rgba(255,247,247,0)",
+          backgroundColor: open ? "rgba(18,18,16,0.72)" : "rgba(18,18,16,0)",
+          backdropFilter: open ? "blur(20px) saturate(180%)" : "blur(0px)",
+          WebkitBackdropFilter: open ? "blur(20px) saturate(180%)" : "blur(0px)",
+        });
+        gsap.set(content, { opacity: open ? 1 : 0 });
+        gsap.set(links, { opacity: open ? 1 : 0, y: 0, scale: 1 });
+        if (contact) gsap.set(contact, { opacity: open ? 1 : 0 });
+        return;
+      }
 
       if (open) {
         const w = Math.min(window.innerWidth - 24, 260);
@@ -69,17 +88,25 @@ export default function Navbar() {
       }
     };
 
-    const onToggle = (e: Event) => { e.stopPropagation(); setOpen(!openRef.current); };
+    const onToggle = (e: Event) => {
+      e.stopPropagation();
+      setOpen(!openRef.current);
+    };
     const onClose = () => setOpen(false);
+    const onDocumentClick = (e: MouseEvent) => {
+      if (openRef.current && !menu.contains(e.target as Node)) onClose();
+    };
+    const onDocumentKeydown = (e: KeyboardEvent) => {
+      if (openRef.current && e.key === "Escape") {
+        onClose();
+        button.focus();
+      }
+    };
 
     button.addEventListener("click", onToggle);
     content.querySelectorAll("a").forEach(a => a.addEventListener("click", onClose));
-    document.addEventListener("click", (e) => {
-      if (openRef.current && !menu.contains(e.target as Node)) onClose();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (openRef.current && e.key === "Escape") onClose();
-    });
+    document.addEventListener("click", onDocumentClick);
+    document.addEventListener("keydown", onDocumentKeydown);
 
     // Desktop: hide at top, show on scroll
     const updateVis = () => {
@@ -104,6 +131,9 @@ export default function Navbar() {
     return () => {
       gsap.killTweensOf([shell, content, links]);
       button.removeEventListener("click", onToggle);
+      content.querySelectorAll("a").forEach(a => a.removeEventListener("click", onClose));
+      document.removeEventListener("click", onDocumentClick);
+      document.removeEventListener("keydown", onDocumentKeydown);
       window.removeEventListener("scroll", updateVis);
       window.removeEventListener("resize", updateVis);
     };
@@ -119,9 +149,9 @@ export default function Navbar() {
           pointerEvents: "none",
         }}
       >
-        <a ref={logoRef} href="/" style={{ pointerEvents: "auto", display: "inline-flex", alignItems: "center", transition: "opacity 400ms ease", filter: "drop-shadow(0 0 10px rgba(0,0,0,0.5))" }}>
-          <img src="/assets/Sifat -Bhatia.svg" alt="Sifat Bhatia" loading="lazy" style={{ height: "clamp(2rem, 3vw, 2.5rem)", filter: "invert(1)" }} />
-        </a>
+        <Link ref={logoRef} href="/" style={{ pointerEvents: "auto", display: "inline-flex", alignItems: "center", transition: "opacity 400ms ease", filter: "drop-shadow(0 0 10px rgba(0,0,0,0.5))" }}>
+          <Image src="/assets/Sifat -Bhatia.svg" alt="Sifat Bhatia" width={206} height={111} priority unoptimized style={{ width: "auto", height: "clamp(2rem, 3vw, 2.5rem)", filter: "invert(1)" }} />
+        </Link>
         <nav ref={navRef} aria-label="Main navigation" style={{ display: "flex", gap: "2rem", pointerEvents: "auto", listStyle: "none", margin: 0, padding: 0, transition: "opacity 300ms ease, transform 300ms ease" }}>
           {LINKS.map(l => (
             <Link key={l.label} href={l.href} style={{ color: "rgba(255,247,247,0.75)", fontSize: "0.82rem", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", transition: "opacity 300ms ease" }}>

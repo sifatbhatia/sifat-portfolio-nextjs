@@ -11,8 +11,8 @@
   --line-strong: rgba(241, 238, 231, 0.28);
   --accent: #8ba69d;
   --radius: 8px;
-  --font-display: "Young Serif", serif;
-  --font-body: "Google Sans", sans-serif;
+  --font-display: var(--font-young-serif), "Young Serif", serif;
+  --font-body: var(--font-inter), Inter, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -20,6 +20,7 @@
 html {
   overflow-x: hidden;
   background: #141412;
+  scroll-behavior: smooth;
   scrollbar-width: none;          /* Firefox */
   -ms-overflow-style: none;       /* IE & Edge */
 }
@@ -84,7 +85,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .carousel-caption { display: none !important; }
   .mobile-caption {
     display: block !important;
-    position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 50;
+    position: absolute; left: 16px; right: 16px; bottom: 16px; z-index: 50;
     pointer-events: none;
   }
 }
@@ -119,7 +120,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   }
   .hero-wordmark svg { width: 100vw !important; max-height: none !important; }
   .hero-tagline { order: 2; }
-  .hero-carousel-wrap { order: 3; padding-top: 0 !important; }
+  .hero-carousel-wrap { order: 3; padding-top: 0 !important; position: relative; }
 }
 
 .carousel-caption {
@@ -165,6 +166,28 @@ button { font: inherit; color: inherit; cursor: pointer; }
   animation-duration: 400ms;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-old(img),
+  ::view-transition-new(img) {
+    animation: none !important;
+  }
+}
+
 /* ── Footer mobile ── */
 @media (max-width: 720px) {
   .page-footer--inner { grid-template-columns: 1fr 1fr !important; row-gap: 2rem !important; }
@@ -180,6 +203,13 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @media (max-width: 767px) {
   .about-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
   .selected-work-grid { grid-template-columns: 1fr !important; }
+  .selected-work-intro,
+  .selected-work-row {
+    grid-template-columns: 1fr !important;
+  }
+  .selected-work-media {
+    order: -1;
+  }
   .case-study-header { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
   .case-study-section { grid-template-columns: 1fr !important; gap: 1rem !important; }
 }
@@ -222,182 +252,39 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .now-page {
     padding: clamp(5rem, 12vh, 6rem) clamp(1.25rem, 5vw, 1.5rem) clamp(4rem, 8vh, 6rem) !important;
   }
+  .now-press-link {
+    grid-template-columns: 1fr !important;
+    gap: 0.35rem !important;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════
-   CASE STUDY — Device Mockups, Features, Metrics, Gallery
+   CASE STUDY — Screenshots, Features, Metrics, Gallery
    ═══════════════════════════════════════════════════════════ */
 
-/* ── Laptop Mockup ─────────────────────────────────────────── */
-.mockup-laptop {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 780px;
-  margin: 0 auto;
-}
-
-.laptop-lid {
+.screenshot-frame {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
-  background: #0e0e0c;
-  border-radius: 10px 10px 0 0;
-  border: 1.5px solid #2e2e2a;
-  border-bottom: none;
   overflow: hidden;
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.05),
-    0 -2px 12px rgba(0,0,0,0.5);
+  background: rgba(241,238,231,0.035);
+  border: 1px solid rgba(241,238,231,0.08);
+  border-radius: var(--radius);
 }
 
-.laptop-camera {
+.screenshot-frame::after {
+  content: "";
   position: absolute;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #1a1a17;
-  border: 1px solid #333;
-  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
 }
 
-.laptop-screen {
-  position: absolute;
-  inset: 20px 10px 0px 10px;
-  border-radius: 2px 2px 0 0;
-  overflow: hidden;
-  background: #0a0a08;
-}
-
-.laptop-screen img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.laptop-base {
-  width: 108%;
-  margin-left: -4%;
-  height: 14px;
-  background: linear-gradient(to bottom, #1a1a17 0%, #111110 100%);
-  border-radius: 0 0 8px 8px;
-  border: 1.5px solid #2a2a26;
-  border-top: 1px solid #222;
-  position: relative;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.4);
-}
-
-.laptop-keyboard {
-  position: absolute;
-  top: 2px;
-  left: 12%;
-  right: 12%;
-  height: 6px;
-  background: repeating-linear-gradient(
-    to right,
-    rgba(255,255,255,0.04) 0px,
-    rgba(255,255,255,0.04) 1px,
-    transparent 1px,
-    transparent 6px
-  );
-  border-radius: 1px;
-}
-
-.laptop-trackpad {
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 28%;
-  height: 4px;
-  background: rgba(255,255,255,0.03);
-  border-radius: 2px;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-/* ── iPhone Mockup ──────────────────────────────────────────── */
-.mockup-iphone {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 8px 0;
-}
-
-.iphone-body {
-  position: relative;
-  width: 220px;
-  height: 456px;
-  background: #111110;
-  border-radius: 36px;
-  border: 2px solid #2a2a26;
-  overflow: hidden;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.04),
-    0 8px 32px rgba(0,0,0,0.7),
-    0 2px 8px rgba(0,0,0,0.5),
-    inset 0 0 0 1px rgba(255,255,255,0.03);
-}
-
-.iphone-notch {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90px;
-  height: 26px;
-  background: #111110;
-  border-radius: 0 0 16px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  z-index: 3;
-}
-
-.iphone-notch-speaker {
-  width: 36px;
-  height: 3px;
-  border-radius: 2px;
-  background: #222;
-}
-
-.iphone-notch-camera {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #1a1a17;
-  border: 1px solid #333;
-}
-
-.iphone-screen {
-  position: absolute;
-  inset: 30px 6px 36px 6px;
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.iphone-screen img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.iphone-home-indicator {
-  position: absolute;
-  bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 3px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 2px;
-  z-index: 4;
+.screenshot-frame[data-orientation="phone"] {
+  aspect-ratio: 390 / 844;
+  width: min(100%, 320px);
+  margin: 0 auto;
+  background: rgba(241,238,231,0.025);
 }
 
 /* ── Key Features ──────────────────────────────────────────── */
@@ -512,7 +399,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   line-height: 1.4;
 }
 
-/* ── Device Gallery ─────────────────────────────────────────── */
+/* ── Screenshot Gallery ─────────────────────────────────────── */
 .gallery-section {
   margin: clamp(3rem, 6vh, 5rem) 0;
 }
@@ -532,7 +419,6 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .gallery-item--phone {
   justify-content: center;
-  padding-top: clamp(2rem, 4vw, 3rem);
 }
 
 .gallery-caption {
@@ -549,14 +435,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
     grid-template-columns: 1fr;
   }
   .gallery-item--phone {
-    padding-top: 0;
     align-items: center;
-  }
-  .mockup-laptop {
-    max-width: 540px;
-  }
-  .mockup-iphone {
-    width: 220px;
   }
 }
 
@@ -581,4 +460,3 @@ button { font: inherit; color: inherit; cursor: pointer; }
   70%  { opacity: 1; transform: translateX(-50%) translateY(0); }
   100% { opacity: 0; transform: translateX(-50%) translateY(-4px); }
 }
-

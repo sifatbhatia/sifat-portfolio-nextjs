@@ -41,6 +41,8 @@ function ServiceCard({ service }: { service: typeof SERVICES[0] }) {
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
     >
       <p style={{ fontSize: "0.65rem", fontWeight: 400, letterSpacing: "0.15em", color: "rgba(241,238,231,0.2)", margin: "0 0 1.5rem", fontFamily: "var(--font-body)" }}>
         {service.icon}
@@ -74,6 +76,8 @@ function HoverLink({ href, children }: { href: string; children: React.ReactNode
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
     >
       {children}
     </Link>

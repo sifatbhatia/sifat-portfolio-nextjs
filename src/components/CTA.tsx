@@ -8,13 +8,17 @@ function PrimaryButton({ href, children }: { href: string; children: React.React
   const [toast, setToast] = useState(false);
   const [icon, setIcon] = useState("→");
 
-  const handleClick = useCallback((e: React.MouseEvent) => {
+  const handleClick = useCallback(async (e: React.MouseEvent) => {
     e.preventDefault();
-    navigator.clipboard.writeText("sifatbht@gmail.com");
-    setToast(true);
-    setIcon("✓");
-    setTimeout(() => { setToast(false); setIcon("→"); }, 2000);
-  }, []);
+    try {
+      await navigator.clipboard.writeText("sifatbht@gmail.com");
+      setToast(true);
+      setIcon("✓");
+      setTimeout(() => { setToast(false); setIcon("→"); }, 2000);
+    } catch {
+      window.location.href = href;
+    }
+  }, [href]);
 
   const handleDblClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -24,8 +28,10 @@ function PrimaryButton({ href, children }: { href: string; children: React.React
   return (
     <div style={{ position: "relative" }}>
       <button
+        type="button"
         onClick={handleClick}
         onDoubleClick={handleDblClick}
+        aria-describedby={toast ? "cta-email-copy-status" : undefined}
         style={{
           display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
           padding: "0.85rem 2.5rem", borderRadius: "999px", minWidth: 200,
@@ -39,6 +45,8 @@ function PrimaryButton({ href, children }: { href: string; children: React.React
         }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        onFocus={() => setHovered(true)}
+        onBlur={() => setHovered(false)}
       >
         {children}
         <span style={{
@@ -49,7 +57,7 @@ function PrimaryButton({ href, children }: { href: string; children: React.React
         }}>{icon}</span>
       </button>
       {toast && (
-        <span style={{
+        <span id="cta-email-copy-status" role="status" aria-live="polite" style={{
           position: "absolute", bottom: "-2rem", left: "50%", transform: "translateX(-50%)",
           fontSize: "0.75rem", color: "rgba(20,20,18,0.65)", fontFamily: "var(--font-body)",
           whiteSpace: "nowrap", pointerEvents: "none",
@@ -84,6 +92,8 @@ function SecondaryButton({ href, children }: { href: string; children: React.Rea
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
     >
       {children}
       <span style={{

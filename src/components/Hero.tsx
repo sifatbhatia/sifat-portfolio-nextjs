@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -30,6 +31,7 @@ function Carousel() {
     const viewport = viewportRef.current;
     const track = trackRef.current;
     if (!viewport || !track) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const C = { HOVER_SCALE: 1.35, LERP: 0.07, MOBILE_BP: 768, MAX_S: 2.7, MIN_S: 1, FALLOFF: 0.7 };
     const mql = window.matchMedia(`(max-width: ${C.MOBILE_BP - 1}px)`);
     isMobile.current = mql.matches;
@@ -48,6 +50,11 @@ function Carousel() {
       if (best) { titleRef.current.textContent = best.querySelector(".cap-title")?.textContent || ""; subtitleRef.current.textContent = best.querySelector(".cap-sub")?.textContent || ""; }
     }
     function tick() {
+      if (reduceMotion && !isMobile.current) {
+        updActive();
+        rafRef.current = requestAnimationFrame(tick);
+        return;
+      }
       if (!isMobile.current) { lerpCurrent.current = lerp(lerpCurrent.current, lerpTarget.current, C.LERP); lerpCurrent.current = clamp(lerpCurrent.current); track!.style.transform = `translate3d(${lerpCurrent.current}px,0,0)`; updActive(); }
       else { updMobile(); }
       rafRef.current = requestAnimationFrame(tick);
@@ -78,8 +85,8 @@ function Carousel() {
         <div ref={trackRef} style={{ display: "flex", flexDirection: "row", flexWrap: "nowrap", alignItems: "center", height: "100%", flexShrink: 0, minWidth: "max-content", willChange: "transform", padding: "0 40px", gap: 0 }}>
           {PROJECTS.map((p, i) => (
             <a key={i} ref={(el) => registerItem(el, i)} className="carousel-item" href={`/projects/${p.slug}`} style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", flexShrink: 0, width: "calc(18vw * var(--scale, 1))", padding: "0 8px", color: "inherit", textDecoration: "none", transition: "width 600ms cubic-bezier(0,0.4,0.6,1)" }}>
-              <div style={{ width: "100%", aspectRatio: "16/10", borderRadius: 14, border: "1px solid rgba(246,232,234,0.10)", overflow: "hidden", background: "rgba(246,232,234,0.02)" }}>
-                <img src={p.img} alt={p.title} loading="lazy" style={{ width: "100%", height: "100%", display: "block", objectFit: "cover" }} />
+              <div style={{ width: "100%", aspectRatio: "16/10", borderRadius: 14, border: "1px solid rgba(246,232,234,0.10)", overflow: "hidden", background: "rgba(246,232,234,0.02)", position: "relative" }}>
+                <Image src={p.img} alt={p.title} fill sizes="(max-width: 767px) 92vw, 25vw" style={{ objectFit: "cover" }} />
               </div>
               <div className="carousel-caption" style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 2, width: "100%"}}>
                 <span className="cap-title" style={{ fontSize: "clamp(13px,1.05vw,16px)", color: "#f1eee7" }}>{p.title}</span>
@@ -108,6 +115,7 @@ export default function Hero() {
     const svg = svgRef.current;
     const carouselWrap = carouselWrapperRef.current;
     if (!section || !svg || !carouselWrap) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const gsapCtx = gsap.context(() => {
       const letters = [...svg.querySelectorAll("path")];
       if (!letters.length) return;

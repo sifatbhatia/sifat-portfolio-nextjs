@@ -44,7 +44,7 @@ The redesign creates a clear progression from a plain legacy site to a custom-bu
       "Improved access to streaming links, tour dates, management, and booking contacts",
       "Built a responsive experience for fans and industry visitors",
     ],
-    heroImage: "/assets/previews/j-worra/desktop-1440x900.png",
+    heroImage: "/assets/previews/j-worra/rock-iphone-mockup.webp",
     screenshots: [
       { type: "laptop", src: "/assets/previews/j-worra/desktop-1440x900.png", caption: "Homepage — Full desktop view" },
       { type: "phone", src: "/assets/previews/j-worra/mobile-390x844.png", caption: "Mobile — Hero section" },
@@ -152,6 +152,167 @@ It turns the site from a basic information page into a stronger artist showcase 
     ],
     heroImage: "/assets/previews/clipkeep/screenshot-1.webp",
     screenshots: [{ type: "laptop", src: "/assets/previews/clipkeep/screenshot-1.webp", caption: "Clipboard history with full-text search" }],
+  },
+  {
+    slug: "wicked-paradise",
+    title: "Wicked Paradise",
+    role: "Event Website / Brand Presence",
+    year: "2024",
+    description:
+      "Website direction for Wicked Paradise, a music and nightlife event brand, built around fast recognition, event energy, social discovery, and a visual system that carries the feeling of a live party.",
+    challenge:
+      "Event brands have to communicate quickly. Visitors are usually looking for proof of energy, event context, media, social links, and a path to the next show. The challenge was to make the site feel active and atmospheric without hiding the basic actions people need.",
+    approach:
+      "The direction uses high-impact event imagery, bold brand placement, direct navigation, and visible social/contact paths. The site leans into the world of the event instead of treating it like a generic landing page, while keeping the structure simple enough for people arriving from social or mobile contexts.",
+    outcome:
+      "The result gives Wicked Paradise a more immediate digital home: visual first, event-aware, and easier to understand at a glance. It supports discovery, credibility, and the kind of quick emotional read that nightlife and music brands depend on.",
+    stack: ["Web Design", "Event Website", "Responsive Design", "Creative Direction"],
+    highlights: [
+      "Created a visual-first web direction for a music and nightlife event brand",
+      "Centered the experience around event energy, media, and social discovery",
+      "Kept navigation direct for gallery, events, and contact paths",
+      "Used high-impact imagery to make the brand legible quickly",
+      "Built a responsive structure for visitors arriving from mobile and social links",
+    ],
+    heroImage: "/assets/previews/wicked-paradise/screenshot-1.webp",
+    screenshots: [
+      { type: "laptop", src: "/assets/previews/wicked-paradise/screenshot-1.webp", caption: "Homepage with event-led visual direction" },
+      { type: "laptop", src: "/assets/previews/wicked-paradise/screenshot-2.webp", caption: "Event brand and navigation system" },
+      { type: "laptop", src: "/assets/previews/wicked-paradise/screenshot-3.webp", caption: "Media-forward event presence" },
+      { type: "laptop", src: "/assets/previews/wicked-paradise/screenshot-4.webp", caption: "Supporting content and social paths" },
+    ],
+  },
+  {
+    slug: "cherry-tooth",
+    title: "Cherry Tooth",
+    role: "Artist Website / Visual Direction",
+    year: "2024",
+    description:
+      "Artist website direction for Cherry Tooth, built around a bold red-and-pink visual world, direct music/about/merch access, and a playful identity that feels specific to the artist instead of generic.",
+    challenge:
+      "The site needed to work as more than a simple artist page. It had to carry a strong visual identity, make the core paths obvious, and give visitors a quick sense of the artist's world without overcomplicating the experience.",
+    approach:
+      "The direction keeps the structure direct: home, music, about, and merch. Large-scale photography, oversized type, and a limited color system do most of the brand work. The goal was to make the page feel confident and memorable while keeping it usable for fans and first-time visitors.",
+    outcome:
+      "The result is a distinctive artist presence with clear navigation, strong recall, and a visual system that can extend into releases, merch, and social moments. It feels like an artist world rather than a neutral template.",
+    stack: ["Web Design", "Artist Website", "Creative Direction", "Responsive Design"],
+    highlights: [
+      "Created a bold artist-site direction around photography, color, and oversized type",
+      "Kept the page structure focused on music, about, merch, and discovery",
+      "Built a memorable red-and-pink visual system for stronger brand recall",
+      "Designed the experience to feel playful without losing clarity",
+      "Supported fan-facing paths with simple navigation and mobile-friendly hierarchy",
+    ],
+    heroImage: "/assets/previews/cherry-tooth/screenshot-1.webp",
+    screenshots: [
+      { type: "laptop", src: "/assets/previews/cherry-tooth/screenshot-1.webp", caption: "Homepage with bold artist identity" },
+      { type: "laptop", src: "/assets/previews/cherry-tooth/screenshot-2.webp", caption: "Music and artist-world direction" },
+      { type: "laptop", src: "/assets/previews/cherry-tooth/screenshot-3.webp", caption: "Supporting page and content system" },
+    ],
+  },
+  {
+    slug: "sifs-utilities",
+    title: "Sif's Utilities",
+    role: "Creative Tools / Product Refresh",
+    year: "2026",
+    url: "https://cat-gif-generator-three.vercel.app/",
+    description:
+      "A collection of browser-based creative utilities, evolving from the original MeowGen experiment at meowgen.vercel.app into a sharper set of small tools for image, PDF, video, metadata, grain, icon, and playful generation workflows.",
+    challenge:
+      "The original version, MeowGen, was a fun single-purpose experiment hosted at meowgen.vercel.app. The opportunity was to treat that energy as a starting point and expand it into a more useful utility surface without making it feel heavy or overbuilt.",
+    approach:
+      "The refresh turns the idea into a small product system: individual tool cards, simple labels, direct entry points, and a light interface that lets each utility stand on its own. The structure is intentionally modular so new tools can be added without redesigning the whole experience.",
+    outcome:
+      "The current version moves from a one-off generator into a broader creative toolkit. It keeps the playful spirit of the original while making the product easier to scan, extend, and use across multiple practical browser-based tasks.",
+    stack: ["Next.js", "React", "Creative Tools", "Product Design"],
+    highlights: [
+      "Evolved the original MeowGen concept into a broader utility collection",
+      "Created a modular card system for lightweight browser tools",
+      "Added utilities for image compression, PDF compression, circle crops, video compression, metadata removal, grain, icons, and generation",
+      "Kept the interface simple enough for quick repeated use",
+      "Built the refreshed version as a clearer, more extensible product surface",
+    ],
+    heroImage: "/assets/previews/sifs-utilities/screenshot-1.webp",
+    screenshots: [
+      { type: "laptop", src: "/assets/previews/sifs-utilities/screenshot-1.webp", caption: "Refreshed utilities index" },
+    ],
+  },
+  {
+    slug: "petal-and-stem",
+    title: "Petal & Stem",
+    role: "E-Commerce / Brand Website",
+    year: "2024",
+    client: "Petal & Stem (Fictional)",
+    description:
+      "A refined artisan floral e-commerce concept for a Portland studio, built with vanilla HTML, CSS, and JavaScript around a full design token system, responsive shopping paths, accessible interactions, and a warm editorial brand presence.",
+    challenge: `Design and develop a refined e-commerce experience for an artisan floral studio that conveys craftsmanship and elegance while providing a seamless shopping experience across devices.
+
+The site needed to communicate an intentional floral practice, present signature arrangements in a curated way, tell the founder's story, build trust through testimonials and social proof, and create clear purchase and inquiry paths without aggressive sales pressure.`,
+    approach: `I built the project from a design-system foundation: warm cream surfaces, rose, sage, and gold accents, a 4px spacing scale, fluid typography, and carefully defined motion curves.
+
+The implementation uses semantic HTML, responsive grids, skip links, focus-visible states, ARIA labels, reduced-motion support, and vanilla JavaScript for cart states, toast feedback, form validation, animated counters, scroll-aware navigation, and micro-interactions.
+
+No external JavaScript framework was used. The goal was to prove that a polished, premium e-commerce experience can still be fast, accessible, and maintainable with native browser primitives.`,
+    outcome: `The final concept balances aesthetic refinement with functional clarity. It feels handcrafted and editorial while still supporting product discovery, trust-building, and conversion paths.
+
+Technically, the project demonstrates a zero-dependency front end, responsive behavior from mobile to desktop, accessible interaction patterns, and performance-minded animation choices using transforms, passive listeners, and IntersectionObserver.`,
+    stack: ["HTML", "CSS", "Vanilla JavaScript", "Design Systems", "Accessibility"],
+    highlights: [
+      "Built a full design token system for color, spacing, typography, shadows, and motion",
+      "Created a responsive floral e-commerce experience without external JavaScript frameworks",
+      "Implemented product cards with wishlist, cart states, toast notifications, and inquiry flows",
+      "Added accessibility details including skip links, focus states, ARIA labels, and reduced motion support",
+      "Used IntersectionObserver, passive listeners, and transform-based animation for smooth rendering",
+      "Designed a warm editorial visual language around artisan florals and founder storytelling",
+    ],
+    metrics: [
+      { value: "0", label: "External JS dependencies" },
+      { value: "95+", label: "Estimated Lighthouse performance" },
+      { value: "100", label: "Estimated accessibility score" },
+    ],
+    heroImage: "/assets/previews/petal-and-stem/screenshot-1.png",
+    screenshots: [
+      { type: "laptop", src: "/assets/previews/petal-and-stem/screenshot-1.png", caption: "Desktop hero and shopping entry points" },
+      { type: "phone", src: "/assets/previews/petal-and-stem/mobile-390x844.png", caption: "Mobile floral e-commerce experience" },
+    ],
+  },
+  {
+    slug: "experimental-sites",
+    title: "Experimental Creative Sites",
+    role: "Creative Coding / Web Experiments",
+    year: "2024",
+    description:
+      "A set of experimental browser experiences exploring psychedelic WebGL visuals, procedural audio, particle systems, and deliberately chaotic retro web aesthetics as a technical and creative counterpoint to polished commercial work.",
+    challenge: `Create immersive, unconventional web experiences that push browser visuals while maintaining performance, interaction, and a clear creative point of view.
+
+The work balanced visual complexity with 60fps rendering, mathematical precision with organic movement, user control with autonomous visuals, and modern browser capabilities with practical compatibility concerns.`,
+    approach: `The project explored two poles of web expression.
+
+One direction focused on psychedelic visualization: shader programming, fractal brownian motion, domain warping, kaleidoscopic transformations, canvas particle systems, mouse interaction, and procedural audio through the Web Audio API.
+
+The other direction deliberately revived 1990s web aesthetics: Comic Sans, rainbow gradients, marquees, fake visitor counters, pop-up chains, guestbook prompts, MIDI-player nostalgia, and intentionally excessive interaction patterns.
+
+That retro site became a timed chaos engine: Norton-style virus scans, fake download managers, Windows Update warnings, AIM messages, random notifications, right-click protection, page-title changes, shifting backgrounds, guestbook entries, and a Konami-code mode that triggers ten seconds of full-page visual insanity. The point was not polish. The point was control over chaos.`,
+    outcome: `The experiments demonstrate range beyond conventional websites: shader-based graphics, procedural audio, particle physics, custom cursors, and intentionally "bad" design executed with craft.
+
+They function as creative coding studies, technical demos, and reminders that the browser can be a stage, an instrument, a joke, and a visual system all at once.`,
+    stack: ["WebGL", "Canvas API", "SVG", "Web Audio API", "Creative Coding"],
+    highlights: [
+      "Built WebGL fragment shader experiments with FBM, domain warping, and kaleidoscopic transforms",
+      "Explored procedural audio using oscillators, LFO modulation, filters, and noise textures",
+      "Created canvas particle systems with trails, burst effects, and mouse interaction",
+      "Designed multiple visual modes including fractal dream, kaleidoscope, infinite tunnel, cosmic melt, sacred geometry, and void collapse",
+      "Built a deliberately chaotic GeoCities-style page with marquees, counters, pop-ups, retro browser chrome, and fake system notifications",
+      "Orchestrated 15+ timed notifications including fake virus scans, download managers, AIM messages, Windows Update warnings, and visitor popups",
+      "Added a Konami-code easter egg that triggers ten seconds of site-wide visual chaos",
+      "Used controlled randomness for background changes, cursor states, screen shakes, guestbook entries, and floating elements",
+      "Used the project as a technical playground for performance, immersion, and intentional aesthetic excess",
+    ],
+    heroImage: "/assets/previews/experimental-sites/screenshot-1.png",
+    screenshots: [
+      { type: "laptop", src: "/assets/previews/experimental-sites/screenshot-1.png", caption: "Retro web experiment with intentionally excessive visual language" },
+      { type: "phone", src: "/assets/previews/experimental-sites/mobile-390x844.png", caption: "Mobile view of the experimental retro interface" },
+    ],
   },
   {
     slug: "qlo-agency",

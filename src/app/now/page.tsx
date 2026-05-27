@@ -2,6 +2,24 @@ import { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+const pressLinks = [
+  {
+    title: "VoyageLA",
+    description: "A conversation about building a creative practice in Los Angeles.",
+    href: "https://voyagela.com/interview/meet-sifat-bhatia-of-los-angeles/",
+  },
+  {
+    title: "Shoutout LA",
+    description: "On web design, development, and the work behind Siftion.",
+    href: "https://shoutoutla.com/meet-sifat-bhatia-web-designer-developer/",
+  },
+  {
+    title: "Bold Journey",
+    description: "A profile on creative growth, resilience, and career direction.",
+    href: "https://boldjourney.com/meet-sifat-bhatia",
+  },
+];
+
 export const metadata: Metadata = {
   title: "Now",
   description: "What Sifat Bhatia is currently working on, learning, and looking for.",
@@ -57,6 +75,39 @@ export default function NowPage() {
               <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}>
                 Based in Los Angeles. Sima & Lia have been with me for about a year now. Exploring coffee shops, nature, spirituality, and the music/entertainment design niche. Trying to build things that matter while the world feels uncertain.
               </p>
+            </section>
+
+            <section>
+              <p style={{ fontSize: "0.7rem", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--accent)", margin: "0 0 1.5rem", fontFamily: "var(--font-body)" }}>
+                Elsewhere
+              </p>
+              <div style={{ display: "grid", gap: "0.75rem" }}>
+                {pressLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    className="now-press-link"
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "minmax(0, 0.55fr) minmax(0, 1.45fr)",
+                      gap: "clamp(1rem, 3vw, 2rem)",
+                      padding: "1rem 0",
+                      borderTop: "1px solid rgba(241,238,231,0.08)",
+                      color: "inherit",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <span style={{ fontSize: "0.85rem", color: "rgba(241,238,231,0.42)", fontFamily: "var(--font-body)" }}>
+                      {link.title}
+                    </span>
+                    <span style={{ fontSize: "clamp(0.95rem, 1.2vw, 1.05rem)", lineHeight: 1.55, color: "rgba(241,238,231,0.64)", fontFamily: "var(--font-body)" }}>
+                      {link.description} <span aria-hidden="true" style={{ color: "var(--accent)" }}>↗</span>
+                    </span>
+                  </a>
+                ))}
+              </div>
             </section>
 
             <div style={{ marginTop: "2rem", paddingTop: "2rem", borderTop: "1px solid rgba(241,238,231,0.08)" }}>

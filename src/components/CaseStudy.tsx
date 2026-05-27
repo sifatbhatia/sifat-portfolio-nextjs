@@ -1,53 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { ProjectData } from "@/lib/projects";
 import AnimatedText from "./AnimatedText";
-
-// ─── Device Mockups (pure CSS) ────────────────────────────────────────────────
-
-function LaptopMockup({ src, alt }: { src: string; alt: string }) {
-  return (
-    <div className="mockup-laptop" aria-label={`Laptop mockup showing: ${alt}`}>
-      {/* Lid / screen housing */}
-      <div className="laptop-lid">
-        {/* Camera dot */}
-        <div className="laptop-camera" />
-        {/* Active screen area */}
-        <div className="laptop-screen">
-          <img src={src} alt={alt} loading="lazy" />
-        </div>
-      </div>
-      {/* Base / keyboard deck */}
-      <div className="laptop-base">
-        {/* Keyboard surface */}
-        <div className="laptop-keyboard" />
-        {/* Trackpad */}
-        <div className="laptop-trackpad" />
-      </div>
-    </div>
-  );
-}
-
-function PhoneMockup({ src, alt }: { src: string; alt: string }) {
-  return (
-    <div className="mockup-iphone" aria-label={`iPhone mockup showing: ${alt}`}>
-      {/* Body */}
-      <div className="iphone-body">
-        {/* Notch */}
-        <div className="iphone-notch">
-          <div className="iphone-notch-speaker" />
-          <div className="iphone-notch-camera" />
-        </div>
-        {/* Screen */}
-        <div className="iphone-screen">
-          <img src={src} alt={alt} loading="lazy" />
-        </div>
-        {/* Home indicator */}
-        <div className="iphone-home-indicator" />
-      </div>
-    </div>
-  );
-}
 
 // ─── Section Block ────────────────────────────────────────────────────────────
 
@@ -101,6 +56,30 @@ function FeatureItem({
     <div className="feature-item">
       <div className="feature-icon">{icon}</div>
       <p>{text}</p>
+    </div>
+  );
+}
+
+// ─── Screenshot Frame ────────────────────────────────────────────────────────
+
+function ScreenshotFrame({
+  src,
+  alt,
+  type,
+}: {
+  src: string;
+  alt: string;
+  type: "laptop" | "phone";
+}) {
+  return (
+    <div className="screenshot-frame" data-orientation={type}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={type === "phone" ? "(max-width: 900px) 72vw, 320px" : "(max-width: 900px) 92vw, 640px"}
+        style={{ objectFit: type === "phone" ? "contain" : "cover" }}
+      />
     </div>
   );
 }
@@ -258,17 +237,16 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
           style={{
             aspectRatio: "16/9",
             overflow: "hidden",
+            position: "relative",
           }}
         >
-          <img
+          <Image
             src={project.heroImage}
             alt={project.title}
-            loading="lazy"
+            fill
+            sizes="(max-width: 767px) 100vw, 92vw"
             style={{
-              width: "100%",
-              height: "100%",
               objectFit: "cover",
-              display: "block",
               filter: "grayscale(30%) contrast(0.9) brightness(0.9)",
             }}
           />
@@ -381,7 +359,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
       {/* ── Metrics ── */}
       <MetricsBlock metrics={project.metrics} />
 
-      {/* ── Device Mockup Gallery ── */}
+      {/* ── Screenshot Gallery ── */}
       {project.screenshots && project.screenshots.length > 0 && (
         <section className="gallery-section">
           <div className="gallery-header">
@@ -393,11 +371,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
                 key={i}
                 className={`gallery-item gallery-item--${shot.type}`}
               >
-                {shot.type === "laptop" ? (
-                  <LaptopMockup src={shot.src} alt={`${project.title} screenshot ${i + 1}`} />
-                ) : (
-                  <PhoneMockup src={shot.src} alt={`${project.title} screenshot ${i + 1}`} />
-                )}
+                <ScreenshotFrame src={shot.src} alt={`${project.title} screenshot ${i + 1}`} type={shot.type} />
                 <p className="gallery-caption">
                   {shot.caption || `Fig ${String(i + 2).padStart(2, "0")} — ${project.title}`}
                 </p>
