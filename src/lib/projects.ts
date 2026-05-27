@@ -154,6 +154,47 @@ It turns the site from a basic information page into a stronger artist showcase 
     screenshots: [{ type: "laptop", src: "/assets/previews/clipkeep/screenshot-1.webp", caption: "Clipboard history with full-text search" }],
   },
   {
+    slug: "aer",
+    title: "Aer",
+    role: "Weather App / Front-End System",
+    year: "2026",
+    url: "https://aer-psi.vercel.app/",
+    description:
+      "A minimal real-time weather app that lets the interface meet the weather itself: Open-Meteo conditions, hourly data, a 7-day forecast, adaptive gradients, and embeddable widgets shaped around temperature and system preference.",
+    challenge: `Most weather apps treat conditions as information placed inside a generic shell. Aer started from a different question: what if the interface changed because the weather changed?
+
+The app needed to stay quiet and immediate while carrying several layers of utility: city search, current conditions, hourly weather, a weekly forecast, temperature unit switching, dark-mode adaptation, text-to-speech output, and embeddable widget states.`,
+    approach: `The core design decision was to make the weather visible before a user reads a number. Warm days move toward amber; cold mornings move toward deep blue. The gradients are not decoration. They are data translated into atmosphere.
+
+Glassmorphism cards sit over the gradient to create depth without clutter. Typography stays sparse, with the temperature treated as the hero interaction: tap it to switch between Fahrenheit and Celsius.
+
+On the engineering side, the app uses Open-Meteo without an API key, AbortController-cancelled debounce for city search, system-aware dark mode, and an ElevenLabs text-to-speech forecast routed through a Supabase Edge Function. The implementation was also hardened through dependency trimming, dead-code removal, extracted utility functions, loading skeletons, and unit tests around the parts most likely to drift.`,
+    outcome: `Aer became a small, coherent weather system rather than a generic forecast page. It gives visitors the facts quickly, but the real detail is that the interface feels different as the conditions change.
+
+The production pass brought the codebase into a cleaner state: strict TypeScript coverage, a smaller dependency surface, eliminated unused UI files, tested utility functions, and a more resilient search flow that avoids stale API results.`,
+    stack: ["Vite", "React 18", "TypeScript", "Tailwind CSS", "Open-Meteo", "Supabase"],
+    highlights: [
+      "Integrated live weather data through the Open-Meteo API without requiring an API key",
+      "Built city search with autocomplete and AbortController-cancelled debounce to prevent stale results",
+      "Mapped temperature to adaptive gradients across light and dark system modes",
+      "Added text-to-speech forecast playback through ElevenLabs and a Supabase Edge Function",
+      "Created embeddable widgets at small, medium, and large sizes using URL parameters",
+      "Reduced runtime dependencies from 54 to 7 after a manual dependency audit",
+      "Removed 46 unused shadcn/ui component files and a parallel toast system",
+      "Added 24 unit tests for conversions, weather condition mapping, date formatting, and responsive hooks",
+    ],
+    metrics: [
+      { value: "24", label: "Unit tests" },
+      { value: "7", label: "Runtime dependencies" },
+      { value: "0", label: "Weather API keys required" },
+    ],
+    heroImage: "/assets/previews/aer/screenshot-1.png",
+    screenshots: [
+      { type: "laptop", src: "/assets/previews/aer/screenshot-1.png", caption: "Desktop weather interface with adaptive gradient state" },
+      { type: "phone", src: "/assets/previews/aer/mobile-390x844.png", caption: "Mobile forecast layout and system-aware dark mode" },
+    ],
+  },
+  {
     slug: "wicked-paradise",
     title: "Wicked Paradise",
     role: "Event Website / Brand Presence",

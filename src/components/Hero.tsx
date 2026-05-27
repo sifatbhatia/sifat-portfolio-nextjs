@@ -12,6 +12,7 @@ const PROJECTS = [
   { slug: "l-affaire-musicale", title: "L'Affaire Musicale", sub: "Brand Identity / Website Refresh", img: "/assets/previews/l-affaire-musicale/screenshot-1.webp" },
   { slug: "sam-blacky", title: "Sam Blacky", sub: "Artist Website / Creative Direction", img: "/assets/previews/sam-blacky/screenshot-1.webp" },
   { slug: "clipkeep", title: "ClipKeep", sub: "Full-Stack Product", img: "/assets/previews/clipkeep/screenshot-1.webp" },
+  { slug: "aer", title: "Aer", sub: "Weather App / Front-End System", img: "/assets/previews/aer/screenshot-1.png" },
   { slug: "qlo-agency", title: "QLO Agency", sub: "Webflow Development", img: "/assets/previews/qlo-agency/screenshot-1.webp" },
 ];
 function Carousel() {
