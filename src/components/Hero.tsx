@@ -7,18 +7,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const PROJECTS = [
-  { slug: "j-worra", title: "J. Worra", sub: "Artist Website / Web Identity", img: "/assets/previews/j-worra/screenshot-1.webp" },
-  { slug: "sifs-utilities", title: "Sif's Utilities", sub: "Privacy-first Tool Suite", img: "/assets/previews/sifs-utilities/screenshot-1.webp" },
-  { slug: "l-affaire-musicale", title: "L'Affaire Musicale", sub: "Agency Rebrand", img: "/assets/previews/l-affaire-musicale/screenshot-1.webp" },
-  { slug: "qlo-agency", title: "QLO Agency", sub: "Studio Identity", img: "/assets/previews/qlo-agency/screenshot-1.webp" },
-  { slug: "clipkeep", title: "ClipKeep", sub: "Social clip vault", img: "/assets/previews/clipkeep/screenshot-1.webp" },
-  { slug: "sam-blacky", title: "Sam Blacky", sub: "Artist Platform", img: "/assets/previews/sam-blacky/screenshot-1.webp" },
-  { slug: "cherry-tooth", title: "Cherry Tooth", sub: "Brand Identity", img: "/assets/previews/cherry-tooth/screenshot-1.webp" },
-  { slug: "wicked-paradise", title: "Wicked Paradise", sub: "Event Experience", img: "/assets/previews/wicked-paradise/screenshot-1.webp" },
+  { slug: "j-worra", title: "J. Worra", sub: "Artist Website / Webflow to Next.js", img: "/assets/previews/j-worra/screenshot-1.webp" },
+  { slug: "l-affaire-musicale", title: "L'Affaire Musicale", sub: "Brand Identity / Website Refresh", img: "/assets/previews/l-affaire-musicale/screenshot-1.webp" },
+  { slug: "sam-blacky", title: "Sam Blacky", sub: "Artist Website / Creative Direction", img: "/assets/previews/sam-blacky/screenshot-1.webp" },
+  { slug: "clipkeep", title: "ClipKeep", sub: "Full-Stack Product", img: "/assets/previews/clipkeep/screenshot-1.webp" },
+  { slug: "qlo-agency", title: "QLO Agency", sub: "Webflow Development", img: "/assets/previews/qlo-agency/screenshot-1.webp" },
 ];
-const LOOP_ITEMS = [...PROJECTS, ...PROJECTS];
-
-
 function Carousel() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -28,7 +22,6 @@ function Carousel() {
   const rafRef = useRef(0);
   const lerpTarget = useRef(0);
   const lerpCurrent = useRef(0);
-  const mouseInside = useRef(false);
   const prevActive = useRef<HTMLElement | null>(null);
   const isMobile = useRef(false);
   const registerItem = useCallback((el: HTMLAnchorElement | null, i: number) => { if (el) itemsRef.current[i] = el; }, []);
@@ -60,8 +53,8 @@ function Carousel() {
       rafRef.current = requestAnimationFrame(tick);
     }
     rafRef.current = requestAnimationFrame(tick);
-    const mm = (e: MouseEvent) => { if (isMobile.current) return; mouseInside.current = true; const r = viewport.getBoundingClientRect(); lerpTarget.current = -getMax() * Math.max(0, Math.min(1, (e.clientX - r.left) / Math.max(1, r.width))); };
-    const me = () => { mouseInside.current = true; }; const ml = () => { mouseInside.current = false; };
+    const mm = (e: MouseEvent) => { if (isMobile.current) return; const r = viewport.getBoundingClientRect(); lerpTarget.current = -getMax() * Math.max(0, Math.min(1, (e.clientX - r.left) / Math.max(1, r.width))); };
+    const me = () => {}; const ml = () => {};
     let dragStartX = 0, dragStartTarget = 0, isDragging = false;
     const md = (e: MouseEvent) => { if (isMobile.current) return; isDragging = true; dragStartX = e.clientX; dragStartTarget = lerpTarget.current; viewport.style.cursor = "grabbing"; };
     const mu = () => { if (!isDragging) return; isDragging = false; viewport.style.cursor = ""; };
@@ -86,7 +79,7 @@ function Carousel() {
           {PROJECTS.map((p, i) => (
             <a key={i} ref={(el) => registerItem(el, i)} className="carousel-item" href={`/projects/${p.slug}`} style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", flexShrink: 0, width: "calc(18vw * var(--scale, 1))", padding: "0 8px", color: "inherit", textDecoration: "none", transition: "width 600ms cubic-bezier(0,0.4,0.6,1)" }}>
               <div style={{ width: "100%", aspectRatio: "16/10", borderRadius: 14, border: "1px solid rgba(246,232,234,0.10)", overflow: "hidden", background: "rgba(246,232,234,0.02)" }}>
-                <img src={p.img} alt={p.title} style={{ width: "100%", height: "100%", display: "block", objectFit: "cover" }} />
+                <img src={p.img} alt={p.title} loading="lazy" style={{ width: "100%", height: "100%", display: "block", objectFit: "cover" }} />
               </div>
               <div className="carousel-caption" style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 2, width: "100%"}}>
                 <span className="cap-title" style={{ fontSize: "clamp(13px,1.05vw,16px)", color: "#f1eee7" }}>{p.title}</span>
@@ -144,8 +137,8 @@ export default function Hero() {
       <div ref={carouselWrapperRef} className="hero-carousel-wrap" style={{ flex: "1 1 auto", minHeight: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "env(safe-area-inset-bottom, 0px)", paddingTop: "clamp(6rem, 10vh, 10rem)" }}>
         <Carousel />
       </div>
-      <p className="hero-tagline" style={{ padding: "0rem 6rem", color: "var(--text-soft, #b8b1a6)", fontSize: "clamp(1rem, 1.4vw, 1.2rem)", fontWeight: 420, letterSpacing: "-0.01em", lineHeight: 1.5, textAlign: "right", opacity: 0.7 }}>
-        I build for people who care deeply about what they make.
+      <p className="hero-tagline" style={{ padding: "0rem 6rem",         color: "var(--text-soft, #b8b1a6)", fontSize: "clamp(1rem, 1.4vw, 1.2rem)", fontWeight: 400, letterSpacing: "-0.01em", lineHeight: 1.5, textAlign: "right" }}>
+        Design engineer and creative technologist for artists, agencies, and creative brands.
       </p>
       <div className="hero-wordmark" style={{ width: "100vw", marginLeft: "calc(50% - 50vw)", flexShrink: 0, overflow: "visible" }}>
         <svg ref={svgRef} width="1380" height="374" viewBox="0 0 1380 374" fill="none" style={{ display: "block", width: "100%", height: "auto" }}>

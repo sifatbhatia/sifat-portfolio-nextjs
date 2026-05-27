@@ -137,7 +137,7 @@ export default function SelectedWork() {
           fontSize: "0.75rem", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase",
           color: "rgba(241,238,231,0.3)", margin: "0 0 1rem", fontFamily: "var(--font-body)",
         }}>
-          Selected Work
+          Selected projects
         </p>
         <h2 data-heading
           style={{
@@ -147,6 +147,13 @@ export default function SelectedWork() {
         >
           Things I&apos;m proud of.
         </h2>
+        <p style={{
+          fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7,
+          color: "rgba(241,238,231,0.5)", margin: "1.5rem 0 0",
+          fontFamily: "var(--font-body)", maxWidth: "36rem",
+        }}>
+          Recent websites, brand systems, and tools built for music, entertainment, agencies, and creative teams.
+        </p>
       </div>
 
       <div style={{ marginBottom: "clamp(1rem, 2vw, 1.5rem)" }}>

@@ -6,23 +6,23 @@ import AnimatedText from "./AnimatedText";
 
 const SERVICES = [
   {
-    title: "Design",
-    desc: "Visual identity, UI/UX, and design systems. From concept to pixel-perfect execution.",
+    title: "Web Design and Development",
+    desc: "Custom React, Next.js, Webflow, and CMS-backed websites built for speed, accessibility, responsive behavior, and long-term maintainability.",
     icon: "01",
   },
   {
-    title: "Development",
-    desc: "React, Next.js, GSAP, and everything in between. Fast, accessible, and built to last.",
+    title: "Brand and Identity Systems",
+    desc: "Logos, typography, color systems, art direction, and reusable design rules that make a brand easier to recognize and easier to use.",
     icon: "02",
   },
   {
-    title: "Branding",
-    desc: "Logos, typography, color systems, and the intangible feeling that makes a brand stick.",
+    title: "Creative Technology",
+    desc: "Motion systems, interactive interfaces, WebGL experiments, AI-assisted workflows, and custom tools for teams that need something more specific than off-the-shelf software.",
     icon: "03",
   },
   {
-    title: "Strategy",
-    desc: "Content architecture, user journeys, and the thinking before the building.",
+    title: "Strategy and Structure",
+    desc: "Content architecture, user journeys, technical planning, and product thinking before the build starts.",
     icon: "04",
   },
 ];

@@ -1,39 +1,58 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "next-view-transitions";
 
-const letters = [
-  { char: "S", w: 181.34 },
-  { char: "I", w: 38.30 },
-  { char: "F", w: 148.11 },
-  { char: "A", w: 181.34 },
-  { char: "T", w: 155.96 },
-  { char: "B", w: 147.88 },
-  { char: "H", w: 148.11 },
-  { char: "A", w: 181.34 },
-  { char: "T", w: 122.51 },
-  { char: "I", w: 38.30 },
-  { char: "A", w: 147.65 },
+const primaryLinks = [
+  { href: "/projects", label: "PROJECTS" },
+  { href: "/journal", label: "JOURNAL" },
+  { href: "/services", label: "SERVICES" },
+  { href: "/now", label: "NOW" },
 ];
 
-function FooterLink({ href, children, external }: { href: string; children: React.ReactNode; external?: boolean }) {
+const socialLinks = [
+  { href: "https://www.instagram.com/siftion/", label: "INSTAGRAM", external: true },
+  { href: "mailto:sifatbht@gmail.com", label: "EMAIL" },
+];
+
+const bottomBarItems = [
+  { label: "LOS ANGELES", href: null as string | null, external: false },
+  { label: "© SIFTION", href: null as string | null, external: false },
+  { label: "HI@SIFAT.TECH", href: "mailto:hi@sifat.tech", external: false },
+  { label: "DESIGN & DEVELOPMENT", href: null as string | null, external: false },
+];
+
+function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    setMatches(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setMatches(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, [query]);
+  return matches;
+}
+
+function NavLink({ href, children, external }: { href: string; children: React.ReactNode; external?: boolean }) {
   const [hovered, setHovered] = useState(false);
 
-  const baseStyle = {
+  const style = {
     color: hovered ? "#f7f7f2" : "rgba(247,247,242,0.86)",
-    textDecoration: "none",
-    fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
-    fontWeight: 750,
-    lineHeight: 0.92,
-    letterSpacing: "-0.04em",
+    fontSize: "clamp(1.15rem, 2vw, 23.9px)",
+    fontWeight: 700,
+    fontFamily: "var(--font-body)",
+    letterSpacing: "-0.03em",
+    lineHeight: "clamp(1.1rem, 1.85vw, 22px)",
     textTransform: "uppercase" as const,
+    textDecoration: "none",
+    whiteSpace: "nowrap" as const,
     transition: "color 200ms ease",
   } as React.CSSProperties;
 
   if (external) {
     return (
-      <a href={href} target="_blank" rel="noreferrer" style={baseStyle}
+      <a href={href} target="_blank" rel="noreferrer" style={style}
         onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
         {children}
       </a>
@@ -41,106 +60,223 @@ function FooterLink({ href, children, external }: { href: string; children: Reac
   }
 
   return (
-    <Link href={href} style={baseStyle}
+    <Link href={href} style={style}
       onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       {children}
     </Link>
   );
 }
 
+function BottomBarItem({ item, style }: { item: typeof bottomBarItems[0]; style: React.CSSProperties }) {
+  const [hovered, setHovered] = useState(false);
+  const finalStyle = {
+    ...style,
+    color: hovered && item.href ? "#f7f7f2" : style.color,
+    transition: "color 200ms ease",
+    cursor: item.href ? "pointer" : undefined,
+  } as React.CSSProperties;
+  const handlers = item.href ? {
+    onMouseEnter: () => setHovered(true),
+    onMouseLeave: () => setHovered(false),
+  } : {};
+
+  if (item.href && item.external) {
+    return <a href={item.href} target="_blank" rel="noreferrer" style={finalStyle} {...handlers}>{item.label}</a>;
+  }
+  if (item.href) {
+    return <a href={item.href} style={finalStyle} {...handlers}>{item.label}</a>;
+  }
+  return <span style={finalStyle}>{item.label}</span>;
+}
+
 export default function Footer() {
+  const isMobile = useMediaQuery("(max-width: 767px)");
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const [logoHovered, setLogoHovered] = useState(false);
+
   return (
     <footer style={{
-      width: "100%", background: "#030303", color: "#f1eee7",
-      padding: "clamp(3rem, 6vh, 5rem) clamp(1.5rem, 6vw, 4rem) 0",
+      width: "100%",
+      background: "#030303",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "flex-end",
+      gap: isMobile ? "clamp(1.5rem, 4vw, 2.5rem)" : "44.4px",
+      padding: isMobile
+        ? "clamp(3rem, 15vw, 5rem) clamp(1rem, 4vw, 1.5rem) clamp(2rem, 5vw, 3rem)"
+        : "220px 23px 44px 21px",
     }}>
-      {/* Top: Philosophy / Nav / Connect */}
+      {/* Top: desktop=3-col grid, mobile=stacked flex */}
       <div style={{
-        display: "grid",
-        gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)",
-        gap: "clamp(2rem, 5vw, 6rem)", alignItems: "start",
-        maxWidth: "1400px", margin: "0 auto",
-        paddingBottom: "clamp(3rem, 6vh, 6rem)",
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+        paddingBottom: isMobile ? "clamp(2rem, 10vw, 4rem)" : "168px",
       }}>
-        <div>
-          <div style={{
-            color: "rgba(247,247,242,0.86)",
-            fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
-            fontWeight: 700,
-            lineHeight: 0.92,
-            letterSpacing: "-0.02em",
-            fontFamily: "var(--font-body)",
-          }}>
-            Built on the belief<br />
-            that real living<br />
-            is meeting.
-          </div>
+        {/* On desktop: grid container. On mobile: flex column items */}
+        <div style={{
+          display: isMobile ? "flex" : "grid",
+          flexDirection: "column",
+          gridTemplateColumns: isDesktop
+            ? "minmax(0,1.25fr) minmax(0,1.55fr) minmax(0,1.05fr)"
+            : isMobile ? "1fr" : "1fr 1fr 1fr",
+          gap: isMobile ? "clamp(2rem, 5vw, 3rem)" : "72.32px",
+          width: "100%",
+        }}>
+          {/* Philosophy */}
+          <section
+            aria-label="Brand statement"
+            style={{
+              maxWidth: isMobile ? "none" : "265.43px",
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+            }}
+          >
+            <p style={{
+              margin: 0,
+              color: "rgba(247,247,242,0.86)",
+              fontSize: "clamp(1.15rem, 2vw, 23.9px)",
+              fontWeight: 700,
+              fontFamily: "var(--font-body)",
+              letterSpacing: "-0.03em",
+              lineHeight: "clamp(1.1rem, 1.85vw, 22px)",
+              textTransform: "uppercase",
+            }}>
+              Built on the belief<br />
+              that real living<br />
+              is meeting.
+            </p>
+          </section>
+
+          {/* Primary navigation */}
+          <nav
+            aria-label="Primary footer navigation"
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: "clamp(0.4rem, 0.6vw, 0.75rem)",
+            }}
+          >
+            {primaryLinks.map(link => (
+              <NavLink key={link.label} href={link.href}>{link.label}</NavLink>
+            ))}
+          </nav>
+
+          {/* Social links */}
+          <nav
+            aria-label="Social links"
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: "clamp(0.4rem, 0.6vw, 0.75rem)",
+            }}
+          >
+            {socialLinks.map((link, i) => (
+              <NavLink key={`${link.label}-${i}`} href={link.href} external={link.external}>{link.label}</NavLink>
+            ))}
+          </nav>
         </div>
-
-        <nav aria-label="Footer navigation" style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-          {[
-            { href: "/projects", label: "Projects" },
-            { href: "/journal", label: "Journal" },
-            { href: "/services", label: "Services" },
-            { href: "/now", label: "Now" },
-          ].map(link => (
-            <FooterLink key={link.label} href={link.href}>{link.label}</FooterLink>
-          ))}
-        </nav>
-
-        <nav aria-label="Social links" style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-          <FooterLink href="https://www.instagram.com/siftion/" external>Instagram</FooterLink>
-          <FooterLink href="mailto:sifatbht@gmail.com">Email</FooterLink>
-        </nav>
       </div>
 
-      {/* Block-letter logo — full viewport width */}
+      {/* Logo */}
       <div style={{
-        width: "100vw", marginLeft: "calc(50% - 50vw)",
-        borderTop: "1px solid rgba(247,247,242,0.06)",
-        padding: "clamp(2rem, 4vh, 4rem) clamp(1.5rem, 6vw, 4rem)",
-        display: "flex", justifyContent: "center",
-        boxSizing: "border-box",
+        width: "100%",
+        alignSelf: "stretch",
       }}>
-        <a href="/" aria-label="Back to home" style={{
-          display: "flex", justifyContent: "center", alignItems: "center",
-          gap: "clamp(0.15rem, 0.4vw, 0.5rem)",
-          flexWrap: "wrap", textDecoration: "none",
-          maxWidth: "1200px", width: "100%",
-        }}>
-          {letters.map((l, i) => (
-            <div
-              key={i}
-              title={l.char}
-              style={{
-                width: `clamp(${l.w * 0.05}px, ${l.w / 1200 * 100}vw, ${l.w}px)`,
-                height: `clamp(0.8rem, 4vh, 2.4rem)`,
-                background: "#f7f7f2",
-                borderRadius: "1px",
-              }}
-            />
-          ))}
+        <a
+          href="/"
+          aria-label="Back to home"
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            opacity: logoHovered ? 0.85 : 1,
+            transition: "opacity 300ms ease",
+          }}
+          onMouseEnter={() => setLogoHovered(true)}
+          onMouseLeave={() => setLogoHovered(false)}
+        >
+          <img
+            src="/assets/footer__logo.svg"
+            alt="SIFAT BHATIA"
+            loading="lazy"
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+              maxWidth: "100%",
+            }}
+          />
         </a>
       </div>
 
       {/* Bottom bar */}
-      <div style={{
-        width: "100vw", marginLeft: "calc(50% - 50vw)",
-        padding: "clamp(1rem, 2vh, 1.5rem) clamp(1.5rem, 6vw, 4rem)",
-        boxSizing: "border-box", borderTop: "1px solid rgba(247,247,242,0.06)",
-      }}>
+      {isMobile ? (
         <div style={{
-          maxWidth: "1400px", margin: "0 auto",
-          display: "flex", flexDirection: "column", alignItems: "flex-end",
-          gap: "0.15rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: "clamp(0.3rem, 1vw, 0.5rem)",
+          width: "100%",
         }}>
-          <span className="bottom-bar-item">LOS ANGELES</span>
-          <span className="bottom-bar-item">© SIFTION</span>
-          <a href="mailto:hi@sifat.tech" className="bottom-bar-item" style={{ textDecoration: "none", color: "rgba(247,247,242,0.58)" }}>HI@SIFAT.TECH</a>
-          <a href="https://sifat.tech" target="_blank" rel="noreferrer" className="bottom-bar-item" style={{ textDecoration: "none", color: "rgba(247,247,242,0.58)" }}>SIFAT.TECH</a>
-          <span className="bottom-bar-item" style={{ textAlign: "right" }}>DESIGN &amp; DEVELOPMENT</span>
+          {bottomBarItems.map((item, index) => {
+            const isLast = index === bottomBarItems.length - 1;
+            return (
+              <BottomBarItem
+                key={item.label}
+                item={item}
+                style={{
+                  color: "rgba(247,247,242,0.72)",
+                  fontSize: "clamp(0.85rem, 3vw, 21px)",
+                  fontWeight: 700,
+                  fontFamily: "var(--font-body)",
+                  letterSpacing: "-0.02em",
+                  lineHeight: "clamp(0.8rem, 2.8vw, 19.3px)",
+                  textTransform: "uppercase",
+                  whiteSpace: "nowrap",
+                  textDecoration: "none",
+                  textAlign: isLast ? "right" : undefined,
+                  width: isLast ? "100%" : undefined,
+                } as React.CSSProperties}
+              />
+            );
+          })}
         </div>
-      </div>
+      ) : (
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr 1fr",
+          width: "100%",
+        }}>
+          {bottomBarItems.map((item, index) => {
+            const isLast = index === bottomBarItems.length - 1;
+            return (
+              <BottomBarItem
+                key={item.label}
+                item={item}
+                style={{
+                  color: "rgba(247,247,242,0.72)",
+                  fontSize: "21px",
+                  fontWeight: 700,
+                  fontFamily: "var(--font-body)",
+                  letterSpacing: "-0.02em",
+                  lineHeight: "19.3px",
+                  textTransform: "uppercase",
+                  whiteSpace: "nowrap",
+                  textDecoration: "none",
+                  textAlign: isLast ? "right" : "left",
+                } as React.CSSProperties}
+              />
+            );
+          })}
+        </div>
+      )}
     </footer>
   );
 }

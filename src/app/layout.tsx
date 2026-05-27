@@ -4,11 +4,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Sifat Bhatia — Design Engineer & Creative Technologist",
+    default: "Sifat Bhatia - Design Engineer and Creative Technologist in Los Angeles",
     template: "%s | Sifat Bhatia",
   },
   description:
-    "Sifat Bhatia is a design engineer and creative technologist based in Los Angeles. He builds websites, brand identities, and digital experiences for artists, agencies, and creative brands. Expert in React, Next.js, GSAP, Webflow, and design systems. Open for freelance and full-time opportunities.",
+    "Sifat Bhatia designs and builds custom websites, brand systems, and interactive digital products for artists, agencies, and creative brands.",
   keywords: [
     "Sifat Bhatia",
     "design engineer",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Sifat Bhatia", url: "https://sifat.tech" }],
   creator: "Sifat Bhatia",
-  publisher: "Siftion",
+  publisher: "Sifat Bhatia",
   metadataBase: new URL("https://sifat.tech"),
   alternates: {
     canonical: "/",
@@ -153,12 +153,12 @@ const websiteSchema = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ViewTransitions>
-      <html lang="en" data-scroll-behavior="smooth">
+      <html lang="en" style={{ scrollBehavior: "smooth" }}>
         <head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=block"
+            href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
             rel="stylesheet"
           />
           <script

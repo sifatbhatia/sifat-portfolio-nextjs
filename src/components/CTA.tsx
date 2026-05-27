@@ -51,7 +51,7 @@ function PrimaryButton({ href, children }: { href: string; children: React.React
       {toast && (
         <span style={{
           position: "absolute", bottom: "-2rem", left: "50%", transform: "translateX(-50%)",
-          fontSize: "0.75rem", color: "rgba(20,20,18,0.5)", fontFamily: "var(--font-body)",
+          fontSize: "0.75rem", color: "rgba(20,20,18,0.65)", fontFamily: "var(--font-body)",
           whiteSpace: "nowrap", pointerEvents: "none",
           animation: "toast-fade 2s ease forwards",
         }}>
@@ -107,7 +107,7 @@ export default function CTA() {
       <div style={{ maxWidth: "48rem", margin: "0 auto" }}>
         <p style={{
           fontSize: "0.75rem", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase",
-          color: "rgba(20,20,18,0.35)", margin: "0 0 2rem", fontFamily: "var(--font-body)",
+          color: "rgba(20,20,18,0.55)", margin: "0 0 2rem", fontFamily: "var(--font-body)",
         }}>
           Get in touch
         </p>
@@ -120,7 +120,7 @@ export default function CTA() {
               justifyContent: "center",
             }}
           >
-            Let&apos;s build something that matters.
+            Need a custom website, brand system, or interactive product?
           </AnimatedText>
         </div>
         <AnimatedText
@@ -128,11 +128,11 @@ export default function CTA() {
           delay={0.15}
           style={{
             fontSize: "clamp(1rem, 1.4vw, 1.2rem)", lineHeight: 1.7,
-            color: "rgba(20,20,18,0.55)", margin: "0 0 3rem", fontFamily: "var(--font-body)",
+            color: "rgba(20,20,18,0.7)", margin: "0 0 3rem", fontFamily: "var(--font-body)",
             maxWidth: "32rem", marginLeft: "auto", marginRight: "auto",
           }}
         >
-          I work with people who care deeply about what they make. If that&apos;s you, let&apos;s talk.
+          Send a short note with what you are building, what is not working yet, and what you want the finished experience to do.
         </AnimatedText>
         <div style={{ display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap" }}>
           <PrimaryButton href="mailto:sifatbht@gmail.com">sifatbht@gmail.com</PrimaryButton>

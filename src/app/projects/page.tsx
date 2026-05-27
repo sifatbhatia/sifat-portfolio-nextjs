@@ -16,8 +16,11 @@ export default function ProjectsPage() {
           <AnimatedText
             style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 400, lineHeight: 0.95, letterSpacing: "-0.02em", margin: 0, fontFamily: "var(--font-display)", color: "#f1eee7" }}
           >
-            Everything I&apos;ve built, and who I built it with.
+            Selected work
           </AnimatedText>
+          <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.5)", margin: "1.5rem 0 0", fontFamily: "var(--font-body)", maxWidth: "36rem" }}>
+            Websites, brand systems, and digital products built with artists, agencies, and creative teams. Each project here shows the problem, the role I played, what was built, and what changed after launch.
+          </p>
         </header>
 
         <div style={{ display: "grid", gap: 0 }}>

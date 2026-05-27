@@ -4,7 +4,6 @@ export interface ProjectData {
   stack: string[];
   testimonial?: { quote: string; attribution: string };
   heroImage: string;
-  /** Each screenshot has explicit device type */
   screenshots: { type: "laptop" | "phone"; src: string; caption?: string }[];
   highlights?: string[];
   metrics?: { value: string; label: string }[];
@@ -14,107 +13,142 @@ export const projects: ProjectData[] = [
   {
     slug: "j-worra",
     title: "J. Worra",
-    role: "Design & Development",
-    year: "2025",
-    url: "https://jworra.com",
+    role: "Artist Website / Webflow to Next.js",
+    year: "2024-2026",
+    url: "https://www.jworra.com/",
     description:
-      "Artist website and web identity for a DJ/producer — a digital presence that matches the energy of the music.",
-    challenge: `Electronic artists live and die by atmosphere. J. Worra's original site was a bare-bones press page — static, lifeless, a digital placeholder that didn't reflect the artist behind it.
+      "Full artist website redesign and development for J. Worra, evolving the site from a plain legacy presence to a Webflow direction and finally a custom Next.js experience built around music, tour dates, social links, and booking access.",
+    challenge: `The project was not just to make the site look better. The real challenge was to move J. Worra's web presence out of a generic artist-site format and into something that felt more current, more direct, and more aligned with the artist's music and live presence.
 
-The core problem wasn't technical. It was experiential. Fans visiting the site should feel the same energy they get from a set — the tension, the build, the drop. A standard bio-and-links template wasn't going to cut it.
+The site needed to serve multiple audiences at once:
 
-Beyond the aesthetic gap, the site needed to serve multiple audiences: booking agents looking for quick info, fans wanting tour dates and music, and press seeking high-res assets. Each of these flows needed to feel intentional, not like we'd tacked on yet another page.`,
-    approach: `We started where the music lives: in movement. The track "Burn" became our north star — its tempo, its rhythm, the way it builds and releases. We translated that into scroll-driven motion, heavy editorial typography, and a dark, minimal palette that lets the content breathe.
+- Fans looking for music, tour dates, and social links
+- Booking teams looking for the right contact path
+- Management and industry contacts looking for credibility and quick information
+- Press or partners looking for a clear read on the artist's world`,
+    approach: `I treated the redesign as an artist-platform evolution rather than a single-page reskin.
 
-Rather than building a generic CMS template, we designed a custom motion language. Every section has a beat. Every transition has tension and release. The hero isn't a static image — it's a looping video that shifts on scroll, matching the energy curve of a live set.
+The structure was reduced to the essentials: upcoming dates, music, artist context, contact, and social/streaming access. The visual system moved toward dark atmosphere, large identity moments, high-contrast interface elements, and a more performance-minded front end.
 
-For the booking and press flows, we took an editorial approach: think Rolling Stone meets minimalism. A clear information hierarchy that puts tour dates and press assets where they're immediately accessible, but wraps them in the same dark, immersive aesthetic so nothing feels bolted on.`,
-    outcome: `The site launched to immediate recognition within the electronic music community. Average session duration increased 3x — fans are spending real time exploring rather than bouncing in seconds.
+The Webflow version helped define the brand and layout direction. The Next.js version gave the final site more control, speed, flexibility, and polish.`,
+    outcome: `The current J. Worra site is a stronger central hub for the artist. It keeps the essential information accessible while giving the brand a more distinctive digital presence.
 
-More importantly, the motion system became part of J. Worra's broader visual identity. The scroll-driven transitions and dark aesthetic are now being used across social media assets, press kit templates, and even show visuals. What started as a website became a brand system.
-
-Booking inquiries also improved — agents reported the site made it "dead simple" to understand the artist's vibe and current tour status, cutting down the back-and-forth that usually precedes a booking.`,
-    stack: ["React", "GSAP", "Lenis", "Tailwind"],
+The redesign creates a clear progression from a plain legacy site to a custom-built artist experience: more atmospheric, more usable, and more aligned with a modern touring DJ and producer.`,
+    stack: ["Webflow", "Next.js", "React", "Motion Systems", "Responsive Design"],
     highlights: [
-      "Scroll-driven motion system synced to track BPM",
-      "Custom editorial layout for press and booking flows",
-      "Dark, immersive palette with animated micro-interactions",
-      "Responsive design optimized for mobile-first audiences",
+      "Fully redesigned the artist website from the legacy version",
+      "Built an intermediate Webflow version to establish the new direction",
+      "Developed the current custom Next.js site",
+      "Reworked the site hierarchy around dates, music, artist identity, and contact",
+      "Created a darker, more immersive visual direction",
+      "Improved access to streaming links, tour dates, management, and booking contacts",
+      "Built a responsive experience for fans and industry visitors",
     ],
-    metrics: [
-      { value: "3x", label: "Avg. session duration increase" },
-      { value: "40%", label: "Bounce rate reduction" },
-      { value: "2×", label: "Booking inquiry conversion" },
-      { value: "0", label: "Third-party dependencies for motion" },
-    ],
-    testimonial: {
-      quote:
-        "This isn't just a website — it's part of the brand. People feel the music before they hear it.",
-      attribution: "J. Worra",
-    },
     heroImage: "/assets/previews/j-worra/desktop-1440x900.png",
     screenshots: [
-      { type: "laptop", src: "/assets/previews/j-worra/desktop-1440x900.png", caption: "Homepage — Full desktop view with hero video and navigation" },
-      { type: "phone", src: "/assets/previews/j-worra/mobile-390x844.png", caption: "Mobile — Hero section with social links" },
-      { type: "laptop", src: "/assets/previews/j-worra/desktop-1440x900.png", caption: "Tour dates section — Editorial layout" },
-      { type: "phone", src: "/assets/previews/j-worra/mobile-390x844.png", caption: "Mobile — Streaming links footer" },
+      { type: "laptop", src: "/assets/previews/j-worra/desktop-1440x900.png", caption: "Homepage — Full desktop view" },
+      { type: "phone", src: "/assets/previews/j-worra/mobile-390x844.png", caption: "Mobile — Hero section" },
     ],
   },
   {
     slug: "l-affaire-musicale",
     title: "L'Affaire Musicale",
-    role: "Agency Rebrand",
-    year: "2024",
+    role: "Brand Identity / Website Refresh",
+    year: "2026",
+    url: "https://www.laffairemusicale.com/",
     description:
-      "Full rebrand and website rebuild for a music agency — from dated WordPress to a modern editorial platform.",
-    challenge:
-      "The agency had outgrown its visual identity. The old site couldn't showcase the roster properly, was painful to update, and didn't reflect the caliber of artists they represent.",
-    approach:
-      "Treated the redesign like curating a gallery. Editorial layout, generous whitespace, typography-first approach. Built a CMS-backed system so the team can update roster and shows without developer involvement.",
-    outcome:
-      "The rebrand positioned the agency alongside their artists — elevated, intentional, current. Roster updates went from 2-day turnaround to self-serve.",
-    stack: ["Next.js", "Sanity CMS", "Tailwind", "Framer Motion"],
+      "Full brand and website refresh for L'Affaire Musicale, including logo design, visual identity, creative direction, and a redesigned digital presence for the dance music management company.",
+    challenge: `The previous site had useful information, but the brand felt dated and visually underpowered. It did not reflect the agency's taste, roster, relationships, or position inside the dance music world.
+
+The company needed to move away from an older events-page feeling and toward something that looked like a serious management house: clearer, more premium, more intentional, and easier to understand at a glance.`,
+    approach: `The refresh uses a restrained editorial system: a redesigned wordmark, warm neutral palette, large serif typography, disciplined spacing, and a cleaner page structure.
+
+The site was reorganized around the signals that matter most for a management company:
+
+- What L'Affaire Musicale does
+- Who the roster includes
+- What areas the company works across
+- Who leads the company
+- How artists, partners, and industry contacts can reach out
+
+The brand direction balances polish with music-industry edge. It needed to feel elevated without becoming sterile, and stylish without hiding the actual business information.`,
+    outcome: `The refreshed site now gives L'Affaire Musicale a stronger first impression and a clearer business presence. It presents the agency as a modern management company rather than a dated event brand.
+
+The new identity can extend beyond the website into roster materials, pitch decks, social assets, booking conversations, and future brand collateral.`,
+    stack: ["Web Design", "Brand Identity", "Typography", "Creative Direction"],
     highlights: [
-      "Full visual rebrand from concept to deployment",
-      "Sanity CMS with custom studio configs",
-      "Artist roster system with filterable grid",
-      "Event calendar with automated show updates",
-    ],
-    metrics: [
-      { value: "2 d → 0", label: "Roster update turnaround" },
-      { value: "100%", label: "Self-serve content management" },
-      { value: "4×", label: "Average pages per session" },
-      { value: "45%", label: "Booking page conversion uplift" },
+      "Redesigned the L'Affaire Musicale logo",
+      "Created a refreshed visual identity for the agency",
+      "Established typography, color, spacing, and layout direction",
+      "Reworked the website around roster, services, leadership, and inquiries",
+      "Clarified the agency's management, booking, branding, and artist-development positioning",
+      "Created a more premium digital presence for the company and its artists",
     ],
     heroImage: "/assets/previews/l-affaire-musicale/screenshot-1.webp",
-    screenshots: [{ type: "laptop", src: "/assets/previews/l-affaire-musicale/screenshot-1.webp", caption: "Roster grid with editorial layout" }],
+    screenshots: [
+      { type: "laptop", src: "/assets/previews/l-affaire-musicale/screenshot-1.webp", caption: "Homepage with refreshed brand identity" },
+    ],
+  },
+  {
+    slug: "sam-blacky",
+    title: "Sam Blacky",
+    role: "Artist Website / Creative Direction",
+    year: "2026",
+    url: "https://samblacky.com/",
+    description:
+      "Artist website refresh for Sam Blacky, focused on stronger visual identity, music-forward structure, bolder photography, and clearer paths for fans, brands, press, and booking contacts.",
+    challenge: `The existing site had the right basic information, but it felt static and dated. The design leaned more toward a simple press page than a living artist world.
+
+Sam's brand sits across dance music, travel, fashion, nightlife, and global club culture. The website needed to carry more of that energy without making the core actions harder to find: listen, learn, contact, and explore brand/music work.`,
+    approach: `The redesign uses a louder, sharper visual system built around Sam's existing identity: bold black-and-white logo treatment, vivid purple artist photography, electric pink motion language, oversized type, and a simpler page flow.
+
+The site structure was reorganized around the content people actually look for on an artist site:
+
+- Music and releases
+- Artist story
+- Brand presence
+- Contact and management inquiries
+
+The direction intentionally feels less corporate and more direct. It gives the site more personality while keeping the page useful for industry visitors.`,
+    outcome: `The refreshed direction makes Sam Blacky's digital presence feel more current, more energetic, and more connected to her world as a DJ and producer.
+
+It turns the site from a basic information page into a stronger artist showcase that can support releases, bookings, brand conversations, and fan discovery.`,
+    stack: ["Web Design", "Creative Direction", "Artist Website", "Responsive Design"],
+    highlights: [
+      "Refreshed the website direction for Sam Blacky's artist brand",
+      "Created a bolder visual system around photography, contrast, and music energy",
+      "Reworked the page hierarchy around music, about, brands, and contact",
+      "Gave the site a more direct artist-first presence",
+      "Created a stronger showcase for releases and visual identity",
+      "Clarified contact access for management and booking conversations",
+    ],
+    heroImage: "/assets/previews/sam-blacky/screenshot-1.webp",
+    screenshots: [
+      { type: "laptop", src: "/assets/previews/sam-blacky/screenshot-1.webp", caption: "Homepage with bold visual identity" },
+      { type: "phone", src: "/assets/previews/sam-blacky/screenshot-2.webp", caption: "Mobile — Artist showcase" },
+      { type: "laptop", src: "/assets/previews/sam-blacky/screenshot-3.webp", caption: "Music and releases section" },
+    ],
   },
   {
     slug: "clipkeep",
     title: "ClipKeep",
-    role: "Full Stack",
+    role: "Full-Stack Product",
     year: "2025",
     url: "https://clipkeep.vercel.app",
     description:
-      "A clipboard manager that remembers everything so you don't have to. Built for speed and zero friction.",
+      "Clipboard manager designed around fast capture, search, and reuse. Built as a lean PWA with a keyboard-first interface and minimal overhead.",
     challenge:
       "Clipboard managers were either too complex or too limited. Users needed something that just worked — save, search, paste — without the bloat.",
     approach:
       "Focused on the core loop: copy → auto-save → search → paste. Everything else was cut. PWA-first, under 50KB initial load, zero dependencies beyond React.",
     outcome:
       "Ships as a PWA. Used daily by early testers. The simplicity became the feature — people chose it specifically because it does less.",
-    stack: ["React", "TypeScript", "Tailwind", "Vercel"],
+    stack: ["React", "TypeScript", "Tailwind"],
     highlights: [
       "PWA with offline clipboard storage",
       "Full-text search across clipboard history",
       "Keyboard-first interface with zero-mouse workflow",
       "Under 50KB initial JS payload",
-    ],
-    metrics: [
-      { value: "< 50 KB", label: "Initial JS payload" },
-      { value: "∞", label: "Offline clipboard history" },
-      { value: "0", label: "External dependencies" },
-      { value: "2×", label: "Daily active user growth" },
     ],
     heroImage: "/assets/previews/clipkeep/screenshot-1.webp",
     screenshots: [{ type: "laptop", src: "/assets/previews/clipkeep/screenshot-1.webp", caption: "Clipboard history with full-text search" }],
@@ -122,28 +156,22 @@ Booking inquiries also improved — agents reported the site made it "dead simpl
   {
     slug: "qlo-agency",
     title: "QLO Agency",
-    role: "Webflow Developer",
+    role: "Webflow Development",
     year: "2024",
     description:
-      "Custom Webflow builds with advanced interactions, CMS collections, and client-friendly editing.",
+      "Custom Webflow development for agency-led client projects, including component systems, CMS collections, custom interactions, and editing guardrails.",
     challenge:
       "Agency clients needed sites they could edit themselves without breaking design integrity.",
     approach:
       "Built modular Webflow component libraries with reusable CMS collections. Custom interactions where CMS couldn't reach.",
     outcome:
       "Multiple client sites shipped. Clients edit content independently. Designer still controls the system.",
-    stack: ["Webflow", "JavaScript", "CSS", "CMS"],
+    stack: ["Webflow", "JavaScript", "CSS"],
     highlights: [
       "Reusable component library in Webflow CMS",
       "Custom interaction logic where CMS falls short",
       "Client editing guardrails to protect design system",
       "3rd-party API integrations for dynamic content",
-    ],
-    metrics: [
-      { value: "5+", label: "Client sites shipped" },
-      { value: "100%", label: "Client self-serve edits" },
-      { value: "2 hr", label: "Avg. site launch turnaround" },
-      { value: "12", label: "Reusable CMS components" },
     ],
     heroImage: "/assets/previews/qlo-agency/screenshot-1.webp",
     screenshots: [{ type: "laptop", src: "/assets/previews/qlo-agency/screenshot-1.webp", caption: "Custom Webflow build with CMS collections" }],

@@ -14,7 +14,7 @@ function LaptopMockup({ src, alt }: { src: string; alt: string }) {
         <div className="laptop-camera" />
         {/* Active screen area */}
         <div className="laptop-screen">
-          <img src={src} alt={alt} />
+          <img src={src} alt={alt} loading="lazy" />
         </div>
       </div>
       {/* Base / keyboard deck */}
@@ -40,7 +40,7 @@ function PhoneMockup({ src, alt }: { src: string; alt: string }) {
         </div>
         {/* Screen */}
         <div className="iphone-screen">
-          <img src={src} alt={alt} />
+          <img src={src} alt={alt} loading="lazy" />
         </div>
         {/* Home indicator */}
         <div className="iphone-home-indicator" />
@@ -63,7 +63,7 @@ function SectionBlock({
       className="case-study-section"
       style={{
         display: "grid",
-        gridTemplateColumns: "1fr 4fr 2fr",
+        gridTemplateColumns: "1fr 4fr",
         gap: "clamp(2rem, 4vw, 3rem)",
         marginBottom: "clamp(3rem, 6vh, 5rem)",
         fontFamily: "var(--font-body)",
@@ -84,7 +84,6 @@ function SectionBlock({
         {label}
       </div>
       <div>{children}</div>
-      <div />
     </section>
   );
 }
@@ -264,6 +263,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
           <img
             src={project.heroImage}
             alt={project.title}
+            loading="lazy"
             style={{
               width: "100%",
               height: "100%",

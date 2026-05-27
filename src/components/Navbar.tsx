@@ -120,11 +120,11 @@ export default function Navbar() {
         }}
       >
         <a ref={logoRef} href="/" style={{ pointerEvents: "auto", display: "inline-flex", alignItems: "center", transition: "opacity 400ms ease", filter: "drop-shadow(0 0 10px rgba(0,0,0,0.5))" }}>
-          <img src="/assets/Sifat -Bhatia.svg" alt="Sifat Bhatia" style={{ height: "clamp(2rem, 3vw, 2.5rem)", filter: "invert(1)" }} />
+          <img src="/assets/Sifat -Bhatia.svg" alt="Sifat Bhatia" loading="lazy" style={{ height: "clamp(2rem, 3vw, 2.5rem)", filter: "invert(1)" }} />
         </a>
-        <nav ref={navRef} style={{ display: "flex", gap: "2rem", pointerEvents: "auto", listStyle: "none", margin: 0, padding: 0, transition: "opacity 300ms ease, transform 300ms ease" }}>
+        <nav ref={navRef} aria-label="Main navigation" style={{ display: "flex", gap: "2rem", pointerEvents: "auto", listStyle: "none", margin: 0, padding: 0, transition: "opacity 300ms ease, transform 300ms ease" }}>
           {LINKS.map(l => (
-            <Link key={l.label} href={l.href} style={{ color: "rgba(255,247,247,0.75)", fontSize: "0.82rem", fontWeight: 560, letterSpacing: "0.08em", textTransform: "uppercase", transition: "opacity 300ms ease" }}>
+            <Link key={l.label} href={l.href} style={{ color: "rgba(255,247,247,0.75)", fontSize: "0.82rem", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", transition: "opacity 300ms ease" }}>
               {l.label}
             </Link>
           ))}

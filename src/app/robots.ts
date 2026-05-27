@@ -8,6 +8,5 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ["/api/"],
     },
     sitemap: "https://sifat.tech/sitemap.xml",
-    host: "https://sifat.tech",
   };
 }

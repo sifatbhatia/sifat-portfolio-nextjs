@@ -21,21 +21,21 @@ export default function About() {
             delay={0.1}
             style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}
           >
-            I&apos;m Sifat Bhatia — a design engineer based in Los Angeles. I work with artists, agencies, and creative brands who need more than a template. Every project I touch is built from the ground up, with intention.
+            I am Sifat Bhatia, a Los Angeles-based design engineer working across brand, interface design, front-end development, and creative technology.
           </AnimatedText>
           <AnimatedText
             as="p"
             delay={0.15}
             style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}
           >
-            I don&apos;t just write code or push pixels. I translate what you care about into something people can feel. Motion, typography, space, systems — every detail is a choice, not an accident. I&apos;m drawn to the edges: where design meets engineering, where spirituality meets code, where brands become experiences.
+            I work best with artists, agencies, founders, and creative teams who care about how their digital presence feels and how it performs. I can shape the concept, design the system, build the front end, and help the final product stay coherent from first sketch to launch.
           </AnimatedText>
           <AnimatedText
             as="p"
             delay={0.2}
             style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.6)", margin: 0, fontFamily: "var(--font-body)" }}
           >
-            When I&apos;m not building for clients, I&apos;m extending the capabilities of Lumière — a system I&apos;ve been developing that lives at the intersection of design, architecture, and synthetic cognition. Off hours, you&apos;ll find me exploring coffee shops, hiking trails, and whatever new AI tooling just dropped. Sima & Lia have been with me for about a year now, and I&apos;m always chasing a deeper understanding of how things work, and why.
+            My strongest projects sit where design and engineering have to move together: custom websites, visual identities, interactive portfolios, editorial systems, internal tools, and digital products with a strong point of view.
           </AnimatedText>
         </div>
       </div>
