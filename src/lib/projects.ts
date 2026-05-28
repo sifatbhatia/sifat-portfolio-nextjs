@@ -132,26 +132,43 @@ It turns the site from a basic information page into a stronger artist showcase 
   {
     slug: "clipkeep",
     title: "ClipKeep",
-    role: "Full-Stack Product",
-    year: "2025",
+    role: "Product Design / Full-Stack Development",
+    year: "2024-2026",
     url: "https://clipkeep.vercel.app",
     description:
-      "Clipboard manager designed around fast capture, search, and reuse. Built as a lean PWA with a keyboard-first interface and minimal overhead.",
-    challenge:
-      "Clipboard managers were either too complex or too limited. Users needed something that just worked — save, search, paste — without the bloat.",
-    approach:
-      "Focused on the core loop: copy → auto-save → search → paste. Everything else was cut. PWA-first, under 50KB initial load, zero dependencies beyond React.",
-    outcome:
-      "Ships as a PWA. Used daily by early testers. The simplicity became the feature — people chose it specifically because it does less.",
-    stack: ["React", "TypeScript", "Tailwind"],
+      "A local-first clip vault for saving, organizing, and revisiting social media content from TikTok, Instagram Reels, and YouTube. ClipKeep turns scattered links into a calm personal library with collections, favorites, metadata previews, search, optional encrypted sync, and experimental AI summaries.",
+    challenge: `Saving social content is easy, but finding it again is hard. Useful or entertaining clips get scattered across native save folders, chats, notes, browser tabs, and platform-specific libraries with limited search.
+
+The harder problem was platform messiness. Instagram Reels, TikTok, and YouTube links behave inconsistently across mobile share URLs, redirects, tracking parameters, short links, and unreliable metadata sources. ClipKeep needed to make capture feel simple even when the incoming URLs were not.`,
+    approach: `The product is designed as a quiet personal archive rather than a loud social app. The interface uses soft surfaces, restrained motion, clear spacing, and mobile-first navigation so saving and browsing clips feels lightweight and almost native.
+
+The core flow is local-first: clips and collections are stored locally by default so the app stays fast and usable without login friction. Users can organize clips into collections, mark favorites, search their vault, and capture metadata from TikTok, Instagram, and YouTube.
+
+On the technical side, I treated capture as a resilient pipeline: normalize the URL, clean tracking parameters, preserve platform semantics, resolve short links where possible, fetch metadata, and fallback gracefully. Optional Supabase sync stores encrypted vault snapshots instead of plaintext user content, and AI summaries are clearly marked experimental with a local fallback when the model is unavailable.`,
+    outcome: `ClipKeep now feels more like a complete product: new visitors land on a proper home page, returning users enter the app directly, mobile buttons behave correctly, social capture is more robust, cloud sync is safer, and AI summaries are framed as an enhancement rather than a dependency.
+
+The project reinforced that social URLs are moving targets, not clean APIs. The strongest user experience came from making the save flow resilient: normalize, resolve, fetch metadata, fallback gracefully, and never let one platform failure prevent the user from saving a clip.`,
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "NVIDIA AI API"],
     highlights: [
-      "PWA with offline clipboard storage",
-      "Full-text search across clipboard history",
-      "Keyboard-first interface with zero-mouse workflow",
-      "Under 50KB initial JS payload",
+      "Built a local-first vault for TikTok, Instagram Reels, and YouTube links",
+      "Added collections, favorites, search, metadata previews, and returning-user routing",
+      "Parsed messy mobile share links, cleaned tracking parameters, and resolved short links where possible",
+      "Preserved YouTube Shorts semantics while still supporting oEmbed metadata",
+      "Shifted cloud sync toward encrypted Supabase vault snapshots instead of plaintext user content",
+      "Added experimental NVIDIA AI summaries with a local fallback when AI is unavailable",
+      "Improved the mobile landing experience so new visitors see the product story and returning users go directly into the app",
+      "Designed future paths for share-sheet capture, duplicate detection, collection filters, sync status, and transcript-aware summaries",
+    ],
+    metrics: [
+      { value: "3", label: "Social platforms parsed" },
+      { value: "Local", label: "Default storage model" },
+      { value: "Encrypted", label: "Optional sync snapshots" },
     ],
     heroImage: "/assets/previews/clipkeep/screenshot-1.webp",
-    screenshots: [{ type: "laptop", src: "/assets/previews/clipkeep/screenshot-1.webp", caption: "Clipboard history with full-text search" }],
+    screenshots: [
+      { type: "laptop", src: "/assets/previews/clipkeep/screenshot-1.webp", caption: "Clip vault home and saved-link library" },
+      { type: "laptop", src: "/assets/previews/clipkeep/screenshot-2.webp", caption: "Clip organization, metadata, and browsing interface" },
+    ],
   },
   {
     slug: "aer",

@@ -35,7 +35,7 @@ Artist website and web identity for a DJ/producer. Dark, motion-driven design th
 Full rebrand and website rebuild for a music agency. Editorial layout, CMS-backed roster management, typography-first approach. Built with Next.js, Sanity CMS, and Framer Motion.
 
 ### ClipKeep
-A clipboard manager PWA built for speed and zero friction. Under 50KB initial load. React, TypeScript, Tailwind. Ships as installable PWA.
+A local-first clip vault for saving and organizing TikTok, Instagram Reels, and YouTube links. Includes collections, favorites, metadata previews, search, optional encrypted Supabase snapshot sync, and experimental NVIDIA AI summaries. Built with Next.js, React, TypeScript, Tailwind CSS, Supabase, localStorage, and resilient social URL parsing.
 
 ### QLO Agency
 Custom Webflow builds with advanced interactions, CMS collections, and client-friendly editing. Modular component systems.
