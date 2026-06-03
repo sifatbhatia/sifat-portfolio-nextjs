@@ -19,14 +19,28 @@
 
 html {
   overflow-x: hidden;
+  overflow-y: scroll;             /* always show to prevent layout shift */
   background: #141412;
   scroll-behavior: smooth;
-  scrollbar-width: none;          /* Firefox */
-  -ms-overflow-style: none;       /* IE & Edge */
+  scrollbar-width: thin;          /* Firefox */
+  scrollbar-color: #3a3a38 #141412;  /* Firefox: thumb track */
 }
 
 html::-webkit-scrollbar {
-  display: none;                  /* Chrome, Safari, Opera */
+  width: 6px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #141412;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #3a3a38;
+  border-radius: 3px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #52524e;
 }
 
 body {
