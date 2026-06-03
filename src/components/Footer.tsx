@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useState, useSyncExternalStore } from "react";
-import Image from "next/image";
 import { Link } from "next-view-transitions";
 
 /* ------------------------------------------------------------------ */
@@ -24,7 +23,7 @@ const BOTTOM_BAR_ITEMS = [
   { label: "LOS ANGELES" },
   { label: "© SIFTION" },
   { label: "SIFATBHT@GMAIL.COM", href: "mailto:sifatbht@gmail.com" },
-  { label: "DESIGN & DEVELOPMENT", alignRight: true },
+  { label: "DESIGN & DEVELOPMENT" },
 ] as const;
 
 /* ------------------------------------------------------------------ */
@@ -41,45 +40,41 @@ function useMediaQuery(query: string): boolean {
     [query],
   );
 
-  const getSnapshot = useCallback(
-    () => window.matchMedia(query).matches,
-    [],
-  );
+  const getSnapshot = useCallback(() => window.matchMedia(query).matches, []);
 
   return useSyncExternalStore(subscribe, getSnapshot, () => false);
 }
 
 /* ------------------------------------------------------------------ */
-/*  Constants                                                         */
+/*  Tokens                                                            */
 /* ------------------------------------------------------------------ */
 
-const NAV_TEXT = {
+const TEXT_NAV = {
   fontFamily: "var(--font-body)",
   fontSize: "clamp(1.15rem, 1.5vw, 23.9px)",
   fontWeight: 700,
-  letterSpacing: "-0.055em",       // Figma: −1.31px ÷ 23.9px
+  letterSpacing: "-0.055em",
   lineHeight: "22px",
-  textTransform: "uppercase" as const,
+  textTransform: "uppercase",
   textDecoration: "none",
-} as const satisfies React.CSSProperties;
+} satisfies React.CSSProperties;
 
-const BOTTOM_TEXT = {
+const TEXT_BTM = {
   fontFamily: "var(--font-body)",
   fontSize: "21px",
   fontWeight: 700,
-  letterSpacing: "-0.055em",       // Figma: −1.15px ÷ 21px
+  letterSpacing: "-0.055em",
   lineHeight: "19.3px",
-  textTransform: "uppercase" as const,
+  textTransform: "uppercase",
   textDecoration: "none",
-  whiteSpace: "nowrap" as const,
-} as const satisfies React.CSSProperties;
+} satisfies React.CSSProperties;
 
-const COLOR_NAV = "rgba(247,247,242,0.86)";   // #f7f7f2db
-const COLOR_BOTTOM = "rgba(247,247,242,0.58)"; // #f7f7f294
-const COLOR_HOVER = "#f7f7f2";
+const COL_NAV = "rgba(247,247,242,0.86)";
+const COL_BTM = "rgba(247,247,242,0.58)";
+const COL_HVR = "#f7f7f2";
 
 /* ------------------------------------------------------------------ */
-/*  Sub‑components                                                    */
+/*  Sub-components                                                    */
 /* ------------------------------------------------------------------ */
 
 function NavLink({
@@ -92,14 +87,12 @@ function NavLink({
   children: React.ReactNode;
 }) {
   const [hovered, setHovered] = useState(false);
-
   const style: React.CSSProperties = {
-    ...NAV_TEXT,
-    color: hovered ? COLOR_HOVER : COLOR_NAV,
+    ...TEXT_NAV,
+    color: hovered ? COL_HVR : COL_NAV,
     transition: "color 200ms ease",
     width: "fit-content",
   };
-
   const handlers = {
     onMouseEnter: () => setHovered(true),
     onMouseLeave: () => setHovered(false),
@@ -120,38 +113,31 @@ function NavLink({
   );
 }
 
-function BottomBarItem({
-  item,
-  index,
-  count,
-}: {
-  item: (typeof BOTTOM_BAR_ITEMS)[number];
-  index: number;
-  count: number;
-}) {
+function BottomBarItem({ label, href }: { label: string; href?: string }) {
   const [hovered, setHovered] = useState(false);
-  const isLast = index === count - 1;
-  const hasHref = "href" in item && item.href;
-
   const style: React.CSSProperties = {
-    ...BOTTOM_TEXT,
-    color: hovered && hasHref ? COLOR_HOVER : COLOR_BOTTOM,
-    cursor: hasHref ? "pointer" : undefined,
-    textAlign: isLast ? "right" : "left",
+    ...TEXT_BTM,
+    color: hovered && href ? COL_HVR : COL_BTM,
+    cursor: href ? "pointer" : undefined,
     transition: "color 200ms ease",
-    width: "fit-content",
+    whiteSpace: "nowrap",
   };
+  const handlers = href
+    ? {
+        onMouseEnter: () => setHovered(true),
+        onMouseLeave: () => setHovered(false),
+      }
+    : {};
 
-  const handlers = {
-    onMouseEnter: () => setHovered(true),
-    onMouseLeave: () => setHovered(false),
-  };
-
-  if (hasHref) {
-    return <a href={item.href!} style={style} {...handlers}>{item.label}</a>;
+  if (href) {
+    return (
+      <a href={href} style={style} {...handlers}>
+        {label}
+      </a>
+    );
   }
 
-  return <span style={style}>{item.label}</span>;
+  return <span style={style}>{label}</span>;
 }
 
 /* ------------------------------------------------------------------ */
@@ -162,8 +148,11 @@ export default function Footer() {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const [logoHovered, setLogoHovered] = useState(false);
 
-  const sectionGap = isMobile ? "clamp(3rem, 8vw, 5rem)" : "108px";
-  const gridGap = isMobile ? "clamp(2rem, 5vw, 3rem)" : "72.32px";
+  const sGap = isMobile ? "clamp(3rem, 8vw, 5rem)" : "108px";
+  const gGap = isMobile ? "clamp(2rem, 5vw, 3rem)" : "72.32px";
+  const fPad = isMobile
+    ? "clamp(3rem, 12vw, 5rem) clamp(1rem, 4vw, 1.5rem)"
+    : "101px 23px 0 21px";
 
   return (
     <footer
@@ -173,10 +162,8 @@ export default function Footer() {
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-end",
-        gap: sectionGap,
-        padding: isMobile
-          ? "clamp(3rem, 12vw, 5rem) clamp(1rem, 4vw, 1.5rem)"
-          : "101px 23px 0 21px",
+        gap: sGap,
+        padding: fPad,
       }}
     >
       {/* ── Top section: 3‑col grid ── */}
@@ -186,28 +173,24 @@ export default function Footer() {
           flexDirection: "column",
           gridTemplateColumns:
             "minmax(0, 1.25fr) minmax(0, 1.55fr) minmax(0, 1.05fr)",
-          gap: gridGap,
+          gap: gGap,
           width: "100%",
-          paddingBottom: isMobile ? "0" : "168px",
+          paddingBottom: isMobile ? "0" : "96px",
         }}
       >
         {/* Philosophy */}
         <section
           aria-label="Brand statement"
           style={{
-            maxWidth: isMobile ? "none" : "265.43px",
+            maxWidth: isMobile ? "none" : "280px",
             width: "100%",
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
           }}
         >
-          <p style={{ margin: 0, ...NAV_TEXT, color: COLOR_NAV }}>
-            BUILT ON THE BELIEF
-            <br />
-            THAT REAL LIVING
-            <br />
-            IS MEETING.
+          <p style={{ margin: 0, ...TEXT_NAV, color: COL_NAV, maxWidth: "265px" }}>
+            Built on the belief that real living is meeting.
           </p>
         </section>
 
@@ -219,7 +202,7 @@ export default function Footer() {
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
-            gap: isMobile ? "clamp(0.4rem, 0.6vw, 0.75rem)" : undefined,
+            gap: isMobile ? "clamp(0.4rem, 0.6vw, 0.75rem)" : "0",
           }}
         >
           {PRIMARY_LINKS.map((link) => (
@@ -237,7 +220,7 @@ export default function Footer() {
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
-            gap: isMobile ? "clamp(0.4rem, 0.6vw, 0.75rem)" : undefined,
+            gap: isMobile ? "clamp(0.4rem, 0.6vw, 0.75rem)" : "0",
           }}
         >
           {SOCIAL_LINKS.map((link) => (
@@ -248,14 +231,13 @@ export default function Footer() {
         </nav>
       </div>
 
-      {/* ── Logo ── */}
+      {/* ── Logo wordmark ── */}
       <div
         style={{
           width: "100%",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          maxHeight: isMobile ? "none" : "364.95px",
         }}
       >
         <Link
@@ -265,19 +247,18 @@ export default function Footer() {
             display: "flex",
             justifyContent: "center",
             width: "100%",
-            maxWidth: "1676.39px",
+            maxWidth: "1677px",
             opacity: logoHovered ? 0.85 : 1,
             transition: "opacity 300ms ease",
           }}
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
         >
-          <Image
+          <img
             src="/assets/footer__logo.svg"
             alt="SIFAT BHATIA"
             width={1677}
             height={198}
-            unoptimized
             style={{
               width: "100%",
               height: "auto",
@@ -288,33 +269,20 @@ export default function Footer() {
       </div>
 
       {/* ── Bottom bar ── */}
-      {isMobile ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            gap: "clamp(0.3rem, 1vw, 0.5rem)",
-            width: "100%",
-          }}
-        >
-          {BOTTOM_BAR_ITEMS.map((item, i) => (
-            <BottomBarItem key={item.label} item={item} index={i} count={BOTTOM_BAR_ITEMS.length} />
-          ))}
-        </div>
-      ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            width: "100%",
-          }}
-        >
-          {BOTTOM_BAR_ITEMS.map((item, i) => (
-            <BottomBarItem key={item.label} item={item} index={i} count={BOTTOM_BAR_ITEMS.length} />
-          ))}
-        </div>
-      )}
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row",
+          justifyContent: "space-between",
+          alignItems: isMobile ? "flex-start" : "center",
+          gap: isMobile ? "clamp(0.3rem, 1vw, 0.5rem)" : "0",
+        }}
+      >
+        {BOTTOM_BAR_ITEMS.map((item) => (
+          <BottomBarItem key={item.label} label={item.label} href={"href" in item ? item.href : undefined} />
+        ))}
+      </div>
     </footer>
   );
 }
