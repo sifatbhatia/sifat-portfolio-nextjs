@@ -26,9 +26,12 @@ function Carousel() {
   const lerpCurrent = useRef(0);
   const prevActive = useRef<HTMLElement | null>(null);
   const isMobile = useRef(false);
+  const mounted = useRef(false);
   const registerItem = useCallback((el: HTMLAnchorElement | null, i: number) => { if (el) itemsRef.current[i] = el; }, []);
 
   useEffect(() => {
+    if (mounted.current) return;
+    mounted.current = true;
     const viewport = viewportRef.current;
     const track = trackRef.current;
     if (!viewport || !track) return;
@@ -78,7 +81,7 @@ function Carousel() {
     const onM = (e: MediaQueryListEvent) => { isMobile.current = e.matches; if (!isMobile.current) { lerpTarget.current = clamp(lerpTarget.current); lerpCurrent.current = clamp(lerpCurrent.current); } };
     mql.addEventListener("change", onM); window.addEventListener("resize", onR);
     viewport.style.cursor = "grab";
-    return () => { cancelAnimationFrame(rafRef.current); viewport.removeEventListener("mousemove", mm); viewport.removeEventListener("mouseenter", me); viewport.removeEventListener("mouseleave", ml); track.removeEventListener("mouseenter", ih, true); track.removeEventListener("mouseleave", il, true); mql.removeEventListener("change", onM); window.removeEventListener("resize", onR); viewport.removeEventListener("mousedown", md); window.removeEventListener("mouseup", mu); window.removeEventListener("mousemove", mdrag); };
+    return () => { mounted.current = false; cancelAnimationFrame(rafRef.current); viewport.removeEventListener("mousemove", mm); viewport.removeEventListener("mouseenter", me); viewport.removeEventListener("mouseleave", ml); track.removeEventListener("mouseenter", ih, true); track.removeEventListener("mouseleave", il, true); mql.removeEventListener("change", onM); window.removeEventListener("resize", onR); viewport.removeEventListener("mousedown", md); window.removeEventListener("mouseup", mu); window.removeEventListener("mousemove", mdrag); };
   }, []);
   return (
     <>
@@ -110,8 +113,11 @@ export default function Hero() {
   const svgRef = useRef<SVGSVGElement>(null);
   const carouselWrapperRef = useRef<HTMLDivElement>(null);
   const ctxRef = useRef<gsap.Context | null>(null);
+  const mounted = useRef(false);
 
   useEffect(() => {
+    if (mounted.current) return;
+    mounted.current = true;
     const section = sectionRef.current;
     const svg = svgRef.current;
     const carouselWrap = carouselWrapperRef.current;
@@ -138,7 +144,7 @@ export default function Hero() {
       ScrollTrigger.create({ trigger: section, start: "top top", end: "bottom top", scrub: 0.45, onUpdate: (self) => { if (!entranceDone) return; const p = self.progress; scrollTl.progress(p); if (window.innerWidth >= 768) { gsap.set(carouselWrap, { opacity: Math.max(0, 1 - p * 2.5) }); } } });
     });
     ctxRef.current = gsapCtx;
-    return () => gsapCtx.revert();
+    return () => { mounted.current = false; gsapCtx.revert(); };
   }, []);
 
   return (
