@@ -148,7 +148,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ position: "relative", width: "100%", minHeight: "100dvh", overflow: "hidden", display: "flex", flexDirection: "column", background: "#141412", color: "#f1eee7" }}>
+    <section ref={sectionRef} style={{ position: "relative", width: "100%", height: "100dvh", overflow: "hidden", display: "flex", flexDirection: "column", background: "#141412", color: "#f1eee7" }}>
       <div ref={carouselWrapperRef} className="hero-carousel-wrap" style={{ flex: "1 1 auto", minHeight: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "env(safe-area-inset-bottom, 0px)", paddingTop: "clamp(6rem, 10vh, 10rem)" }}>
         <Carousel />
       </div>
