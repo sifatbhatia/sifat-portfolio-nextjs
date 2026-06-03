@@ -167,7 +167,7 @@ const websiteSchema = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ViewTransitions>
-      <html lang="en" className={`${inter.variable} ${youngSerif.variable}`}>
+      <html lang="en" className={`${inter.variable} ${youngSerif.variable}`} suppressHydrationWarning>
         <head>
           <script
             type="application/ld+json"
