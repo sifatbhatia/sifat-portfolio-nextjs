@@ -1,0 +1,149 @@
+"use client";
+
+import { useState, useCallback, useEffect, useRef } from "react";
+import AnimatedText from "./AnimatedText";
+
+function PrimaryButton({ href, children }: { href: string; children: React.ReactNode }) {
+  const [toast, setToast] = useState(false);
+  const [icon, setIcon] = useState("→");
+  const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    };
+  }, []);
+
+  const handleClick = useCallback(async (e: React.MouseEvent) => {
+    e.preventDefault();
+    try {
+      await navigator.clipboard.writeText("sifatbht@gmail.com");
+      setToast(true);
+      setIcon("✓");
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = setTimeout(() => { setToast(false); setIcon("→"); }, 2000);
+    } catch {
+      window.location.href = href;
+    }
+  }, [href]);
+
+  const handleDblClick = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = "mailto:sifatbht@gmail.com";
+  }, []);
+
+  return (
+    <div style={{ position: "relative" }}>
+      <button
+        type="button"
+        onClick={handleClick}
+        onDoubleClick={handleDblClick}
+        aria-describedby={toast ? "cta-email-copy-status" : undefined}
+        className="cta-primary-btn"
+        style={{
+          display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
+          padding: "0.85rem 2.5rem", borderRadius: "999px", minWidth: 200,
+          background: "#141412",
+          color: "#f1eee7", border: "none", cursor: "pointer",
+          fontSize: "0.9rem", fontFamily: "var(--font-body)", textDecoration: "none",
+          fontWeight: 500, letterSpacing: "0.02em",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+        }}
+      >
+        {children}
+        <span
+          className="cta-arrow"
+          data-state={icon === "→" ? "arrow" : "check"}
+          style={{
+            display: "inline-block",
+            transition: "transform 200ms ease, opacity 200ms ease",
+          }}
+        >
+          {icon}
+        </span>
+      </button>
+      {toast && (
+        <span id="cta-email-copy-status" role="status" aria-live="polite" style={{
+          position: "absolute", bottom: "-2rem", left: "50%", transform: "translateX(-50%)",
+          fontSize: "0.75rem", color: "rgba(20,20,18,0.65)", fontFamily: "var(--font-body)",
+          whiteSpace: "nowrap", pointerEvents: "none",
+          animation: "toast-fade 2s ease forwards",
+        }}>
+          Copied — double-click to open mail
+        </span>
+      )}
+    </div>
+  );
+}
+
+function SecondaryButton({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={`${children} (opens in new tab)`}
+      className="cta-secondary-btn"
+      style={{
+        display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
+        padding: "0.85rem 2.5rem", borderRadius: "999px", minWidth: 200,
+        border: "1px solid rgba(20,20,18,0.2)",
+        color: "rgba(20,20,18,0.6)",
+        background: "transparent",
+        fontSize: "0.9rem", fontFamily: "var(--font-body)", textDecoration: "none",
+        fontWeight: 500, letterSpacing: "0.02em",
+        boxShadow: "none",
+      }}
+    >
+      {children}
+      <span className="cta-arrow" style={{ fontSize: "1.1rem", lineHeight: 1 }}>↗</span>
+    </a>
+  );
+}
+
+export default function CTA() {
+  return (
+    <section className="cta-section" style={{
+      padding: "clamp(6rem, 12vh, 10rem) clamp(1.5rem, 6vw, 4rem)",
+      background: "#f1eee7",
+      color: "#141412",
+      textAlign: "center",
+    }}>
+      <div style={{ maxWidth: "48rem", margin: "0 auto" }}>
+        <p style={{
+          fontSize: "0.75rem", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase",
+          color: "rgba(20,20,18,0.55)", margin: "0 0 2rem", fontFamily: "var(--font-body)",
+        }}>
+          Get in touch
+        </p>
+        <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+          <AnimatedText
+            split="chars"
+            style={{
+              fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 400, lineHeight: 0.95,
+              letterSpacing: "-0.04em", fontFamily: "var(--font-display)",
+              justifyContent: "center",
+            }}
+          >
+            What are you making?
+          </AnimatedText>
+        </div>
+        <AnimatedText
+          as="p"
+          delay={0.15}
+          style={{
+            fontSize: "clamp(1rem, 1.4vw, 1.2rem)", lineHeight: 1.7,
+            color: "rgba(20,20,18,0.7)", margin: "0 0 3rem", fontFamily: "var(--font-body)",
+            maxWidth: "32rem", marginLeft: "auto", marginRight: "auto",
+          }}
+        >
+          Send a short note about the thing, the problem, or the feeling you want to make real.
+        </AnimatedText>
+        <div style={{ display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap" }}>
+          <PrimaryButton href="mailto:sifatbht@gmail.com">sifatbht@gmail.com</PrimaryButton>
+          <SecondaryButton href="https://www.instagram.com/siftion/">Instagram</SecondaryButton>
+        </div>
+      </div>
+    </section>
+  );
+}
