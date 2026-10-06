@@ -4,7 +4,10 @@ import { Link } from "next-view-transitions";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CaseStudy from "@/components/CaseStudy";
+<<<<<<< HEAD
 import ProjectScrollReset from "@/components/ProjectScrollReset";
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 import { getProject, getAdjacentProjects, projects } from "@/lib/projects";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -56,7 +59,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
+<<<<<<< HEAD
       <ProjectScrollReset />
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }}

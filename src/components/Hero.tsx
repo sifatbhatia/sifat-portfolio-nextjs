@@ -2,14 +2,20 @@
 
 import { useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
+<<<<<<< HEAD
 import { Link } from "next-view-transitions";
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const PROJECTS = [
+<<<<<<< HEAD
   { slug: "willcall", title: "Willcall", sub: "Ticketing Product / Full-Stack Development", img: "/assets/previews/willcall/grid-hero.webp" },
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
   { slug: "j-worra", title: "J. Worra", sub: "Artist Website / Webflow to Next.js", img: "/assets/previews/j-worra/screenshot-1.webp" },
   { slug: "l-affaire-musicale", title: "L'Affaire Musicale", sub: "Brand Identity / Website Refresh", img: "/assets/previews/l-affaire-musicale/screenshot-1.webp" },
   { slug: "sam-blacky", title: "Sam Blacky", sub: "Artist Website / Creative Direction", img: "/assets/previews/sam-blacky/screenshot-1.webp" },
@@ -28,12 +34,18 @@ function Carousel() {
   const lerpCurrent = useRef(0);
   const prevActive = useRef<HTMLElement | null>(null);
   const isMobile = useRef(false);
+<<<<<<< HEAD
   const mounted = useRef(false);
   const registerItem = useCallback((el: HTMLAnchorElement | null, i: number) => { if (el) itemsRef.current[i] = el; }, []);
 
   useEffect(() => {
     if (mounted.current) return;
     mounted.current = true;
+=======
+  const registerItem = useCallback((el: HTMLAnchorElement | null, i: number) => { if (el) itemsRef.current[i] = el; }, []);
+
+  useEffect(() => {
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     const viewport = viewportRef.current;
     const track = trackRef.current;
     if (!viewport || !track) return;
@@ -56,10 +68,13 @@ function Carousel() {
       if (best) { titleRef.current.textContent = best.querySelector(".cap-title")?.textContent || ""; subtitleRef.current.textContent = best.querySelector(".cap-sub")?.textContent || ""; }
     }
     function tick() {
+<<<<<<< HEAD
       if (document.hidden) {
         rafRef.current = requestAnimationFrame(tick);
         return;
       }
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
       if (reduceMotion && !isMobile.current) {
         updActive();
         rafRef.current = requestAnimationFrame(tick);
@@ -79,21 +94,31 @@ function Carousel() {
     viewport.addEventListener("mousedown", md);
     window.addEventListener("mouseup", mu);
     window.addEventListener("mousemove", mdrag);
+<<<<<<< HEAD
     const ih = (e: Event) => { if (isMobile.current) return; const it = (e.target as HTMLElement).closest(".carousel-item") as HTMLElement; if (!it) return; it.classList.add("is-hovered"); track.classList.add("has-hover"); const media = it.querySelector(".carousel-item-media") as HTMLElement; if (media) { media.style.transform = "scale(1.08)"; media.style.transition = "transform 500ms cubic-bezier(0,0.4,0.6,1)"; } };
     const il = (e: Event) => { const it = (e.target as HTMLElement).closest(".carousel-item") as HTMLElement; if (!it) return; it.classList.remove("is-hovered"); track.classList.remove("has-hover"); const media = it.querySelector(".carousel-item-media") as HTMLElement; if (media) { media.style.transform = ""; media.style.transition = ""; } };
+=======
+    const ih = (e: Event) => { if (isMobile.current) return; const it = (e.target as HTMLElement).closest(".carousel-item") as HTMLElement; if (!it) return; it.classList.add("is-hovered"); track.classList.add("has-hover"); it.style.setProperty("--scale", String(C.HOVER_SCALE)); };
+    const il = (e: Event) => { const it = (e.target as HTMLElement).closest(".carousel-item") as HTMLElement; if (!it) return; it.classList.remove("is-hovered"); track.classList.remove("has-hover"); it.style.setProperty("--scale", "1"); };
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     viewport.addEventListener("mousemove", mm); viewport.addEventListener("mouseenter", me); viewport.addEventListener("mouseleave", ml);
     track.addEventListener("mouseenter", ih, true); track.addEventListener("mouseleave", il, true);
     const onR = () => { lerpCurrent.current = clamp(lerpCurrent.current); lerpTarget.current = clamp(lerpTarget.current); };
     const onM = (e: MediaQueryListEvent) => { isMobile.current = e.matches; if (!isMobile.current) { lerpTarget.current = clamp(lerpTarget.current); lerpCurrent.current = clamp(lerpCurrent.current); } };
     mql.addEventListener("change", onM); window.addEventListener("resize", onR);
     viewport.style.cursor = "grab";
+<<<<<<< HEAD
     return () => { mounted.current = false; cancelAnimationFrame(rafRef.current); viewport.removeEventListener("mousemove", mm); viewport.removeEventListener("mouseenter", me); viewport.removeEventListener("mouseleave", ml); track.removeEventListener("mouseenter", ih, true); track.removeEventListener("mouseleave", il, true); mql.removeEventListener("change", onM); window.removeEventListener("resize", onR); viewport.removeEventListener("mousedown", md); window.removeEventListener("mouseup", mu); window.removeEventListener("mousemove", mdrag); };
+=======
+    return () => { cancelAnimationFrame(rafRef.current); viewport.removeEventListener("mousemove", mm); viewport.removeEventListener("mouseenter", me); viewport.removeEventListener("mouseleave", ml); track.removeEventListener("mouseenter", ih, true); track.removeEventListener("mouseleave", il, true); mql.removeEventListener("change", onM); window.removeEventListener("resize", onR); viewport.removeEventListener("mousedown", md); window.removeEventListener("mouseup", mu); window.removeEventListener("mousemove", mdrag); };
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
   }, []);
   return (
     <>
       <div ref={viewportRef} className="carousel-viewport" style={{ width: "100%", height: "30vh", minHeight: 240, overflowX: "clip", overflowY: "visible", position: "relative", display: "flex", alignItems: "center" }}>
         <div ref={trackRef} style={{ display: "flex", flexDirection: "row", flexWrap: "nowrap", alignItems: "center", height: "100%", flexShrink: 0, minWidth: "max-content", willChange: "transform", padding: "0 40px", gap: 0 }}>
           {PROJECTS.map((p, i) => (
+<<<<<<< HEAD
             <Link
               key={i}
               ref={(el) => registerItem(el, i)}
@@ -106,12 +131,21 @@ function Carousel() {
             >
               <div className="carousel-item-media" style={{ width: "100%", aspectRatio: "16/10", borderRadius: 14, border: "1px solid rgba(246,232,234,0.10)", overflow: "hidden", background: "rgba(246,232,234,0.02)", position: "relative" }}>
                 <Image src={p.img} alt={p.title} fill sizes="(max-width: 767px) 92vw, 25vw" style={{ objectFit: "cover" }} priority={i === 0} loading={i === 0 ? "eager" : "lazy"} />
+=======
+            <a key={i} ref={(el) => registerItem(el, i)} className="carousel-item" href={`/projects/${p.slug}`} style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", flexShrink: 0, width: "calc(18vw * var(--scale, 1))", padding: "0 8px", color: "inherit", textDecoration: "none", transition: "width 600ms cubic-bezier(0,0.4,0.6,1)" }}>
+              <div style={{ width: "100%", aspectRatio: "16/10", borderRadius: 14, border: "1px solid rgba(246,232,234,0.10)", overflow: "hidden", background: "rgba(246,232,234,0.02)", position: "relative" }}>
+                <Image src={p.img} alt={p.title} fill sizes="(max-width: 767px) 92vw, 25vw" style={{ objectFit: "cover" }} />
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
               </div>
               <div className="carousel-caption" style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 2, width: "100%"}}>
                 <span className="cap-title" style={{ fontSize: "clamp(13px,1.05vw,16px)", color: "#f1eee7" }}>{p.title}</span>
                 <span className="cap-sub" style={{ fontSize: "clamp(10px,0.85vw,13px)", color: "rgba(246,232,234,0.55)", textTransform: "uppercase", letterSpacing: "0.12em" }}>{p.sub}</span>
               </div>
+<<<<<<< HEAD
             </Link>
+=======
+            </a>
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
           ))}
         </div>
       </div>
@@ -128,11 +162,16 @@ export default function Hero() {
   const svgRef = useRef<SVGSVGElement>(null);
   const carouselWrapperRef = useRef<HTMLDivElement>(null);
   const ctxRef = useRef<gsap.Context | null>(null);
+<<<<<<< HEAD
   const mounted = useRef(false);
 
   useEffect(() => {
     if (mounted.current) return;
     mounted.current = true;
+=======
+
+  useEffect(() => {
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     const section = sectionRef.current;
     const svg = svgRef.current;
     const carouselWrap = carouselWrapperRef.current;
@@ -148,10 +187,15 @@ export default function Hero() {
       const startYMult = window.innerWidth < 768 ? 0.38 : 0.52;
       const startY = -(window.innerHeight * startYMult);
       gsap.set(letters, { y: startY, x: (i: number) => (i - center) * 22, rotationZ: (i: number) => (i - center) * 2 });
+<<<<<<< HEAD
+=======
+      gsap.set(carouselWrap, { opacity: 0 });
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
       let entranceDone = false;
       const entrance = gsap.timeline({ onComplete: () => { entranceDone = true; } });
       entrance.to(letters, { y: 0, x: 0, rotationZ: 0, stagger: { each: 0.08, from: "start" }, ease: "power4.out", duration: 1.05, delay: 0.15 });
       const carouselItems = carouselWrap.querySelectorAll(".carousel-item");
+<<<<<<< HEAD
       gsap.set(carouselItems, { y: 10, opacity: 1 });
       entrance.to(carouselItems, { y: 0, duration: 0.45, ease: "power3.out", stagger: 0.04 }, "-=0.8");
       ScrollTrigger.create({ trigger: section, start: "top top", end: "bottom top", scrub: 0.45, onUpdate: (self) => { if (!entranceDone) return; const p = self.progress; scrollTl.progress(p); if (window.innerWidth >= 768) { gsap.set(carouselWrap, { opacity: Math.max(0, 1 - p * 2.5) }); } } });
@@ -166,6 +210,23 @@ export default function Hero() {
         <Carousel />
       </div>
       <p className="hero-tagline" style={{ color: "var(--text-soft, #b8b1a6)", fontSize: "clamp(1rem, 1.4vw, 1.2rem)", fontWeight: 400, letterSpacing: "-0.01em", lineHeight: 1.5 }}>
+=======
+      gsap.set(carouselItems, { y: 20, opacity: 0 });
+      entrance.to(carouselWrap, { opacity: 1, duration: 0.6, ease: "power2.out" }, "-=0.4");
+      entrance.to(carouselItems, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", stagger: 0.06 }, "-=0.3");
+      ScrollTrigger.create({ trigger: section, start: "top top", end: "bottom top", scrub: 0.45, onUpdate: (self) => { if (!entranceDone) return; const p = self.progress; scrollTl.progress(p); if (window.innerWidth >= 768) { gsap.set(carouselWrap, { opacity: Math.max(0, 1 - p * 2.5) }); } } });
+    });
+    ctxRef.current = gsapCtx;
+    return () => gsapCtx.revert();
+  }, []);
+
+  return (
+    <section ref={sectionRef} style={{ position: "relative", width: "100%", minHeight: "100dvh", overflow: "hidden", display: "flex", flexDirection: "column", background: "#141412", color: "#f1eee7" }}>
+      <div ref={carouselWrapperRef} className="hero-carousel-wrap" style={{ flex: "1 1 auto", minHeight: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "env(safe-area-inset-bottom, 0px)", paddingTop: "clamp(6rem, 10vh, 10rem)" }}>
+        <Carousel />
+      </div>
+      <p className="hero-tagline" style={{ padding: "0rem 6rem",         color: "var(--text-soft, #b8b1a6)", fontSize: "clamp(1rem, 1.4vw, 1.2rem)", fontWeight: 400, letterSpacing: "-0.01em", lineHeight: 1.5, textAlign: "right" }}>
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
         Design engineer and creative technologist building websites for people with worlds worth meeting.
       </p>
       <div className="hero-wordmark" style={{ width: "100vw", marginLeft: "calc(50% - 50vw)", flexShrink: 0, overflow: "visible" }}>

@@ -1,6 +1,9 @@
 "use client";
 
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 import Image from "next/image";
 import { ProjectData } from "@/lib/projects";
 import AnimatedText from "./AnimatedText";
@@ -61,6 +64,33 @@ function FeatureItem({
   );
 }
 
+<<<<<<< HEAD
+=======
+// ─── Screenshot Frame ────────────────────────────────────────────────────────
+
+function ScreenshotFrame({
+  src,
+  alt,
+  type,
+}: {
+  src: string;
+  alt: string;
+  type: "laptop" | "phone";
+}) {
+  return (
+    <div className="screenshot-frame" data-orientation={type}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={type === "phone" ? "(max-width: 900px) 72vw, 320px" : "(max-width: 900px) 92vw, 640px"}
+        style={{ objectFit: type === "phone" ? "contain" : "cover" }}
+      />
+    </div>
+  );
+}
+
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 // ─── Metrics Callout ───────────────────────────────────────────────────────────
 
 function MetricsBlock({
@@ -87,6 +117,7 @@ function MetricsBlock({
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function CaseStudy({ project }: { project: ProjectData }) {
+<<<<<<< HEAD
   const [panelOpen, setPanelOpen] = useState(false);
   const paragraphs = (text: string) =>
     text.split("\n\n").filter(Boolean);
@@ -108,6 +139,14 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
     <article
       className="case-study-article t-panel-slide"
       data-open={panelOpen}
+=======
+  const paragraphs = (text: string) =>
+    text.split("\n\n").filter(Boolean);
+
+  return (
+    <article
+      className="case-study-article"
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
       style={{
         maxWidth: "1400px",
         margin: "0 auto",
@@ -212,7 +251,10 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
           </p>
           {project.url && (
             <a
+<<<<<<< HEAD
               className="case-study-live-link"
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
               href={project.url}
               target="_blank"
               rel="noreferrer"
@@ -352,6 +394,31 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
       {/* ── Metrics ── */}
       <MetricsBlock metrics={project.metrics} />
 
+<<<<<<< HEAD
+=======
+      {/* ── Screenshot Gallery ── */}
+      {project.screenshots && project.screenshots.length > 0 && (
+        <section className="gallery-section">
+          <div className="gallery-header">
+            <span className="gallery-eyebrow">Screenshots</span>
+          </div>
+          <div className="gallery-grid">
+            {project.screenshots.map((shot, i) => (
+              <div
+                key={i}
+                className={`gallery-item gallery-item--${shot.type}`}
+              >
+                <ScreenshotFrame src={shot.src} alt={`${project.title} screenshot ${i + 1}`} type={shot.type} />
+                <p className="gallery-caption">
+                  {shot.caption || `Fig ${String(i + 2).padStart(2, "0")} — ${project.title}`}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
       {/* ── Testimonial ── */}
       {project.testimonial && (
         <section

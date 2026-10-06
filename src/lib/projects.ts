@@ -1,6 +1,10 @@
 export interface ProjectData {
   slug: string; title: string; role: string; year: string; client?: string; url?: string;
+<<<<<<< HEAD
   description: string; summary?: string; challenge: string; approach: string; outcome: string;
+=======
+  description: string; challenge: string; approach: string; outcome: string;
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
   stack: string[];
   testimonial?: { quote: string; attribution: string };
   heroImage: string;
@@ -11,6 +15,7 @@ export interface ProjectData {
 
 export const projects: ProjectData[] = [
   {
+<<<<<<< HEAD
     slug: "willcall",
     title: "Willcall",
     role: "Ticketing Product / Full-Stack Development",
@@ -47,12 +52,17 @@ The result is a polished foundation for a product that can carry live drops, org
     ],
   },
   {
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     slug: "j-worra",
     title: "J. Worra",
     role: "Artist Website / Webflow to Next.js",
     year: "2024-2026",
     url: "https://www.jworra.com/",
+<<<<<<< HEAD
     summary: "An artist platform that brings music, dates, social links, and the world around J. Worra into one direct experience.",
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     description:
       "Artist website redesign and development for J. Worra, evolving the site from a plain legacy presence into a custom Next.js experience shaped around music, tour dates, social links, and the artist world visitors are trying to reach.",
     challenge: `The project was not just to make the site look better. The real challenge was to move J. Worra's web presence out of a generic artist-site format and into something that felt more current, more direct, and more aligned with the artist's music and live presence.
@@ -93,7 +103,10 @@ The redesign creates a clear progression from a plain legacy site to a custom-bu
     role: "Brand Identity / Website Refresh",
     year: "2026",
     url: "https://www.laffairemusicale.com/",
+<<<<<<< HEAD
     summary: "A sharper identity and web presence for the people, artists, and relationships behind a dance music management company.",
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     description:
       "Brand and website refresh for L'Affaire Musicale, including logo design, visual identity, creative direction, and a redesigned site for the people, artists, and relationships around the dance music management company.",
     challenge: `The previous site had useful information, but the brand felt dated and visually underpowered. It did not reflect the agency's taste, roster, relationships, or position inside the dance music world.
@@ -133,7 +146,10 @@ The new identity can extend beyond the website into roster materials, pitch deck
     role: "Artist Website / Creative Direction",
     year: "2026",
     url: "https://samblacky.com/",
+<<<<<<< HEAD
     summary: "A louder artist website direction built around music, photography, travel, fashion, and the energy around Sam Blacky.",
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     description:
       "Artist website refresh for Sam Blacky, focused on stronger visual identity, music-forward structure, bolder photography, and clearer paths for fans, brands, press, and booking contacts to meet the world around the artist.",
     challenge: `The existing site had the right basic information, but it felt static and dated. The design leaned more toward a simple press page than a living artist world.
@@ -173,7 +189,10 @@ It turns the site from a basic information page into a stronger artist showcase 
     title: "ClipKeep",
     role: "Product Design / Full-Stack Development",
     year: "2024-2026",
+<<<<<<< HEAD
     summary: "A local-first clip vault that turns scattered social saves into a calm, searchable personal library.",
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     url: "https://clipkeep.vercel.app",
     description:
       "A local-first clip vault for saving, organizing, and revisiting social media content from TikTok, Instagram Reels, and YouTube. ClipKeep turns scattered links into a calm personal library with collections, favorites, metadata previews, search, optional encrypted sync, and experimental AI summaries.",
@@ -216,7 +235,10 @@ The project reinforced that social URLs are moving targets, not clean APIs. The 
     role: "Weather App / Front-End System",
     year: "2026",
     url: "https://aer-psi.vercel.app/",
+<<<<<<< HEAD
     summary: "A weather interface that translates live conditions into atmosphere through color, motion, and a quiet utility-first system.",
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     description:
       "A minimal real-time weather app that lets the interface meet the weather itself: Open-Meteo conditions, hourly data, a 7-day forecast, adaptive gradients, and embeddable widgets shaped around temperature and system preference.",
     challenge: `Most weather apps treat conditions as information placed inside a generic shell. Aer started from a different question: what if the interface changed because the weather changed?

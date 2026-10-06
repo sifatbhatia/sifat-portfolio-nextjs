@@ -112,7 +112,11 @@ export default function NowPage() {
 
             <div style={{ marginTop: "2rem", paddingTop: "2rem", borderTop: "1px solid rgba(241,238,231,0.08)" }}>
               <p style={{ fontSize: "0.8rem", color: "rgba(241,238,231,0.3)", fontFamily: "var(--font-body)" }}>
+<<<<<<< HEAD
                 Last updated: July 2026
+=======
+                Last updated: May 2026
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
               </p>
             </div>
           </div>

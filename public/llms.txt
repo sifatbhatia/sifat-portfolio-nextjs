@@ -22,7 +22,11 @@ F-1 student on CPT (Curricular Practical Training). Authorized for part-time and
 
 - Email: sifatbht@gmail.com
 - Website: https://sifat.tech
+<<<<<<< HEAD
 - Instagram: https://www.instagram.com/siftion/
+=======
+- Instagram: https://www.instagram.com/sifatxo/
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 - GitHub: https://github.com/sifatbhatia
 - Location: Los Angeles, CA
 

@@ -1,10 +1,16 @@
 import { NextResponse } from 'next/server';
+<<<<<<< HEAD
 import { neon } from '@neondatabase/serverless';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
 export const dynamic = "force-dynamic";
 
+=======
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 interface Pulse {
   id?: string;
   title: string;
@@ -47,12 +53,41 @@ function getLocalPulses(): Pulse[] {
   } catch { return []; }
 }
 
+<<<<<<< HEAD
 const db = process.env.DATABASE_URL ? neon(process.env.DATABASE_URL) : null;
 type DbValue = string | number | boolean | null;
 
 async function dbQuery<T>(query: string, values: DbValue[] = []): Promise<T[]> {
   if (!db) return [];
   return db.query(query, values) as Promise<T[]>;
+=======
+const SUPABASE_URL = "https://nevuacfqoqaixtojxwve.supabase.co";
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "sb_publishable_pWgcYZJe1jGJcpG5_vcAQw_p512x0cR";
+
+async function supabaseFetch<T>(path: string, options: RequestInit = {}): Promise<T | null> {
+  const url = `${SUPABASE_URL}/rest/v1/${path}`;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+  const headers = new Headers(options.headers);
+  headers.set('apikey', SUPABASE_KEY);
+  headers.set('Authorization', `Bearer ${SUPABASE_KEY}`);
+  headers.set('Content-Type', 'application/json');
+
+  try {
+    const res = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+      headers,
+    });
+    clearTimeout(timeout);
+    if (!res.ok) return null;
+    const text = await res.text();
+    return text ? JSON.parse(text) as T : [] as T;
+  } catch {
+    clearTimeout(timeout);
+    return null; // Supabase unreachable — fall back to local data
+  }
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 }
 
 function authorizeWrite(request: Request): NextResponse | null {
@@ -77,6 +112,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get('slug');
 
+<<<<<<< HEAD
   try {
     const rows = slug
       ? await dbQuery<Pulse>('SELECT * FROM pulses WHERE slug = $1 LIMIT 1', [slug])
@@ -90,6 +126,28 @@ export async function GET(request: Request) {
       : pulses.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
     return NextResponse.json(data || []);
   }
+=======
+  // Try Supabase first
+  let data: Pulse | Pulse[] | null;
+  if (slug) {
+    data = await supabaseFetch<Pulse[]>(`pulses?slug=eq.${encodeURIComponent(slug)}&select=*`);
+    data = Array.isArray(data) ? data[0] : data;
+  } else {
+    data = await supabaseFetch<Pulse[]>('pulses?select=*&order=timestamp.desc');
+  }
+
+  // Fall back to local data if Supabase is unreachable
+  if (data === null || data === undefined) {
+    const pulses = getLocalPulses();
+    if (slug) {
+      data = pulses.find((p) => p.slug === slug) || null;
+    } else {
+      data = pulses.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+    }
+  }
+
+  return NextResponse.json(data || []);
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 }
 
 export async function POST(request: Request) {
@@ -113,11 +171,21 @@ export async function POST(request: Request) {
       slug: slugFromTitle(body.title || 'untitled'),
     };
 
+<<<<<<< HEAD
     const rows = await dbQuery<Pulse>(
       'INSERT INTO pulses (title, content, integrity, resonance, atmosphere, prompt, timestamp, slug) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
       [newPulse.title, newPulse.content, newPulse.integrity, newPulse.resonance, newPulse.atmosphere, newPulse.prompt, newPulse.timestamp, newPulse.slug],
     );
     return NextResponse.json(rows[0] || newPulse);
+=======
+    const data = await supabaseFetch<Pulse[]>('pulses', {
+      method: 'POST',
+      body: JSON.stringify(newPulse),
+      headers: { 'Prefer': 'return=representation' },
+    });
+
+    return NextResponse.json(Array.isArray(data) ? data[0] : data || newPulse);
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
   } catch {
     return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
   }
@@ -152,6 +220,7 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: 'No fields to update' }, { status: 400 });
     }
 
+<<<<<<< HEAD
     const fields = Object.keys(update) as Array<keyof Pulse>;
     const values = fields.map((field) => update[field] as DbValue);
     const setClause = fields.map((field, index) => `${field} = $${index + 1}`).join(', ');
@@ -160,6 +229,15 @@ export async function PATCH(request: Request) {
       [...values, slug],
     );
     const updated = updatedRows[0];
+=======
+    const data = await supabaseFetch<Pulse[]>(`pulses?slug=eq.${encodeURIComponent(slug)}`, {
+      method: 'PATCH',
+      body: JSON.stringify(update),
+      headers: { 'Prefer': 'return=representation' },
+    });
+
+    const updated = Array.isArray(data) ? data[0] : null;
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     if (!updated) {
       return NextResponse.json({ error: 'Entry not found or update failed' }, { status: 404 });
     }
@@ -178,7 +256,11 @@ export async function DELETE(request: Request) {
   const slug = searchParams.get('slug');
   if (!slug) return NextResponse.json({ error: 'Missing Slug' }, { status: 400 });
   try {
+<<<<<<< HEAD
     await dbQuery('DELETE FROM pulses WHERE slug = $1', [slug]);
+=======
+    await supabaseFetch(`pulses?slug=eq.${encodeURIComponent(slug)}`, { method: 'DELETE' });
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: 'Delete failed' }, { status: 500 });

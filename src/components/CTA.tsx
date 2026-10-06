@@ -1,5 +1,6 @@
 "use client";
 
+<<<<<<< HEAD
 import { useState, useCallback, useEffect, useRef } from "react";
 import AnimatedText from "./AnimatedText";
 
@@ -13,6 +14,15 @@ function PrimaryButton({ href, children }: { href: string; children: React.React
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
     };
   }, []);
+=======
+import { useState, useCallback } from "react";
+import AnimatedText from "./AnimatedText";
+
+function PrimaryButton({ href, children }: { href: string; children: React.ReactNode }) {
+  const [hovered, setHovered] = useState(false);
+  const [toast, setToast] = useState(false);
+  const [icon, setIcon] = useState("→");
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 
   const handleClick = useCallback(async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -20,8 +30,12 @@ function PrimaryButton({ href, children }: { href: string; children: React.React
       await navigator.clipboard.writeText("sifatbht@gmail.com");
       setToast(true);
       setIcon("✓");
+<<<<<<< HEAD
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
       toastTimerRef.current = setTimeout(() => { setToast(false); setIcon("→"); }, 2000);
+=======
+      setTimeout(() => { setToast(false); setIcon("→"); }, 2000);
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     } catch {
       window.location.href = href;
     }
@@ -39,6 +53,7 @@ function PrimaryButton({ href, children }: { href: string; children: React.React
         onClick={handleClick}
         onDoubleClick={handleDblClick}
         aria-describedby={toast ? "cta-email-copy-status" : undefined}
+<<<<<<< HEAD
         className="cta-primary-btn"
         style={{
           display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
@@ -61,6 +76,31 @@ function PrimaryButton({ href, children }: { href: string; children: React.React
         >
           {icon}
         </span>
+=======
+        style={{
+          display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
+          padding: "0.85rem 2.5rem", borderRadius: "999px", minWidth: 200,
+          background: hovered ? "#282821" : "#141412",
+          color: "#f1eee7", border: "none", cursor: "pointer",
+          fontSize: "0.9rem", fontFamily: "var(--font-body)", textDecoration: "none",
+          fontWeight: 500, letterSpacing: "0.02em",
+          boxShadow: hovered ? "0 4px 16px rgba(0,0,0,0.2)" : "0 2px 8px rgba(0,0,0,0.1)",
+          transition: "background 200ms ease, box-shadow 200ms ease, transform 200ms ease",
+          transform: hovered ? "translateY(-2px)" : "translateY(0)",
+        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onFocus={() => setHovered(true)}
+        onBlur={() => setHovered(false)}
+      >
+        {children}
+        <span style={{
+          display: "inline-block",
+          transition: "transform 200ms ease, opacity 200ms ease",
+          transform: hovered && icon === "→" ? "translateX(4px)" : "translateX(0)",
+          opacity: icon === "→" ? (hovered ? 1 : 0.5) : 1,
+        }}>{icon}</span>
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
       </button>
       {toast && (
         <span id="cta-email-copy-status" role="status" aria-live="polite" style={{
@@ -77,17 +117,26 @@ function PrimaryButton({ href, children }: { href: string; children: React.React
 }
 
 function SecondaryButton({ href, children }: { href: string; children: React.ReactNode }) {
+<<<<<<< HEAD
+=======
+  const [hovered, setHovered] = useState(false);
+
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
   return (
     <a
       href={href}
       target="_blank"
       rel="noreferrer"
+<<<<<<< HEAD
       aria-label={`${children} (opens in new tab)`}
       className="cta-secondary-btn"
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
       style={{
         display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
         padding: "0.85rem 2.5rem", borderRadius: "999px", minWidth: 200,
         border: "1px solid rgba(20,20,18,0.2)",
+<<<<<<< HEAD
         color: "rgba(20,20,18,0.6)",
         background: "transparent",
         fontSize: "0.9rem", fontFamily: "var(--font-body)", textDecoration: "none",
@@ -97,6 +146,28 @@ function SecondaryButton({ href, children }: { href: string; children: React.Rea
     >
       {children}
       <span className="cta-arrow" style={{ fontSize: "1.1rem", lineHeight: 1 }}>↗</span>
+=======
+        color: hovered ? "#141412" : "rgba(20,20,18,0.6)",
+        background: hovered ? "rgba(20,20,18,0.06)" : "transparent",
+        fontSize: "0.9rem", fontFamily: "var(--font-body)", textDecoration: "none",
+        fontWeight: 500, letterSpacing: "0.02em",
+        boxShadow: hovered ? "0 4px 16px rgba(0,0,0,0.08)" : "none",
+        transition: "background 200ms ease, color 200ms ease, box-shadow 200ms ease, transform 200ms ease",
+        transform: hovered ? "translateY(-2px)" : "translateY(0)",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
+    >
+      {children}
+      <span style={{
+        display: "inline-block",
+        transition: "transform 200ms ease, opacity 200ms ease",
+        transform: hovered ? "translateX(4px)" : "translateX(0)",
+        opacity: hovered ? 1 : 0.5,
+      }}>↗</span>
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     </a>
   );
 }
@@ -125,7 +196,11 @@ export default function CTA() {
               justifyContent: "center",
             }}
           >
+<<<<<<< HEAD
             What are you making?
+=======
+            Building something that needs to feel more true?
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
           </AnimatedText>
         </div>
         <AnimatedText
@@ -137,7 +212,11 @@ export default function CTA() {
             maxWidth: "32rem", marginLeft: "auto", marginRight: "auto",
           }}
         >
+<<<<<<< HEAD
           Send a short note about the thing, the problem, or the feeling you want to make real.
+=======
+          Send a short note with what you are making, what feels unresolved, and what kind of encounter the finished thing needs to create.
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
         </AnimatedText>
         <div style={{ display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap" }}>
           <PrimaryButton href="mailto:sifatbht@gmail.com">sifatbht@gmail.com</PrimaryButton>

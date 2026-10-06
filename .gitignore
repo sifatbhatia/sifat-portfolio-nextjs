@@ -32,7 +32,10 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+<<<<<<< HEAD
 neonstring.txt
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 
 # vercel
 .vercel
@@ -40,6 +43,9 @@ neonstring.txt
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+<<<<<<< HEAD
 
 # Windows Zone Identifier (NTFS ADS)
 *:Zone.Identifier
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2

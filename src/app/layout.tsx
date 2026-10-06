@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Young_Serif } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
+<<<<<<< HEAD
 import LenisProvider from "@/components/lenis-provider";
+=======
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 import "./globals.css";
 
 const inter = Inter({
@@ -57,12 +60,27 @@ export const metadata: Metadata = {
     title: "Sifat Bhatia — Design Engineer & Creative Technologist",
     description:
       "Design engineer based in Los Angeles. Building websites, identities, and interactive tools for people with worlds worth meeting.",
+<<<<<<< HEAD
+=======
+    images: [
+      {
+        url: "/assets/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Sifat Bhatia — Design Engineer & Creative Technologist",
+      },
+    ],
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
   },
   twitter: {
     card: "summary_large_image",
     title: "Sifat Bhatia — Design Engineer & Creative Technologist",
     description:
       "Design engineer based in Los Angeles. Building websites, identities, and interactive tools for people with worlds worth meeting.",
+<<<<<<< HEAD
+=======
+    images: ["/assets/og-image.png"],
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     creator: "@sifatxo",
   },
   robots: {
@@ -77,7 +95,11 @@ export const metadata: Metadata = {
     },
   },
   verification: {
+<<<<<<< HEAD
     // google: "actual-verification-code-here",
+=======
+    google: "google-site-verification-code", // Replace with actual code when available
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
   },
   category: "portfolio",
 };
@@ -92,7 +114,11 @@ const personSchema = {
   url: "https://sifat.tech",
   sameAs: [
     "https://github.com/sifatbhatia",
+<<<<<<< HEAD
     "https://www.instagram.com/siftion/",
+=======
+    "https://www.instagram.com/sifatxo/",
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     "https://www.linkedin.com/in/sifatbhatia",
   ],
   knowsAbout: [
@@ -159,7 +185,11 @@ const websiteSchema = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ViewTransitions>
+<<<<<<< HEAD
       <html lang="en" className={`${inter.variable} ${youngSerif.variable}`} suppressHydrationWarning>
+=======
+      <html lang="en" className={`${inter.variable} ${youngSerif.variable}`}>
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
         <head>
           <script
             type="application/ld+json"
@@ -170,9 +200,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
           />
         </head>
+<<<<<<< HEAD
         <body className="antialiased">
           <LenisProvider>{children}</LenisProvider>
         </body>
+=======
+        <body className="antialiased">{children}</body>
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
       </html>
     </ViewTransitions>
   );

@@ -35,7 +35,11 @@ export default function ProjectsPage() {
             {p.title}
           </h2>
           <p style={{ fontSize: "1rem", color: "rgba(241,238,231,0.55)", margin: "0.5rem 0 0", maxWidth: "36rem", fontFamily: "var(--font-body)" }}>
+<<<<<<< HEAD
             {p.summary ?? p.description.split(". ")[0] + "."}
+=======
+            {p.description}
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
           </p>
         </div>
         <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
@@ -61,7 +65,14 @@ export default function ProjectsPage() {
             Selected work
           </AnimatedText>
           <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.5)", margin: "1.5rem 0 0", fontFamily: "var(--font-body)", maxWidth: "36rem" }}>
+<<<<<<< HEAD
             Websites, identities, and tools made with artists, agencies, and creative teams.
+=======
+            Websites, identities, and tools shaped with artists, agencies, and creative teams. Each project began with a person, a context, and a tension worth listening to.
+          </p>
+          <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "rgba(241,238,231,0.42)", margin: "1rem 0 0", fontFamily: "var(--font-body)", maxWidth: "34rem" }}>
+            More case studies are being shaped as the work becomes ready to show: built things first, written up with care after.
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
           </p>
         </header>
 
@@ -75,7 +86,11 @@ export default function ProjectsPage() {
               Experiments / small worlds
             </p>
             <p style={{ fontSize: "clamp(0.95rem, 1.2vw, 1.05rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.48)", margin: 0, fontFamily: "var(--font-body)" }}>
+<<<<<<< HEAD
               Smaller studies, speculative builds, and playful tools.
+=======
+              Smaller studies, speculative builds, and playful tools where the goal was exploration, craft, or listening to an odd little idea long enough for it to answer back.
+>>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
             </p>
           </div>
 
