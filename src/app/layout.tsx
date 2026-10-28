@@ -1,24 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Young_Serif } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
-<<<<<<< HEAD
 import LenisProvider from "@/components/lenis-provider";
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const youngSerif = Young_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-young-serif",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -26,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | Sifat Bhatia",
   },
   description:
-    "Sifat Bhatia designs and builds websites, identities, and interactive tools for people with worlds worth meeting.",
+    "Sifat Bhatia is a Los Angeles design engineer working across websites, identity, and digital products.",
   keywords: [
     "Sifat Bhatia",
     "design engineer",
@@ -56,31 +39,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://sifat.tech",
-    siteName: "Sifat Bhatia — Design Engineer",
-    title: "Sifat Bhatia — Design Engineer & Creative Technologist",
+    siteName: "Sifat Bhatia - Design Engineer",
+    title: "Sifat Bhatia - Design Engineer and Creative Technologist",
     description:
-      "Design engineer based in Los Angeles. Building websites, identities, and interactive tools for people with worlds worth meeting.",
-<<<<<<< HEAD
-=======
-    images: [
-      {
-        url: "/assets/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Sifat Bhatia — Design Engineer & Creative Technologist",
-      },
-    ],
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
+      "Los Angeles design engineer working across websites, identity, and digital products.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sifat Bhatia — Design Engineer & Creative Technologist",
+    title: "Sifat Bhatia - Design Engineer and Creative Technologist",
     description:
-      "Design engineer based in Los Angeles. Building websites, identities, and interactive tools for people with worlds worth meeting.",
-<<<<<<< HEAD
-=======
-    images: ["/assets/og-image.png"],
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
+      "Los Angeles design engineer working across websites, identity, and digital products.",
     creator: "@sifatxo",
   },
   robots: {
@@ -95,11 +63,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-<<<<<<< HEAD
     // google: "actual-verification-code-here",
-=======
-    google: "google-site-verification-code", // Replace with actual code when available
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
   },
   category: "portfolio",
 };
@@ -108,17 +72,13 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Sifat Bhatia",
-  jobTitle: "Design Engineer & Creative Technologist",
+  jobTitle: "Design Engineer and Creative Technologist",
   description:
-    "Sifat Bhatia is a design engineer and creative technologist based in Los Angeles. He builds websites, identities, and interactive tools through close attention to people, context, and constraint.",
+    "Los Angeles design engineer building websites, identity systems, and digital products for artists and creative teams.",
   url: "https://sifat.tech",
   sameAs: [
     "https://github.com/sifatbhatia",
-<<<<<<< HEAD
     "https://www.instagram.com/siftion/",
-=======
-    "https://www.instagram.com/sifatxo/",
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     "https://www.linkedin.com/in/sifatbhatia",
   ],
   knowsAbout: [
@@ -161,7 +121,7 @@ const personSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Sifat Bhatia — Design Engineer",
+  name: "Sifat Bhatia - Design Engineer",
   url: "https://sifat.tech",
   description:
     "Portfolio of Sifat Bhatia, a design engineer and creative technologist based in Los Angeles.",
@@ -185,12 +145,13 @@ const websiteSchema = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ViewTransitions>
-<<<<<<< HEAD
-      <html lang="en" className={`${inter.variable} ${youngSerif.variable}`} suppressHydrationWarning>
-=======
-      <html lang="en" className={`${inter.variable} ${youngSerif.variable}`}>
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
+      <html lang="en" data-mode="night" suppressHydrationWarning>
         <head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `try { const saved = localStorage.getItem("siftion-showcase:mode"); if (saved === "light" || saved === "night") document.documentElement.dataset.mode = saved; } catch {}`,
+            }}
+          />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
@@ -200,13 +161,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
           />
         </head>
-<<<<<<< HEAD
         <body className="antialiased">
           <LenisProvider>{children}</LenisProvider>
         </body>
-=======
-        <body className="antialiased">{children}</body>
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
       </html>
     </ViewTransitions>
   );

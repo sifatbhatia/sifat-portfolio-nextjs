@@ -4,10 +4,7 @@ import { Link } from "next-view-transitions";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CaseStudy from "@/components/CaseStudy";
-<<<<<<< HEAD
 import ProjectScrollReset from "@/components/ProjectScrollReset";
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 import { getProject, getAdjacentProjects, projects } from "@/lib/projects";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -59,10 +56,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
-<<<<<<< HEAD
       <ProjectScrollReset />
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }}
@@ -74,18 +68,18 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <nav style={{
           maxWidth: "1400px", margin: "0 auto", padding: "0 clamp(1.5rem, 6vw, 4rem) clamp(4rem, 8vh, 6rem)",
           display: "flex", justifyContent: "space-between", gap: "2rem",
-          borderTop: "1px solid rgba(241,238,231,0.15)", paddingTop: "2rem",
+          borderTop: "1px solid rgba(var(--sf-ink-rgb),0.15)", paddingTop: "2rem",
         }}>
           <div>
             {prev && (
-              <Link href={`/projects/${prev.slug}`} style={{ color: "rgba(241,238,231,0.55)", textDecoration: "none", fontSize: "0.875rem", fontFamily: "var(--font-body)" }}>
+              <Link href={`/projects/${prev.slug}`} style={{ color: "rgba(var(--sf-ink-rgb),0.55)", textDecoration: "none", fontSize: "0.875rem", fontFamily: "var(--font-body)" }}>
                 ← {prev.title}
               </Link>
             )}
           </div>
           <div>
             {next && (
-              <Link href={`/projects/${next.slug}`} style={{ color: "rgba(241,238,231,0.55)", textDecoration: "none", fontSize: "0.875rem", fontFamily: "var(--font-body)" }}>
+              <Link href={`/projects/${next.slug}`} style={{ color: "rgba(var(--sf-ink-rgb),0.55)", textDecoration: "none", fontSize: "0.875rem", fontFamily: "var(--font-body)" }}>
                 {next.title} →
               </Link>
             )}

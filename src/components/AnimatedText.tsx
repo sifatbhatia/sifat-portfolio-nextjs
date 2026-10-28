@@ -11,6 +11,7 @@ interface AnimatedTextProps {
   children: string;
   style?: React.CSSProperties;
   className?: string;
+  id?: string;
   split?: "words" | "chars" | "lines";
   delay?: number;
   start?: string;
@@ -21,6 +22,7 @@ export default function AnimatedText({
   children,
   style,
   className,
+  id,
   split = "lines",
   delay = 0,
   start = "top 75%",
@@ -61,14 +63,14 @@ export default function AnimatedText({
   }, [children, split, delay, start]);
 
   if (split === "lines") {
-    return <Tag ref={setRef} className={className} style={style}>{children}</Tag>;
+    return <Tag ref={setRef} id={id} className={className} style={style}>{children}</Tag>;
   }
 
   const words = children.split(" ");
 
   if (split === "chars") {
     return (
-      <Tag ref={setRef} className={className} style={{ ...style, display: "inline-flex", flexWrap: "wrap", gap: "0.15em", justifyContent: "center" }}>
+      <Tag ref={setRef} id={id} className={className} style={{ ...style, display: "inline-flex", flexWrap: "wrap", gap: "0.15em", justifyContent: "center" }}>
         {words.map((word, wi) => (
           <span key={wi} style={{ display: "inline-flex", overflow: "hidden", paddingBottom: "0.12em" }}>
             {word.split("").map((char, ci) => (
@@ -83,7 +85,7 @@ export default function AnimatedText({
   }
 
   return (
-    <Tag ref={setRef} className={className} style={style}>
+    <Tag ref={setRef} id={id} className={className} style={style}>
       {words.map((word, i) => (
         <span key={i} className="at-word" style={{ display: "inline-block", overflow: "hidden", marginRight: "0.25em", verticalAlign: "top" }}>
           {word}

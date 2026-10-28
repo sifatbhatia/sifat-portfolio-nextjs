@@ -14,7 +14,7 @@ export default function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#141412",
+          background: "#151515",
           padding: "80px",
           fontFamily: "sans-serif",
         }}
@@ -25,7 +25,7 @@ export default function Image() {
             fontSize: 22,
             letterSpacing: 4,
             textTransform: "uppercase",
-            color: "rgba(241,238,231,0.45)",
+            color: "rgba(239,238,233,0.45)",
           }}
         >
           Los Angeles &middot; Design Engineer
@@ -38,7 +38,7 @@ export default function Image() {
               fontSize: 108,
               lineHeight: 1,
               letterSpacing: -3,
-              color: "#f1eee7",
+              color: "#efeee9",
             }}
           >
             Sifat Bhatia
@@ -48,7 +48,7 @@ export default function Image() {
               display: "flex",
               marginTop: 28,
               fontSize: 32,
-              color: "rgba(241,238,231,0.6)",
+              color: "rgba(239,238,233,0.6)",
             }}
           >
             Building websites for people with worlds worth meeting.
@@ -60,7 +60,7 @@ export default function Image() {
             display: "flex",
             alignItems: "center",
             fontSize: 24,
-            color: "#8ba69d",
+            color: "#9da5ff",
           }}
         >
           sifat.tech

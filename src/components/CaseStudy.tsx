@@ -1,9 +1,6 @@
 "use client";
 
-<<<<<<< HEAD
 import { useEffect, useState } from "react";
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 import Image from "next/image";
 import { ProjectData } from "@/lib/projects";
 import AnimatedText from "./AnimatedText";
@@ -34,7 +31,7 @@ function SectionBlock({
           fontWeight: 400,
           letterSpacing: "0.2em",
           textTransform: "uppercase",
-          color: "rgba(241,238,231,0.25)",
+          color: "rgba(var(--sf-ink-rgb),0.25)",
           position: "sticky",
           top: "2rem",
           alignSelf: "start",
@@ -64,33 +61,6 @@ function FeatureItem({
   );
 }
 
-<<<<<<< HEAD
-=======
-// ─── Screenshot Frame ────────────────────────────────────────────────────────
-
-function ScreenshotFrame({
-  src,
-  alt,
-  type,
-}: {
-  src: string;
-  alt: string;
-  type: "laptop" | "phone";
-}) {
-  return (
-    <div className="screenshot-frame" data-orientation={type}>
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes={type === "phone" ? "(max-width: 900px) 72vw, 320px" : "(max-width: 900px) 92vw, 640px"}
-        style={{ objectFit: type === "phone" ? "contain" : "cover" }}
-      />
-    </div>
-  );
-}
-
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 // ─── Metrics Callout ───────────────────────────────────────────────────────────
 
 function MetricsBlock({
@@ -117,7 +87,6 @@ function MetricsBlock({
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function CaseStudy({ project }: { project: ProjectData }) {
-<<<<<<< HEAD
   const [panelOpen, setPanelOpen] = useState(false);
   const paragraphs = (text: string) =>
     text.split("\n\n").filter(Boolean);
@@ -139,20 +108,12 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
     <article
       className="case-study-article t-panel-slide"
       data-open={panelOpen}
-=======
-  const paragraphs = (text: string) =>
-    text.split("\n\n").filter(Boolean);
-
-  return (
-    <article
-      className="case-study-article"
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
       style={{
         maxWidth: "1400px",
         margin: "0 auto",
         padding:
           "clamp(4rem, 8vh, 8rem) clamp(1.5rem, 6vw, 4rem) clamp(2rem, 5vh, 4rem)",
-        color: "#f1eee7",
+        color: "var(--sf-ink)",
       }}
     >
       {/* ── Header ── */}
@@ -161,7 +122,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "baseline",
-          borderBottom: "1px solid rgba(241,238,231,0.15)",
+          borderBottom: "1px solid rgba(var(--sf-ink-rgb),0.15)",
           paddingBottom: "2rem",
           marginBottom: "clamp(3rem, 6vh, 6rem)",
         }}
@@ -173,7 +134,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
               fontWeight: 400,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
-              color: "rgba(241,238,231,0.55)",
+              color: "rgba(var(--sf-ink-rgb),0.55)",
               margin: 0,
               fontFamily: "var(--font-body)",
             }}
@@ -186,7 +147,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
             fontSize: "0.875rem",
             fontWeight: 400,
             letterSpacing: "0.05em",
-            color: "rgba(241,238,231,0.55)",
+            color: "rgba(var(--sf-ink-rgb),0.55)",
           }}
         >
           {project.year}
@@ -223,7 +184,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
               fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
               fontWeight: 400,
               lineHeight: 1.5,
-              color: "rgba(241,238,231,0.6)",
+              color: "rgba(var(--sf-ink-rgb),0.6)",
               maxWidth: "40rem",
               margin: 0,
               fontFamily: "var(--font-body)",
@@ -243,18 +204,15 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
             fontFamily: "var(--font-body)",
           }}
         >
-          <p style={{ margin: 0, color: "rgba(241,238,231,0.6)" }}>
+          <p style={{ margin: 0, color: "rgba(var(--sf-ink-rgb),0.6)" }}>
             {project.role}
           </p>
-          <p style={{ margin: 0, color: "rgba(241,238,231,0.55)" }}>
+          <p style={{ margin: 0, color: "rgba(var(--sf-ink-rgb),0.55)" }}>
             {project.year}
           </p>
           {project.url && (
             <a
-<<<<<<< HEAD
               className="case-study-live-link"
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
               href={project.url}
               target="_blank"
               rel="noreferrer"
@@ -289,7 +247,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
         <p
           style={{
             fontSize: "0.75rem",
-            color: "rgba(241,238,231,0.3)",
+            color: "rgba(var(--sf-ink-rgb),0.3)",
             letterSpacing: "0.05em",
             marginTop: "0.75rem",
             fontFamily: "var(--font-body)",
@@ -308,7 +266,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
               style={{
                 fontSize: "1.125rem",
                 lineHeight: 1.75,
-                color: "rgba(241,238,231,0.65)",
+                color: "rgba(var(--sf-ink-rgb),0.65)",
                 margin: 0,
                 fontFamily: "var(--font-body)",
               }}
@@ -327,7 +285,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
               style={{
                 fontSize: "1.125rem",
                 lineHeight: 1.75,
-                color: "rgba(241,238,231,0.55)",
+                color: "rgba(var(--sf-ink-rgb),0.55)",
                 margin: 0,
                 fontFamily: "var(--font-body)",
               }}
@@ -346,7 +304,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
               style={{
                 fontSize: "1.125rem",
                 lineHeight: 1.75,
-                color: "rgba(241,238,231,0.55)",
+                color: "rgba(var(--sf-ink-rgb),0.55)",
                 margin: 0,
                 fontFamily: "var(--font-body)",
               }}
@@ -394,39 +352,14 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
       {/* ── Metrics ── */}
       <MetricsBlock metrics={project.metrics} />
 
-<<<<<<< HEAD
-=======
-      {/* ── Screenshot Gallery ── */}
-      {project.screenshots && project.screenshots.length > 0 && (
-        <section className="gallery-section">
-          <div className="gallery-header">
-            <span className="gallery-eyebrow">Screenshots</span>
-          </div>
-          <div className="gallery-grid">
-            {project.screenshots.map((shot, i) => (
-              <div
-                key={i}
-                className={`gallery-item gallery-item--${shot.type}`}
-              >
-                <ScreenshotFrame src={shot.src} alt={`${project.title} screenshot ${i + 1}`} type={shot.type} />
-                <p className="gallery-caption">
-                  {shot.caption || `Fig ${String(i + 2).padStart(2, "0")} — ${project.title}`}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
       {/* ── Testimonial ── */}
       {project.testimonial && (
         <section
           style={{
             padding: "clamp(4rem, 8vh, 6rem) 0",
             margin: "clamp(3rem, 6vh, 6rem) 0",
-            borderTop: "1px solid rgba(241,238,231,0.1)",
-            borderBottom: "1px solid rgba(241,238,231,0.1)",
+            borderTop: "1px solid rgba(var(--sf-ink-rgb),0.1)",
+            borderBottom: "1px solid rgba(var(--sf-ink-rgb),0.1)",
           }}
         >
           <blockquote
@@ -437,7 +370,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
               fontWeight: 400,
               lineHeight: 1.3,
               letterSpacing: "-0.01em",
-              color: "rgba(241,238,231,0.72)",
+              color: "rgba(var(--sf-ink-rgb),0.72)",
               fontFamily: "var(--font-display)",
             }}
           >
@@ -446,7 +379,7 @@ export default function CaseStudy({ project }: { project: ProjectData }) {
           <p
             style={{
               fontSize: "0.875rem",
-              color: "rgba(241,238,231,0.3)",
+              color: "rgba(var(--sf-ink-rgb),0.3)",
               marginTop: "1.5rem",
               textAlign: "center",
               fontFamily: "var(--font-body)",

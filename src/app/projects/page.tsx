@@ -17,7 +17,7 @@ export default function ProjectsPage() {
       href={`/projects/${p.slug}`}
       style={{
         display: "block", padding: "clamp(1.5rem, 3vh, 2.5rem) 0",
-        borderBottom: "1px solid rgba(241,238,231,0.1)",
+        borderBottom: "1px solid rgba(var(--sf-ink-rgb),0.1)",
         color: "inherit", textDecoration: "none",
         transition: "padding-left 200ms ease",
       }}
@@ -28,23 +28,19 @@ export default function ProjectsPage() {
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "2rem", flexWrap: "wrap" }}>
         <div>
-          <p style={{ fontSize: "0.75rem", fontWeight: 400, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(241,238,231,0.3)", margin: "0 0 0.5rem", fontFamily: "var(--font-body)" }}>
+          <p style={{ fontSize: "0.75rem", fontWeight: 400, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(var(--sf-ink-rgb),0.3)", margin: "0 0 0.5rem", fontFamily: "var(--font-body)" }}>
             {String(i + 1).padStart(2, "0")} &middot; {p.role}
           </p>
-          <h2 style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)", fontWeight: 400, margin: 0, fontFamily: "var(--font-display)", color: "#f1eee7" }}>
+          <h2 style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)", fontWeight: 400, margin: 0, fontFamily: "var(--font-display)", color: "var(--sf-ink)" }}>
             {p.title}
           </h2>
-          <p style={{ fontSize: "1rem", color: "rgba(241,238,231,0.55)", margin: "0.5rem 0 0", maxWidth: "36rem", fontFamily: "var(--font-body)" }}>
-<<<<<<< HEAD
+          <p style={{ fontSize: "1rem", color: "rgba(var(--sf-ink-rgb),0.55)", margin: "0.5rem 0 0", maxWidth: "36rem", fontFamily: "var(--font-body)" }}>
             {p.summary ?? p.description.split(". ")[0] + "."}
-=======
-            {p.description}
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
           </p>
         </div>
         <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
           {p.stack.slice(0, 3).map(s => (
-            <span key={s} style={{ fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(241,238,231,0.25)", padding: "0.35rem 0.75rem", border: "1px solid rgba(241,238,231,0.08)", borderRadius: "999px" }}>
+            <span key={s} style={{ fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(var(--sf-ink-rgb),0.25)", padding: "0.35rem 0.75rem", border: "1px solid rgba(var(--sf-ink-rgb),0.08)", borderRadius: "999px" }}>
               {s}
             </span>
           ))}
@@ -58,21 +54,14 @@ export default function ProjectsPage() {
       <Navbar />
       <main style={{ padding: "clamp(6rem, 10vh, 10rem) clamp(1.5rem, 6vw, 4rem) clamp(6rem, 8vh, 8rem)", maxWidth: "1400px", margin: "0 auto" }}>
         <header style={{ marginBottom: "clamp(3rem, 6vh, 6rem)" }}>
-          <p style={{ fontSize: "0.75rem", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(241,238,231,0.3)", margin: "0 0 1rem", fontFamily: "var(--font-body)" }}>Work</p>
+          <p style={{ fontSize: "0.75rem", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(var(--sf-ink-rgb),0.3)", margin: "0 0 1rem", fontFamily: "var(--font-body)" }}>Work</p>
           <AnimatedText
-            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 400, lineHeight: 0.95, letterSpacing: "-0.02em", margin: 0, fontFamily: "var(--font-display)", color: "#f1eee7" }}
+            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 400, lineHeight: 0.95, letterSpacing: "-0.02em", margin: 0, fontFamily: "var(--font-display)", color: "var(--sf-ink)" }}
           >
             Selected work
           </AnimatedText>
-          <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.5)", margin: "1.5rem 0 0", fontFamily: "var(--font-body)", maxWidth: "36rem" }}>
-<<<<<<< HEAD
+          <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.15rem)", lineHeight: 1.7, color: "rgba(var(--sf-ink-rgb),0.5)", margin: "1.5rem 0 0", fontFamily: "var(--font-body)", maxWidth: "36rem" }}>
             Websites, identities, and tools made with artists, agencies, and creative teams.
-=======
-            Websites, identities, and tools shaped with artists, agencies, and creative teams. Each project began with a person, a context, and a tension worth listening to.
-          </p>
-          <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "rgba(241,238,231,0.42)", margin: "1rem 0 0", fontFamily: "var(--font-body)", maxWidth: "34rem" }}>
-            More case studies are being shaped as the work becomes ready to show: built things first, written up with care after.
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
           </p>
         </header>
 
@@ -82,15 +71,11 @@ export default function ProjectsPage() {
 
         <section style={{ marginTop: "clamp(5rem, 10vh, 8rem)" }}>
           <div style={{ marginBottom: "clamp(1.5rem, 4vh, 2.5rem)", maxWidth: "44rem" }}>
-            <p style={{ fontSize: "0.75rem", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(139,166,157,0.75)", margin: "0 0 1rem", fontFamily: "var(--font-body)" }}>
+            <p style={{ fontSize: "0.75rem", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(var(--sf-signal-rgb),0.75)", margin: "0 0 1rem", fontFamily: "var(--font-body)" }}>
               Experiments / small worlds
             </p>
-            <p style={{ fontSize: "clamp(0.95rem, 1.2vw, 1.05rem)", lineHeight: 1.7, color: "rgba(241,238,231,0.48)", margin: 0, fontFamily: "var(--font-body)" }}>
-<<<<<<< HEAD
+            <p style={{ fontSize: "clamp(0.95rem, 1.2vw, 1.05rem)", lineHeight: 1.7, color: "rgba(var(--sf-ink-rgb),0.48)", margin: 0, fontFamily: "var(--font-body)" }}>
               Smaller studies, speculative builds, and playful tools.
-=======
-              Smaller studies, speculative builds, and playful tools where the goal was exploration, craft, or listening to an odd little idea long enough for it to answer back.
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
             </p>
           </div>
 
