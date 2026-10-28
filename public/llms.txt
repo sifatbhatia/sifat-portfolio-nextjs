@@ -1,62 +1,68 @@
-# Sifat Bhatia — Design Engineer & Creative Technologist
+# Sifat Bhatia: Design Engineer & Creative Technologist
 
 ## About
 
-Sifat Bhatia is a design engineer and creative technologist based in Los Angeles, California. He builds websites, brand identities, and digital experiences for artists, agencies, and creative brands who need more than templates.
+Sifat Bhatia is a Los Angeles-based design engineer with 7+ years designing and building websites and web products for music, entertainment, agency, and nonprofit clients. His work spans visual design and brand identity in Figma, frontend development in React, Next.js, and TypeScript, and backend development with Node, PostgreSQL, Supabase, and Stripe.
 
-He holds a BS from Full Sail University (Valedictorian) and is currently completing an MS in Information Technology at Westcliff University. He is the founder of Siftion, an independent design and development studio.
+He founded Siftion, an independent design and development studio, in 2018. Projects run from scoping and visual direction through development, launch, and ongoing support.
 
 ## Expertise
 
-- **Frontend Development:** React, Next.js, TypeScript, Tailwind CSS, GSAP, Framer Motion
-- **Design:** UI/UX, visual identity, design systems, typography, motion design
-- **No-Code/Low-Code:** Webflow, WordPress, Squarespace
-- **Branding:** Logo design, color systems, brand strategy
-- **Tools:** Figma, Adobe Creative Suite, Git, Vercel
+- **Frontend:** TypeScript, JavaScript, React, Next.js, Vite, Tailwind CSS, HTML, CSS, GSAP, Framer Motion
+- **Backend:** Node.js, tRPC, Prisma, PostgreSQL, Supabase, REST APIs, WebSockets, Stripe
+- **Design:** Figma, Adobe Creative Suite, design systems, brand identity, typography, editorial layout
+- **Platforms:** Webflow, WordPress (PHP), Squarespace, Vercel, Git, Linux
+- **Quality:** Accessibility (WCAG 2.2 AA), Core Web Vitals, technical SEO, responsive design
 
-## Work Authorization
+## Experience
 
-F-1 student on CPT (Curricular Practical Training). Authorized for part-time and full-time employment.
+- **Siftion:** Founder & Design Engineer, 2018–Present
+- **QLO Agency:** Webflow Developer (Contract), 2024–Present
+- **L'Affaire Musicale & Wicked Paradise:** In-House Web Designer & Developer (Contract), March 2019–October 2026. This engagement has ended.
+- **Star Consciousness:** Web Designer & WordPress Developer, 2023–Present
+- **Los Angeles City College:** Program Assistant, Noncredit Department, August 2023–2025
+- **Super Purposes:** Web Developer Intern, November 2022–May 2023
+- **Ego Digital Agency:** Web Designer & Developer, March 2021–February 2022
+
+## Selected Work
+
+### J. Worra
+
+Sole designer and developer for the artist's brand and website since 2018. Scope includes brand direction, logo, every website iteration, technical SEO, analytics, and continuing web support for releases, tours, press, booking, and marketing. The current Next.js, TypeScript, and Tailwind CSS site uses the Spotify Web API for releases and discography.
+
+### L'Affaire Musicale
+
+Brand identity and website refresh for a dance-music management company, moving from an event-page feel toward clearer roster presentation, typography, and inquiry paths. Part of a contract engagement from March 2019 to October 2026, including UI/UX direction, style guides, website management, SEO, and roster artists' sites.
+
+### QLO Agency
+
+Ongoing contract Webflow development since 2024. Editorial layouts, responsive pages, reusable components, CMS collections, native interactions, and editing structures that preserve visual consistency. Accessibility, Core Web Vitals, and technical SEO reviewed before handoff.
+
+### Wicked Paradise
+
+Website direction, UI/UX, style guides, SEO, and maintenance for L'Affaire Musicale's sister event brand. The contract ran from March 2019 to October 2026 and has ended.
+
+### WillCall
+
+A working full-stack prototype of an event-discovery and ticket-drop platform, not a claim of a launched ticketing business. Next.js, TypeScript, tRPC, Prisma, PostgreSQL, Stripe guest checkout, rotating HMAC-SHA256 QR tickets, and WebSocket-driven live event state.
+
+### ClipKeep
+
+A local-first library for TikTok, Instagram Reels, and YouTube links, with collections, favorites, search, optional encrypted Supabase sync, and experimental AI summaries with a fallback when unavailable.
+
+## Education & Recognition
+
+- Westcliff University: M.S., Information Technology, 2026–Present (in progress)
+- Los Angeles City College: Computer Science studies, 2023–2026
+- Full Sail University: B.S., Web Design & Development, November 2021, Valedictorian
+- Full Sail: Course Director's Award and Advanced Achiever Award
+- Featured interviews: VoyageLA, Shoutout LA, Bold Journey
 
 ## Contact
 
-- Email: sifatbht@gmail.com
+- Email: bsifat@gmail.com
 - Website: https://sifat.tech
-<<<<<<< HEAD
 - Instagram: https://www.instagram.com/siftion/
-=======
-- Instagram: https://www.instagram.com/sifatxo/
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 - GitHub: https://github.com/sifatbhatia
+- LinkedIn: https://www.linkedin.com/in/siftion
 - Location: Los Angeles, CA
-
-## Notable Projects
-
-### J. Worra
-Artist website and web identity for a DJ/producer. Dark, motion-driven design that translates the energy of electronic music into scroll-driven experiences. Built with React, GSAP, and Lenis. Result: 3x increase in average session duration.
-
-### L'Affaire Musicale
-Full rebrand and website rebuild for a music agency. Editorial layout, CMS-backed roster management, typography-first approach. Built with Next.js, Sanity CMS, and Framer Motion.
-
-### ClipKeep
-A local-first clip vault for saving and organizing TikTok, Instagram Reels, and YouTube links. Includes collections, favorites, metadata previews, search, optional encrypted Supabase snapshot sync, and experimental NVIDIA AI summaries. Built with Next.js, React, TypeScript, Tailwind CSS, Supabase, localStorage, and resilient social URL parsing.
-
-### QLO Agency
-Custom Webflow builds with advanced interactions, CMS collections, and client-friendly editing. Modular component systems.
-
-## Services
-
-- **Design:** Visual identity, UI/UX, design systems, motion design
-- **Development:** React, Next.js, GSAP, full-stack applications
-- **Branding:** Logos, typography, color systems, brand strategy
-- **Strategy:** Content architecture, user journeys, technical consulting
-
-## Availability
-
-Currently open for freelance projects and full-time opportunities. Prefers remote, hybrid, or in-person in Los Angeles.
-
-## Education
-
-- BS Full Sail University — Valedictorian
-- AS Los Angeles City College
-- MS Westcliff University (in progress)

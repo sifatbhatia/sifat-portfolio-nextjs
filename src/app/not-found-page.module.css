@@ -1,0 +1,106 @@
+.page {
+  min-height: 100dvh;
+  background: var(--sf-paper);
+  color: var(--sf-ink);
+}
+
+.container {
+  width: min(100%, 1400px);
+  margin-inline: auto;
+  padding: clamp(8rem, 15vh, 12rem) clamp(1.5rem, 6vw, 4rem)
+    clamp(6rem, 10vh, 8rem);
+}
+
+.header {
+  margin-bottom: clamp(4rem, 8vh, 6rem);
+}
+
+.titleRow :global(.logo-test) {
+  margin-inline-start: auto;
+}
+
+.kicker {
+  margin: 0 0 1.5rem;
+  color: rgba(var(--sf-ink-rgb), 0.3);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 10ch;
+  margin: 0;
+  color: var(--sf-ink);
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.copy {
+  max-width: 42rem;
+  margin: 0;
+  color: rgba(var(--sf-ink-rgb), 0.6);
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+
+.path {
+  color: var(--sf-signal-text);
+  font-family: var(--sf-mono);
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
+.destinations {
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+  border-top: 1px solid var(--sf-line);
+}
+
+.destination {
+  display: flex;
+  min-height: 4rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--sf-line);
+  color: var(--sf-ink);
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.destination:hover,
+.destination:focus-visible {
+  color: var(--sf-signal-text);
+}
+
+.destination:focus-visible {
+  outline: 2px solid var(--sf-focus);
+  outline-offset: 4px;
+}
+
+.arrow {
+  flex: 0 0 auto;
+  color: rgba(var(--sf-ink-rgb), 0.48);
+  transition: color 160ms ease;
+}
+
+.destination:hover .arrow,
+.destination:focus-visible .arrow {
+  color: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .destination,
+  .arrow {
+    transition: none;
+  }
+}

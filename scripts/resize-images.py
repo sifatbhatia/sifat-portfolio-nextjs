@@ -45,9 +45,7 @@ def process_image(path):
             card.save(card_path, 'WEBP', quality=80, method=6)
             print(f"  Created {CARD_MAX}w: {card_path}")
         
-        # Keep original for now (we'll switch references later)
-        # Actually, let's overwrite the original with the hero size
-        # to save space, since the 3840px version is never needed
+        # Overwrite originals wider than HERO_MAX with the resized WebP.
         if w > HERO_MAX:
             img_resized = img.resize((HERO_MAX, int(h * HERO_MAX / w)), Image.LANCZOS)
             img_resized.save(path, 'WEBP', quality=85, method=6)

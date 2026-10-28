@@ -1,0 +1,235 @@
+.page {
+  min-height: min(78rem, 100dvh);
+  background: var(--sf-hero);
+  color: var(--sf-hero-ink);
+}
+
+.frame {
+  width: min(100%, 100rem);
+  margin-inline: auto;
+  padding: clamp(8.5rem, 17vh, 12.5rem) var(--sf-gutter) clamp(5rem, 10vh, 8rem);
+}
+
+.intro {
+  max-width: 76rem;
+}
+
+.kicker {
+  margin: 0 0 1.25rem;
+  color: rgba(var(--sf-hero-ink-rgb), 0.62);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+.title {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--sf-hero-ink);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7.25rem);
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 0.92;
+  text-wrap: balance;
+}
+
+.copy {
+  max-width: 34rem;
+  margin: 1.5rem 0 0;
+  color: rgba(var(--sf-hero-ink-rgb), 0.72);
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.routeMap {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(2.5rem, 0.16fr)
+    clamp(5.5rem, 8.5vw, 7.5rem)
+    minmax(2.5rem, 0.16fr)
+    minmax(15rem, 0.72fr);
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 2rem);
+  margin-top: clamp(3.75rem, 9vh, 7rem);
+  border-top: 1px solid rgba(var(--sf-hero-ink-rgb), 0.24);
+  padding-top: 2rem;
+}
+
+.requestedAddress {
+  min-width: 0;
+}
+
+.addressLabel {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: rgba(var(--sf-hero-ink-rgb), 0.58);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.035em;
+}
+
+.addressPath {
+  display: block;
+  color: var(--sf-hero-ink);
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.routeLine,
+.branchLine {
+  display: block;
+  height: 1px;
+  background: rgba(var(--sf-hero-ink-rgb), 0.24);
+}
+
+.routeLine {
+  background: linear-gradient(
+    to right,
+    rgba(var(--sf-hero-ink-rgb), 0.24) 0 42%,
+    transparent 42% 58%,
+    rgba(var(--sf-hero-ink-rgb), 0.24) 58% 100%
+  );
+}
+
+.waypoint {
+  display: grid;
+  width: clamp(5.5rem, 8.5vw, 7.5rem);
+  aspect-ratio: 1;
+  place-items: center;
+}
+
+.waypoint :global(.eyt) {
+  width: 100%;
+  height: 100%;
+  flex: 0 0 100%;
+  background: transparent;
+}
+
+.waypoint :global(.eyt-ball) {
+  width: 100%;
+  height: 100%;
+}
+
+.destinations {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  border-inline-start: 1px solid rgba(var(--sf-hero-ink-rgb), 0.24);
+  padding-inline-start: clamp(1rem, 2vw, 1.5rem);
+}
+
+.destination {
+  display: flex;
+  min-height: 3.4rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(var(--sf-hero-ink-rgb), 0.16);
+  color: var(--sf-hero-ink);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.destination:first-child {
+  border-top: 1px solid rgba(var(--sf-hero-ink-rgb), 0.16);
+}
+
+.destination:hover,
+.destination:focus-visible {
+  color: var(--sf-hot);
+}
+
+.destination:focus-visible {
+  outline: 2px solid var(--sf-focus);
+  outline-offset: 4px;
+}
+
+.arrow {
+  flex: 0 0 auto;
+  color: rgba(var(--sf-hero-ink-rgb), 0.58);
+  transition: color 160ms ease;
+}
+
+.destination:hover .arrow,
+.destination:focus-visible .arrow {
+  color: currentColor;
+}
+
+@media (max-width: 860px) {
+  .page {
+    min-height: 0;
+  }
+
+  .frame {
+    padding-block: 8rem 4.5rem;
+  }
+
+  .routeMap {
+    grid-template-columns: minmax(0, 1fr) clamp(4.5rem, 18vw, 6rem);
+    grid-template-areas:
+      "address waypoint"
+      "destinations destinations";
+    gap: 1.75rem 1rem;
+    margin-top: 3.5rem;
+    padding-top: 1.75rem;
+  }
+
+  .requestedAddress {
+    grid-area: address;
+    align-self: center;
+    min-width: 0;
+  }
+
+  .routeLine,
+  .branchLine {
+    display: none;
+  }
+
+  .waypoint {
+    grid-area: waypoint;
+    width: clamp(4.5rem, 18vw, 6rem);
+    justify-self: end;
+  }
+
+  .destinations {
+    grid-area: destinations;
+    border-block-start: 1px solid rgba(var(--sf-hero-ink-rgb), 0.24);
+    border-inline-start: 0;
+    padding: 1rem 0 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .frame {
+    padding-block: 7.5rem 3.5rem;
+  }
+
+  .title {
+    font-size: clamp(2.75rem, 12vw, 3.5rem);
+    line-height: 0.94;
+  }
+
+  .copy {
+    margin-top: 1.1rem;
+    font-size: 1rem;
+  }
+
+  .routeMap {
+    margin-top: 2.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .destination,
+  .arrow {
+    transition: none;
+  }
+}

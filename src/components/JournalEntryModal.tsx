@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
+import { journalBodyWithoutTitle } from "@/lib/journal-content";
 
 export interface JournalEntry {
   id: string;
@@ -21,22 +22,41 @@ const markdownComponents: Components = {
   ul: ({ children }) => <ul className="journal-modal-list">{children}</ul>,
   ol: ({ children }) => <ol className="journal-modal-list">{children}</ol>,
   li: ({ children }) => <li>{children}</li>,
-  a: ({ href, children }) => <a href={href} target={href?.startsWith("http") ? "_blank" : undefined} rel={href?.startsWith("http") ? "noreferrer" : undefined}>{children}</a>,
+  a: ({ href, children }) => (
+    <a
+      href={href}
+      target={href?.startsWith("http") ? "_blank" : undefined}
+      rel={href?.startsWith("http") ? "noreferrer" : undefined}
+    >
+      {children}
+    </a>
+  ),
   strong: ({ children }) => <strong>{children}</strong>,
   em: ({ children }) => <em>{children}</em>,
-  blockquote: ({ children }) => <blockquote className="journal-modal-quote">{children}</blockquote>,
+  blockquote: ({ children }) => (
+    <blockquote className="journal-modal-quote">{children}</blockquote>
+  ),
   hr: () => <hr className="journal-modal-rule" />,
   pre: ({ children }) => <pre className="journal-modal-code">{children}</pre>,
 };
 
-export default function JournalEntryModal({ entry, onClose }: { entry: JournalEntry; onClose: () => void }) {
+export default function JournalEntryModal({
+  entry,
+  onClose,
+}: {
+  entry: JournalEntry;
+  onClose: () => void;
+}) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
   const closeTimerRef = useRef<number | null>(null);
   const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
-    previousFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    previousFocusRef.current =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") requestClose();
     };
@@ -46,14 +66,19 @@ export default function JournalEntryModal({ entry, onClose }: { entry: JournalEn
     };
     document.body.style.overflow = "hidden";
     document.documentElement.classList.add("journal-modal-open");
-    window.dispatchEvent(new CustomEvent("journal-modal:toggle", { detail: { paused: true } }));
+    window.dispatchEvent(
+      new CustomEvent("journal-modal:toggle", { detail: { paused: true } }),
+    );
     document.addEventListener("keydown", onKeyDown);
     window.setTimeout(() => closeButtonRef.current?.focus(), 0);
     return () => {
-      if (closeTimerRef.current !== null) window.clearTimeout(closeTimerRef.current);
+      if (closeTimerRef.current !== null)
+        window.clearTimeout(closeTimerRef.current);
       document.body.style.overflow = "";
       document.documentElement.classList.remove("journal-modal-open");
-      window.dispatchEvent(new CustomEvent("journal-modal:toggle", { detail: { paused: false } }));
+      window.dispatchEvent(
+        new CustomEvent("journal-modal:toggle", { detail: { paused: false } }),
+      );
       document.removeEventListener("keydown", onKeyDown);
       previousFocusRef.current?.focus();
     };
@@ -66,19 +91,50 @@ export default function JournalEntryModal({ entry, onClose }: { entry: JournalEn
   };
 
   return (
-    <div className={`journal-modal-backdrop${isClosing ? " is-closing" : ""}`} role="presentation" onMouseDown={(event) => event.target === event.currentTarget && requestClose()}>
-      <section className="journal-modal" data-lenis-prevent role="dialog" aria-modal="true" aria-labelledby="journal-modal-title">
-        <button ref={closeButtonRef} type="button" className="journal-modal-close" onClick={requestClose} aria-label="Close entry"><span className="journal-modal-close-mark" aria-hidden="true" /></button>
+    <div
+      className={`journal-modal-backdrop${isClosing ? " is-closing" : ""}`}
+      role="presentation"
+      onMouseDown={(event) =>
+        event.target === event.currentTarget && requestClose()
+      }
+    >
+      <section
+        className="journal-modal"
+        data-lenis-prevent
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="journal-modal-title"
+      >
+        <button
+          ref={closeButtonRef}
+          type="button"
+          className="journal-modal-close"
+          onClick={requestClose}
+          aria-label="Close entry"
+        >
+          <span className="journal-modal-close-mark" aria-hidden="true" />
+        </button>
         <header className="journal-modal-header">
           <div className="journal-modal-meta">
             <span>Signal</span>
             <span aria-hidden="true">·</span>
-            <time>{new Date(entry.timestamp).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</time>
+            <time>
+              {new Date(entry.timestamp).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </time>
           </div>
           <h2 id="journal-modal-title">{entry.title}</h2>
         </header>
         <div className="journal-modal-content">
-          <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>{entry.content}</ReactMarkdown>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={markdownComponents}
+          >
+            {journalBodyWithoutTitle(entry.content, entry.title)}
+          </ReactMarkdown>
         </div>
       </section>
     </div>

@@ -6,41 +6,43 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "dev:vinext": "vite dev --port 3001",
+    "build:vinext": "vite build",
+    "start:vinext": "wrangler dev --config dist/server/wrangler.json",
+    "deploy:vinext": "vinext-cloudflare deploy --config dist/server/wrangler.json"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@neondatabase/serverless": "^1.1.0",
+    "@vinext/cloudflare": "^1.1.1",
     "framer-motion": "^12.38.0",
     "gsap": "^3.15.0",
     "lenis": "^1.2.3",
-=======
-    "framer-motion": "^12.38.0",
-    "gsap": "^3.15.0",
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
-    "next": "16.2.6",
+    "next": "16.4.2",
     "next-view-transitions": "^0.3.5",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "react-markdown": "^10.1.0",
-    "remark-gfm": "^4.0.1"
+    "react-server-dom-webpack": "^19.3.1",
+    "remark-gfm": "^4.0.1",
+    "vinext": "^1.2.1"
   },
   "devDependencies": {
-<<<<<<< HEAD
+    "@cloudflare/vite-plugin": "^1.64.0",
     "@tailwindcss/postcss": "^4.3.1",
-=======
-    "@tailwindcss/postcss": "^4",
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@vitejs/plugin-rsc": "^0.5.38",
     "eslint": "^9",
-    "eslint-config-next": "16.2.6",
-<<<<<<< HEAD
+    "eslint-config-next": "16.4.2",
+    "postcss": "^8.5.31",
     "tailwindcss": "^4.3.1",
-=======
-    "tailwindcss": "^4",
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
-    "typescript": "^5"
-  }
+    "typescript": "^5",
+    "vite": "^8.3.4",
+    "vite-css-modules": "^1.16.0",
+    "wrangler": "^4.151.1"
+  },
+  "type": "module"
 }

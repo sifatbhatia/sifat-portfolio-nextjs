@@ -1,0 +1,131 @@
+/* Siftion UI tokens, sourced from Siftion-Design-System/styles/tokens.css.
+   Portfolio-specific aliases live in siftion-portfolio.css. */
+
+@font-face {
+  font-family: "Siftion UI";
+  src: url("/fonts/SiftionUI-Regular.woff2?v=1.100") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Siftion UI";
+  src: url("/fonts/SiftionUI-Medium.woff2?v=1.100") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Siftion UI";
+  src: url("/fonts/SiftionUI-Semibold.woff2?v=1.100") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Siftion UI";
+  src: url("/fonts/SiftionUI-Bold.woff2?v=1.100") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --sf-paper: #efeee9;
+  --sf-ink: #151515;
+  --sf-hero: #050505;
+  --sf-hero-ink: #efeee9;
+  --sf-on-signal: #ffffff;
+  --sf-on-hot: #151515;
+  --sf-signal-text: #3f4dff;
+  --sf-warning-text: #a83620;
+  --sf-action-primary: var(--sf-signal);
+  --sf-feedback-warning: var(--sf-hot);
+  --sf-surface-raised: var(--sf-panel);
+  --sf-muted: #6e6d68;
+  --sf-faint: #a5a39b;
+  --sf-line: #c9c7be;
+  --sf-panel: #e3e1d9;
+  --sf-signal: #3f4dff;
+  --sf-hot: #ff6547;
+  /* Reserved accent, not part of the portfolio palette. */
+  --sf-violet: #cdbbff;
+  --sf-white: #ffffff;
+  --sf-focus: var(--sf-signal-text);
+  --sf-font: "Siftion UI", ui-sans-serif, system-ui, sans-serif;
+  --sf-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --sf-gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --sf-max: 1440px;
+  --sf-unit: clamp(0.35rem, 0.7vw, 0.75rem);
+  --sf-section: clamp(5rem, 12vw, 11rem);
+  --sf-columns: 12;
+  --sf-radius-control: 0.25rem;
+  --sf-radius-panel: 0;
+  --sf-tracking-body: 0.01em;
+  --sf-tracking-display: -0.005em;
+  --sf-tracking-kicker: 0.08em;
+  --sf-radius-button: 999px;
+  --sf-radius-button-ghost: 0;
+  --sf-radius-button-icon: 50%;
+  --sf-radius-switch-track: 99px;
+  --sf-radius-switch-thumb: 50%;
+  --sf-radius-choice: 99px;
+  --sf-radius-segment-track: 11px;
+  --sf-radius-segment-option: 7px;
+  --sf-radius-dialog: 18px;
+  --sf-radius-toast: 12px;
+  --sf-radius-field: 9px;
+  --sf-radius-feedback: 10px;
+  --sf-radius-motion-recipe: 12px;
+  --sf-radius-split: 12px;
+  --sf-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --sf-fast: 160ms;
+  --sf-base: 360ms;
+  --sf-slow: 760ms;
+  --sf-duration-interactive: 200ms;
+  --sf-duration-field: 180ms;
+  --sf-duration-async: 900ms;
+  --sf-duration-list: 500ms;
+  --sf-ease-async: linear;
+}
+
+[data-mode="night"] {
+  color-scheme: dark;
+  --sf-paper: #151515;
+  --sf-ink: #efeee9;
+  --sf-hero: #050505;
+  --sf-hero-ink: #efeee9;
+  --sf-on-signal: #ffffff;
+  --sf-on-hot: #151515;
+  --sf-signal-text: #9da5ff;
+  --sf-warning-text: #ff6547;
+  --sf-action-primary: var(--sf-signal);
+  --sf-feedback-warning: var(--sf-hot);
+  --sf-surface-raised: var(--sf-panel);
+  --sf-muted: #aaa89f;
+  --sf-faint: #74736c;
+  --sf-line: #3d3c38;
+  --sf-panel: #22221f;
+  --sf-signal: #3f4dff;
+  --sf-hot: #ff6547;
+  /* Reserved accent, not part of the portfolio palette. */
+  --sf-violet: #cdbbff;
+  --sf-white: #f6f5f0;
+  --sf-focus: var(--sf-signal-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --sf-fast: 0ms;
+    --sf-base: 0ms;
+    --sf-slow: 0ms;
+    --sf-duration-interactive: 0ms;
+    --sf-duration-field: 0ms;
+    --sf-duration-async: 0ms;
+    --sf-duration-list: 0ms;
+  }
+}

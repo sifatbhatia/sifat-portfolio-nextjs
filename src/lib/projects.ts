@@ -1,13 +1,22 @@
 export interface ProjectData {
-  slug: string; title: string; role: string; year: string; client?: string; url?: string;
-<<<<<<< HEAD
-  description: string; summary?: string; challenge: string; approach: string; outcome: string;
-=======
-  description: string; challenge: string; approach: string; outcome: string;
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
+  slug: string;
+  title: string;
+  role: string;
+  year: string;
+  engagement?: string;
+  client?: string;
+  url?: string;
+  previewUrl?: string;
+  conceptLinks?: { label: string; url: string }[];
+  description: string;
+  summary?: string;
+  challenge: string;
+  approach: string;
+  outcome: string;
   stack: string[];
   testimonial?: { quote: string; attribution: string };
   heroImage: string;
+  caseStudyImage?: string;
   screenshots: { type: "laptop" | "phone"; src: string; caption?: string }[];
   highlights?: string[];
   metrics?: { value: string; label: string }[];
@@ -15,86 +24,50 @@ export interface ProjectData {
 
 export const projects: ProjectData[] = [
   {
-<<<<<<< HEAD
-    slug: "willcall",
-    title: "Willcall",
-    role: "Ticketing Product / Full-Stack Development",
-    year: "2026",
-    url: "https://willcall-three.vercel.app/",
-    summary: "A ticket-drop product for live rooms, built around demand, clarity, and the rush of finding the right night.",
-    description:
-      "A ticket-drop product for rooms that sell out, designed around live demand, clear pricing, and the small rush of finding the right night before it disappears.",
-    challenge: `Ticketing interfaces usually make the event do all the emotional work. The product around it becomes a dense checkout utility: dates, prices, buttons, and a lot of friction between finding a room and deciding to enter it.
-
-Willcall needed to make the whole drop feel immediate without turning the interface into noise. Visitors should be able to scan what is live, understand the room and price quickly, and move toward a ticket with confidence. Organizers needed an equally direct path to launch a drop and reach the right audience.`,
-    approach: `I treated Willcall as a live product surface rather than a directory of events.
-
-The visual language uses oversized editorial type, tight metadata, strong image crops, and a restrained black-and-white foundation with warm red signals for live state and action. The hierarchy stays deliberately human: what is happening, where it is happening, when it is happening, and what it costs.
-
-The product system is built around the drop as the central unit. Live inventory, demand, venue context, ticket actions, organizer entry points, and empty states all belong to the same visual grammar, so the interface still feels coherent when the content changes.`,
-    outcome: `Willcall gives ticket discovery a stronger point of view. It feels closer to a considered cultural product than a generic event marketplace, while keeping the practical path to a ticket fast.
-
-The result is a polished foundation for a product that can carry live drops, organizer workflows, and the social energy around rooms people actually want to be in.`,
-    stack: ["Next.js", "React", "TypeScript", "Product Design", "Responsive Systems"],
-    highlights: [
-      "Designed a ticket-drop experience around live demand and fast decision-making",
-      "Created a clear visual hierarchy for venue, date, capacity, price, and ticket action",
-      "Built a flexible event surface for live drops, organizer entry points, and empty states",
-      "Used editorial typography and image-led composition to give the product a distinct cultural voice",
-      "Designed responsive layouts that preserve urgency and clarity across screen sizes",
-    ],
-    heroImage: "/assets/previews/willcall/grid-hero.webp",
-    screenshots: [
-      { type: "laptop", src: "/assets/previews/willcall/hero-drop.webp", caption: "Homepage hero and live ticket-drop entry point" },
-      { type: "laptop", src: "/assets/previews/willcall/grid-hero.webp", caption: "Live drops grid with venue, date, price, and status metadata" },
-      { type: "laptop", src: "/assets/previews/willcall/scan-success.webp", caption: "Ticket scan confirmation moment" },
-      { type: "phone", src: "/assets/previews/willcall/empty-drops.webp", caption: "Responsive empty-state and discovery surface" },
-    ],
-  },
-  {
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     slug: "j-worra",
     title: "J. Worra",
-    role: "Artist Website / Webflow to Next.js",
+    role: "Brand Direction / Website Development",
     year: "2024-2026",
+    engagement: "2018 – Present",
     url: "https://www.jworra.com/",
-<<<<<<< HEAD
-    summary: "An artist platform that brings music, dates, social links, and the world around J. Worra into one direct experience.",
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
+    summary:
+      "I’ve shaped J. Worra’s brand and website since 2018, keeping releases, tour dates, press, and booking together as the artist’s schedule moves.",
     description:
-      "Artist website redesign and development for J. Worra, evolving the site from a plain legacy presence into a custom Next.js experience shaped around music, tour dates, social links, and the artist world visitors are trying to reach.",
-    challenge: `The project was not just to make the site look better. The real challenge was to move J. Worra's web presence out of a generic artist-site format and into something that felt more current, more direct, and more aligned with the artist's music and live presence.
-
-The site needed to serve multiple audiences at once:
-
-- Fans looking for music, tour dates, and social links
-- Booking teams looking for the right contact path
-- Management and industry contacts looking for credibility and quick information
-- Press or partners looking for a clear read on the artist's world`,
-    approach: `I treated the redesign as an artist-platform evolution rather than a single-page reskin.
-
-The structure was reduced to the essentials: upcoming dates, music, artist context, contact, and social/streaming access. The visual system moved toward dark atmosphere, large identity moments, high-contrast interface elements, and a more performance-minded front end.
-
-The Webflow version helped define the brand and layout direction. The Next.js version gave the final site more control, speed, flexibility, and polish.`,
-    outcome: `The current J. Worra site is a clearer meeting point for the artist. It keeps the essential information accessible while giving the brand a more distinctive atmosphere.
-
-The redesign creates a clear progression from a plain legacy site to a custom-built artist experience: more atmospheric, more usable, and more aligned with a modern touring DJ and producer.`,
-    stack: ["Webflow", "Next.js", "React", "Motion Systems", "Responsive Design"],
+      "Since 2018, I have led J. Worra’s brand direction, logo, and successive website builds. The current Next.js site brings Spotify-powered releases and discography together with tour dates, press, and booking contacts. I continue to support the site around releases and tours, alongside analytics and technical SEO.",
+    challenge:
+      "Releases, tours, press, and booking do not happen on the same schedule, but they all point back to the same artist. The site needs to hold those audiences together without turning J. Worra’s identity into a list of links.",
+    approach:
+      "I started with the artist identity and carried it through the logo, visual direction, and each web iteration. The current Next.js build keeps releases, tour dates, press, and booking close to the music instead of splitting them into disconnected destinations. Spotify supplies the release and discography data; I handle the surrounding site, analytics, technical SEO, and updates as the artist’s calendar changes.",
+    outcome:
+      "The site has remained part of the artist’s working kit through successive releases and tours. I continue to maintain the web presence, update campaign details, and keep the listening, press, and booking paths current.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Spotify Web API",
+      "Webflow",
+      "Brand Identity",
+    ],
     highlights: [
-      "Fully redesigned the artist website from the legacy version",
-      "Built an intermediate Webflow version to establish the new direction",
-      "Developed the current custom Next.js site",
-      "Reworked the site hierarchy around dates, music, artist identity, and contact",
-      "Created a darker, more immersive visual direction",
-      "Improved access to streaming links, tour dates, management, and booking contacts",
-      "Built a responsive experience for fans and industry visitors",
+      "Sole designer and developer for the artist’s brand and website since 2018",
+      "Created the brand direction, logo, and each website iteration",
+      "Built the current site with Next.js, TypeScript, and Tailwind CSS",
+      "Integrated Spotify releases and discography",
+      "Set up analytics and handle technical SEO",
+      "Continue web support for releases, tours, press, booking, and marketing",
     ],
     heroImage: "/assets/previews/j-worra/rock-iphone-mockup.webp",
     screenshots: [
-      { type: "laptop", src: "/assets/previews/j-worra/desktop-1440x900.png", caption: "Homepage — Full desktop view" },
-      { type: "phone", src: "/assets/previews/j-worra/mobile-390x844.png", caption: "Mobile — Hero section" },
+      {
+        type: "laptop",
+        src: "/assets/previews/j-worra/desktop-1440x900.png",
+        caption: "Homepage: Full desktop view",
+      },
+      {
+        type: "phone",
+        src: "/assets/previews/j-worra/mobile-hero-2026.jpg",
+        caption: "Mobile hero: 2026 refresh",
+      },
     ],
   },
   {
@@ -102,42 +75,178 @@ The redesign creates a clear progression from a plain legacy site to a custom-bu
     title: "L'Affaire Musicale",
     role: "Brand Identity / Website Refresh",
     year: "2026",
-    url: "https://www.laffairemusicale.com/",
-<<<<<<< HEAD
-    summary: "A sharper identity and web presence for the people, artists, and relationships behind a dance music management company.",
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
+    conceptLinks: [
+      { label: "View LAM concept", url: "https://lam.siftion.com/" },
+      { label: "View L'Affaire concept", url: "https://laffaire.siftion.com/" },
+    ],
+    engagement: "March 2019 – October 2026",
+    summary:
+      "I designed L’Affaire Musicale’s logo and brand identity, then carried them into a clearer Squarespace presence for the roster and inquiries.",
     description:
-      "Brand and website refresh for L'Affaire Musicale, including logo design, visual identity, creative direction, and a redesigned site for the people, artists, and relationships around the dance music management company.",
-    challenge: `The previous site had useful information, but the brand felt dated and visually underpowered. It did not reflect the agency's taste, roster, relationships, or position inside the dance music world.
+      "From March 2019 to October 2026, I designed L’Affaire Musicale’s logo and brand identity, then carried that direction into its website and roster-artist sites. The engagement also covered UI/UX, style guides, Squarespace development, SEO, and work for sister event brand Wicked Paradise. The case-study preview is a static mirror from that period, not the current live site or editable Squarespace backend.",
+    challenge: `The earlier site read more like an events page than an artist-management company. A visitor needed to understand what L’Affaire did, find the roster, and reach the right contact without digging through a generic agency template.
 
-The company needed to move away from an older events-page feeling and toward something that felt like a serious management house: clearer, more intentional, and easier to understand at a glance.`,
-    approach: `The refresh uses a restrained editorial system: a redesigned wordmark, warm neutral palette, large serif typography, disciplined spacing, and a cleaner page structure.
+The refresh had to make the management identity legible at a glance while leaving room for the artists and event brand to keep their own character.`,
+    approach: `I designed the logo and used it as the anchor for the site: a centered wordmark, monochrome surfaces, restrained sans-serif type, and direct paths into the roster and contact. The artists stay the focus, while the agency is easy to place.
 
-The site was reorganized around the signals that matter most for a management company:
+Within Squarespace, custom HTML, CSS, and JavaScript gave the layout more control while keeping the site manageable for updates. I carried the identity through roster and artist pages, then supported the wider engagement with site management and SEO.
 
-- What L'Affaire Musicale does
-- Who the roster includes
-- What areas the company works across
-- Who leads the company
-- How artists, partners, and industry contacts can reach out
-
-The brand direction balances restraint with music-industry edge. It needed to feel elevated without becoming sterile, and stylish without hiding the people and relationships behind the business.`,
-    outcome: `The refreshed site now gives L'Affaire Musicale a stronger first impression and a clearer business presence. It presents the agency as a modern management company rather than a dated event brand.
-
-The new identity can extend beyond the website into roster materials, pitch decks, social assets, booking conversations, and future brand collateral.`,
-    stack: ["Web Design", "Brand Identity", "Typography", "Creative Direction"],
+The case-study preview is a static mirror of the earlier Squarespace site. It preserves that work, but it is not the current live site or a replacement backend.`,
+    outcome:
+      "The engagement produced a clearer management-company front door, a more deliberate roster presentation, and a visual system that could carry across the company and its artist pages. My contract with L’Affaire Musicale and Wicked Paradise ended in October 2026; this case study documents that completed work.",
+    stack: ["Squarespace", "HTML", "CSS", "JavaScript", "Brand Identity"],
     highlights: [
-      "Redesigned the L'Affaire Musicale logo",
-      "Created a refreshed visual identity for the agency",
+      "Designed the L’Affaire Musicale logo and brand identity",
+      "Developed UI/UX direction and style guides for the management company",
+      "Customized Squarespace with HTML, CSS, and JavaScript",
       "Established typography, color, spacing, and layout direction",
-      "Reworked the website around roster, services, leadership, and inquiries",
-      "Clarified the agency's management, booking, branding, and artist-development positioning",
-      "Created a clearer, more recognizable web presence for the company and its artists",
+      "Organized navigation around artists, music, and contact",
+      "Built roster artist pages and supported site maintenance and SEO",
+      "Completed the contract engagement in October 2026",
     ],
     heroImage: "/assets/previews/l-affaire-musicale/screenshot-1.webp",
     screenshots: [
-      { type: "laptop", src: "/assets/previews/l-affaire-musicale/screenshot-1.webp", caption: "Homepage with refreshed brand identity" },
+      {
+        type: "laptop",
+        src: "/assets/previews/l-affaire-musicale/screenshot-1.webp",
+        caption: "Homepage with refreshed brand identity",
+      },
+    ],
+  },
+  {
+    slug: "qlo-agency",
+    title: "QLO Agency",
+    role: "Webflow Development",
+    year: "2024",
+    engagement: "2024 – Present",
+    summary:
+      "QLO’s Webflow site pairs a motion-led studio portfolio with custom GSAP work and a project CRM behind the scenes.",
+    description:
+      "I develop QLO Agency’s own Webflow site, bringing its brand, digital, and motion offer into one portfolio experience. Custom GSAP motion gives the pages their rhythm; the site’s work archive presents projects across disciplines, while a project CRM supports the studio’s project workflow. This is more than a Webflow assembly job: the build connects custom interaction, project operations, and a responsive public-facing site.",
+    challenge:
+      "QLO needed its own site to do more than list services. It had to express the studio’s range across brand, digital, and motion, give varied work room to speak, and support the project workflow behind that public portfolio. The interaction needed to feel authored, not like a stack of default Webflow reveals.",
+    approach:
+      "I built the site in Webflow and used GSAP for custom motion, including SplitText and ScrollTrigger, coordinated with Lenis smooth scrolling. The public work archive moves between projects such as Esq. Capsule, LVH, Beats & Brew, Inter, and Bnine; service and approach pages give the studio’s broader offer a clear structure. A project CRM supports the work behind the showcase, so the site is both a brand experience and part of the studio’s operating setup.",
+    outcome:
+      "QLO has a responsive studio site with a motion-led project showcase and a project CRM supporting its workflow. The build brings the public story and the system behind the work closer together, instead of treating the site as a static gallery.",
+    stack: ["Webflow", "GSAP", "SplitText", "ScrollTrigger", "Lenis", "JavaScript", "CSS", "Project CRM"],
+    highlights: [
+      "Built custom GSAP motion using SplitText and ScrollTrigger",
+      "Synced scroll-driven motion with Lenis",
+      "Developed the Webflow site for QLO’s brand, digital, and motion studio",
+      "Connected the work showcase to a project CRM",
+      "Structured the site around studio services, approach, and project work",
+    ],
+    heroImage: "/assets/previews/qlo-agency/screenshot-1.webp",
+    screenshots: [
+      {
+        type: "laptop",
+        src: "/assets/previews/qlo-agency/screenshot-1.webp",
+        caption: "Custom Webflow build with CMS collections",
+      },
+    ],
+  },
+  {
+    slug: "wicked-paradise",
+    title: "Wicked Paradise",
+    role: "Event Website / Brand Presence",
+    year: "2024",
+    engagement: "March 2019 – October 2026",
+    summary:
+      "An image-led event site that lets the atmosphere sell the night, while keeping event discovery and sign-up clear.",
+    description:
+      "I handled website direction, UI/UX, style guides, SEO, and maintenance for Wicked Paradise as part of the March 2019 to October 2026 engagement with L’Affaire Musicale. The case study shows the event-focused site from that period: large party imagery up front, with direct routes to events, media, social, and contact.",
+    challenge:
+      "An event site has two jobs at once: make the night feel worth leaving home for, then help someone find the next date or stay in the loop. Too much structure drains the atmosphere; too little leaves the visitor with nowhere to go.",
+    approach:
+      "I let the party photography carry the first impression, then kept the navigation and event details direct: what it is, where it is, what is next, and how to stay connected. The image-led layout gives the event its own world without making the practical information hard to reach on mobile.",
+    outcome:
+      "The project delivered an image-led event presence with clear paths to discovery, media, and updates. I managed the site alongside L’Affaire Musicale through the end of the contract in October 2026; the case images document that period, not the current live site.",
+    stack: [
+      "Web Design",
+      "Event Website",
+      "Responsive Design",
+      "Creative Direction",
+    ],
+    highlights: [
+      "Created a visual-first web direction for a music and nightlife event brand",
+      "Centered the experience around event energy, media, and social discovery",
+      "Kept navigation direct for gallery, events, and contact paths",
+      "Used high-impact imagery to make the brand legible quickly",
+      "Built a responsive structure for visitors arriving from mobile and social links",
+    ],
+    heroImage: "/assets/previews/wicked-paradise/screenshot-1.webp",
+    screenshots: [
+      {
+        type: "laptop",
+        src: "/assets/previews/wicked-paradise/screenshot-1.webp",
+        caption: "Homepage with event-led visual direction",
+      },
+      {
+        type: "laptop",
+        src: "/assets/previews/wicked-paradise/screenshot-2.webp",
+        caption: "Event brand and navigation system",
+      },
+      {
+        type: "laptop",
+        src: "/assets/previews/wicked-paradise/screenshot-3.webp",
+        caption: "Media-forward event presence",
+      },
+      {
+        type: "laptop",
+        src: "/assets/previews/wicked-paradise/screenshot-4.webp",
+        caption: "Supporting content and social paths",
+      },
+    ],
+  },
+  {
+    slug: "willcall",
+    title: "WillCall",
+    role: "Ticketing Product / Full-Stack Development",
+    year: "2026",
+    url: "https://willcall.siftion.com/",
+    summary:
+      "A server-backed ticketing prototype from event discovery and ticket allocation to attendee management and door check-in.",
+    description:
+      "WillCall is a live, server-backed ticketing prototype. The public showcase uses fictional events and Neon-backed bookings; it takes no payment, and showcase passes are not valid for real-world entry. Organizers can publish events, set ticket tiers and sales windows, find or export attendee records, and check guests in by rotating QR scan or manual lookup. Paid checkout is not enabled in the showcase.",
+    challenge: `Ticketing doesn't end at checkout. Event details, ticket caps, attendee records, and admission all need to stay in sync, while organizers need a fast way to find people at the door. WillCall treats the event, the ticket, and the check-in as parts of one product rather than separate tools.`,
+    approach: `I built a public event board alongside organizer tools for event setup, ticket tiers, quantities, and sales windows. Organizers can review sold allocations, search attendees by name or email, export the list, and record check-ins with a rotating QR scan or manual lookup. Bookings persist to Neon. The public showcase uses fictional events and no-payment bookings, so it demonstrates the workflow without pretending to be a real ticket sale or valid admission.`,
+    outcome:
+      "WillCall is live at willcall.siftion.com as a server-backed demonstration. The product spans event discovery, ticket allocation, attendee management, and door check-in; the hosted showcase clearly states that it takes no payment and its passes are not valid for real entry.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "tRPC",
+      "Prisma",
+      "Neon (PostgreSQL)",
+      "Stripe",
+      "WebSockets",
+    ],
+    highlights: [
+      "Connected event discovery, ticket allocation, and door operations",
+      "Built organizer tools for ticket tiers, quantities, and sales windows",
+      "Added attendee search, list export, QR scanning, and manual check-in",
+      "Persisted showcase bookings and check-in state to Neon",
+      "Clearly separated the fictional, no-payment demo from real ticket sales",
+    ],
+    heroImage: "/assets/previews/willcall/current-home-desktop.webp",
+    caseStudyImage: "/assets/previews/willcall/current-home-desktop.webp",
+    screenshots: [
+      {
+        type: "laptop",
+        src: "/assets/previews/willcall/current-home-desktop.webp",
+        caption: "Current event discovery homepage",
+      },
+      {
+        type: "laptop",
+        src: "/assets/previews/willcall/current-event-detail-desktop.webp",
+        caption: "Sample event detail and ticket selection",
+      },
+      {
+        type: "phone",
+        src: "/assets/previews/willcall/current-home-mobile.webp",
+        caption: "Mobile event discovery",
+      },
     ],
   },
   {
@@ -146,29 +255,24 @@ The new identity can extend beyond the website into roster materials, pitch deck
     role: "Artist Website / Creative Direction",
     year: "2026",
     url: "https://samblacky.com/",
-<<<<<<< HEAD
-    summary: "A louder artist website direction built around music, photography, travel, fashion, and the energy around Sam Blacky.",
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
+    summary:
+      "A music-first artist-site direction with bold photography and direct paths to music, brand work, artist story, and contact.",
     description:
-      "Artist website refresh for Sam Blacky, focused on stronger visual identity, music-forward structure, bolder photography, and clearer paths for fans, brands, press, and booking contacts to meet the world around the artist.",
-    challenge: `The existing site had the right basic information, but it felt static and dated. The design leaned more toward a simple press page than a living artist world.
+      "A website and creative direction for Sam Blacky, organized around four direct routes: music, brands, about, and contact. The case-study design leads with a full-bleed artist portrait, violet light, and a restrained navigation so the image establishes the mood while the next step stays obvious.",
+    challenge: `An artist website has to hold two kinds of attention: fans looking for the music and industry visitors looking for brand or contact information. The page needed a strong visual introduction without making those paths compete with the portrait.
 
-Sam's brand sits across dance music, travel, fashion, nightlife, and global club culture. The website needed to carry more of that energy without making the core actions harder to find: listen, learn, contact, and explore brand/music work.`,
-    approach: `The redesign uses a louder, sharper visual system built around Sam's existing identity: bold black-and-white logo treatment, vivid purple artist photography, electric pink motion language, oversized type, and a simpler page flow.
+The direction needed to feel like Sam Blacky, not a generic press page, while keeping the next action easy to spot.`,
+    approach: `I let one full-bleed portrait carry the first screen, then kept the navigation to four clear paths: Music, Brands, About, and Contact. Violet light and the pink accent make the image feel like part of the artist’s world, while the compact menu keeps practical routes visible.
 
-The site structure was reorganized around the content people actually look for on an artist site:
-
-- Music and releases
-- Artist story
-- Brand world
-- Contact and management inquiries
-
-The direction intentionally feels less corporate and more direct. It gives the site more personality while keeping the page useful for industry visitors.`,
-    outcome: `The refreshed direction makes Sam Blacky's site feel more current, more energetic, and more connected to her world as a DJ and producer.
-
-It turns the site from a basic information page into a stronger artist showcase that can support releases, bookings, brand conversations, and fan discovery.`,
-    stack: ["Web Design", "Creative Direction", "Artist Website", "Responsive Design"],
+The visual hierarchy does the work in order: recognize the artist, find the music, then move toward brand or contact details without a long press-page detour.`,
+    outcome:
+      "The result is a music-first website direction with a distinct visual opening and direct routes for fans and industry visitors. The artist image sets the tone; music, brand work, and contact stay one step away.",
+    stack: [
+      "Web Design",
+      "Creative Direction",
+      "Artist Website",
+      "Responsive Design",
+    ],
     highlights: [
       "Refreshed the website direction for Sam Blacky's artist brand",
       "Created a bolder visual system around photography, contrast, and music energy",
@@ -179,9 +283,21 @@ It turns the site from a basic information page into a stronger artist showcase 
     ],
     heroImage: "/assets/previews/sam-blacky/screenshot-1.webp",
     screenshots: [
-      { type: "laptop", src: "/assets/previews/sam-blacky/screenshot-1.webp", caption: "Homepage with bold visual identity" },
-      { type: "phone", src: "/assets/previews/sam-blacky/screenshot-2.webp", caption: "Mobile — Artist showcase" },
-      { type: "laptop", src: "/assets/previews/sam-blacky/screenshot-3.webp", caption: "Music and releases section" },
+      {
+        type: "laptop",
+        src: "/assets/previews/sam-blacky/screenshot-1.webp",
+        caption: "Homepage with bold visual identity",
+      },
+      {
+        type: "laptop",
+        src: "/assets/previews/sam-blacky/screenshot-2.webp",
+        caption: "Music and releases",
+      },
+      {
+        type: "laptop",
+        src: "/assets/previews/sam-blacky/screenshot-3.webp",
+        caption: "Artist story and photography",
+      },
     ],
   },
   {
@@ -189,25 +305,28 @@ It turns the site from a basic information page into a stronger artist showcase 
     title: "ClipKeep",
     role: "Product Design / Full-Stack Development",
     year: "2024-2026",
-<<<<<<< HEAD
-    summary: "A local-first clip vault that turns scattered social saves into a calm, searchable personal library.",
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
+    summary:
+      "A private, local-first home for social saves across TikTok, Instagram, and YouTube, with collections, search, and resilient link capture.",
     url: "https://clipkeep.vercel.app",
     description:
-      "A local-first clip vault for saving, organizing, and revisiting social media content from TikTok, Instagram Reels, and YouTube. ClipKeep turns scattered links into a calm personal library with collections, favorites, metadata previews, search, optional encrypted sync, and experimental AI summaries.",
-    challenge: `Saving social content is easy, but finding it again is hard. Useful or entertaining clips get scattered across native save folders, chats, notes, browser tabs, and platform-specific libraries with limited search.
+      "ClipKeep turns platform-specific saves into a personal library. Clips stay in local storage by default; collections, favorites, search, and metadata previews make them easier to find again. Optional Supabase sync stores encrypted vault snapshots, while URL cleanup and metadata fallbacks handle the odd share links each platform produces. AI summaries remain experimental, not a requirement for using the vault.",
+    challenge: `Social saves are split across apps, chats, notes, and browser tabs. The saved clip may still be there, but the path back to it is usually buried in the platform that captured it.
 
-The harder problem was platform messiness. Instagram Reels, TikTok, and YouTube links behave inconsistently across mobile share URLs, redirects, tracking parameters, short links, and unreliable metadata sources. ClipKeep needed to make capture feel simple even when the incoming URLs were not.`,
-    approach: `The product is designed as a quiet personal archive rather than a loud social app. The interface uses soft surfaces, restrained motion, clear spacing, and mobile-first navigation so saving and browsing clips feels lightweight and almost native.
+Then the links themselves get messy. Mobile share URLs, redirects, tracking parameters, and short links can all break metadata. ClipKeep needed to make capture tolerant of that mess, not ask people to clean URLs by hand.`,
+    approach: `The vault starts local, before accounts or cloud sync. From the library, people can sort clips into collections, mark favorites, search, and revisit metadata across TikTok, Instagram, and YouTube.
 
-The core flow is local-first: clips and collections are stored locally by default so the app stays fast and usable without login friction. Users can organize clips into collections, mark favorites, search their vault, and capture metadata from TikTok, Instagram, and YouTube.
+Capture is treated as a pipeline: normalize the URL, strip tracking noise, resolve short links where possible, preserve platform meaning, and fall back when a metadata source fails. Optional Supabase sync stores encrypted snapshots; AI summaries are experimental and stay outside the core save-and-find flow.`,
+    outcome: `ClipKeep is a working prototype for keeping social saves in one searchable place. Its central product decision is simple: save locally first, then make capture resilient enough that a broken preview or inconsistent share link does not have to derail the save.
 
-On the technical side, I treated capture as a resilient pipeline: normalize the URL, clean tracking parameters, preserve platform semantics, resolve short links where possible, fetch metadata, and fallback gracefully. Optional Supabase sync stores encrypted vault snapshots instead of plaintext user content, and AI summaries are clearly marked experimental with a local fallback when the model is unavailable.`,
-    outcome: `ClipKeep now feels more like a complete product: new visitors land on a proper home page, returning users enter the app directly, mobile buttons behave correctly, social capture is more robust, cloud sync is safer, and AI summaries are framed as an enhancement rather than a dependency.
-
-The project reinforced that social URLs are moving targets, not clean APIs. The strongest user experience came from making the save flow resilient: normalize, resolve, fetch metadata, fallback gracefully, and never let one platform failure prevent the user from saving a clip.`,
-    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "NVIDIA AI API"],
+Optional encrypted sync and experimental summaries extend the vault without becoming prerequisites.`,
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "NVIDIA AI API",
+    ],
     highlights: [
       "Built a local-first vault for TikTok, Instagram Reels, and YouTube links",
       "Added collections, favorites, search, metadata previews, and returning-user routing",
@@ -225,8 +344,16 @@ The project reinforced that social URLs are moving targets, not clean APIs. The 
     ],
     heroImage: "/assets/previews/clipkeep/screenshot-1.webp",
     screenshots: [
-      { type: "laptop", src: "/assets/previews/clipkeep/screenshot-1.webp", caption: "Clip vault home and saved-link library" },
-      { type: "laptop", src: "/assets/previews/clipkeep/screenshot-2.webp", caption: "Clip organization, metadata, and browsing interface" },
+      {
+        type: "laptop",
+        src: "/assets/previews/clipkeep/screenshot-1.webp",
+        caption: "Clip vault home and saved-link library",
+      },
+      {
+        type: "laptop",
+        src: "/assets/previews/clipkeep/screenshot-2.webp",
+        caption: "Clip organization, metadata, and browsing interface",
+      },
     ],
   },
   {
@@ -235,24 +362,29 @@ The project reinforced that social URLs are moving targets, not clean APIs. The 
     role: "Weather App / Front-End System",
     year: "2026",
     url: "https://aer-psi.vercel.app/",
-<<<<<<< HEAD
-    summary: "A weather interface that translates live conditions into atmosphere through color, motion, and a quiet utility-first system.",
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
+    summary:
+      "A weather interface that lets the conditions shape the palette, while hourly and seven-day detail stay readable.",
     description:
-      "A minimal real-time weather app that lets the interface meet the weather itself: Open-Meteo conditions, hourly data, a 7-day forecast, adaptive gradients, and embeddable widgets shaped around temperature and system preference.",
-    challenge: `Most weather apps treat conditions as information placed inside a generic shell. Aer started from a different question: what if the interface changed because the weather changed?
+      "Aer turns live Open-Meteo data into a quiet forecast surface: current conditions, city search, hourly detail, and a seven-day view. Temperature shifts the background palette, while the numbers remain easy to read. The app needs no weather API key and includes unit switching, system-aware color modes, voice playback, and embeddable widgets.",
+    challenge: `A forecast gives you numbers; Aer adds a quick visual read of the conditions without asking color to replace the forecast details.
 
-The app needed to stay quiet and immediate while carrying several layers of utility: city search, current conditions, hourly weather, a weekly forecast, temperature unit switching, dark-mode adaptation, text-to-speech output, and embeddable widget states.`,
-    approach: `The core design decision was to make the weather visible before a user reads a number. Warm days move toward amber; cold mornings move toward deep blue. The gradients are not decoration. They are data translated into atmosphere.
+The interface still had to carry the useful details: city search, current conditions, hourly weather, a weekly outlook, unit switching, voice playback, and embeddable widgets.`,
+    approach: `Temperature sets the atmosphere: warmer conditions pull the page toward amber, colder ones toward blue. The forecast cards keep the actual data legible, so color adds a quick read rather than replacing the numbers.
 
-Glassmorphism cards sit over the gradient to create depth without clutter. Typography stays sparse, with the temperature treated as the hero interaction: tap it to switch between Fahrenheit and Celsius.
+I kept the interaction small and useful: tap the temperature to switch units, search cities with a debounced request that cancels stale results, and choose light or dark with the system setting. Open-Meteo keeps the core forecast keyless; voice playback and embeddable widget sizes extend the app for other contexts.
 
-On the engineering side, the app uses Open-Meteo without an API key, AbortController-cancelled debounce for city search, system-aware dark mode, and an ElevenLabs text-to-speech forecast routed through a Supabase Edge Function. The implementation was also hardened through dependency trimming, dead-code removal, extracted utility functions, loading skeletons, and unit tests around the parts most likely to drift.`,
-    outcome: `Aer became a small, coherent weather system rather than a generic forecast page. It gives visitors the facts quickly, but the real detail is that the interface feels different as the conditions change.
+The production pass trimmed unused dependencies and components, extracted the pieces most likely to drift, and added unit coverage for conversions, condition mapping, dates, and responsive hooks.`,
+    outcome: `Aer pairs a live forecast with an interface that changes tone with the weather, while keeping city search and short- and week-range forecasts close at hand.
 
-The production pass brought the codebase into a cleaner state: strict TypeScript coverage, a smaller dependency surface, eliminated unused UI files, tested utility functions, and a more resilient search flow that avoids stale API results.`,
-    stack: ["Vite", "React 18", "TypeScript", "Tailwind CSS", "Open-Meteo", "Supabase"],
+The production pass reduced runtime dependencies from 54 to 7, removed unused UI files, and added 24 tests around weather mapping, conversions, dates, and responsive hooks.`,
+    stack: [
+      "Vite",
+      "React 18",
+      "TypeScript",
+      "Tailwind CSS",
+      "Open-Meteo",
+      "Supabase",
+    ],
     highlights: [
       "Integrated live weather data through the Open-Meteo API without requiring an API key",
       "Built city search with autocomplete and AbortController-cancelled debounce to prevent stale results",
@@ -270,37 +402,16 @@ The production pass brought the codebase into a cleaner state: strict TypeScript
     ],
     heroImage: "/assets/previews/aer/screenshot-1.png",
     screenshots: [
-      { type: "laptop", src: "/assets/previews/aer/screenshot-1.png", caption: "Desktop weather interface with adaptive gradient state" },
-      { type: "phone", src: "/assets/previews/aer/mobile-390x844.png", caption: "Mobile forecast layout and system-aware dark mode" },
-    ],
-  },
-  {
-    slug: "wicked-paradise",
-    title: "Wicked Paradise",
-    role: "Event Website / Brand Presence",
-    year: "2024",
-    description:
-      "Website direction for Wicked Paradise, a music and nightlife event brand, built around fast recognition, event energy, social discovery, and a visual system that carries the feeling of a live party.",
-    challenge:
-      "Event brands have to communicate quickly. Visitors are usually looking for proof of energy, event context, media, social links, and a path to the next show. The challenge was to make the site feel active and atmospheric without hiding the basic actions people need.",
-    approach:
-      "The direction uses high-impact event imagery, bold brand placement, direct navigation, and visible social/contact paths. The site leans into the world of the event instead of treating it like a generic landing page, while keeping the structure simple enough for people arriving from social or mobile contexts.",
-    outcome:
-      "The result gives Wicked Paradise a more immediate digital home: visual first, event-aware, and easier to understand at a glance. It supports discovery, credibility, and the kind of quick emotional read that nightlife and music brands depend on.",
-    stack: ["Web Design", "Event Website", "Responsive Design", "Creative Direction"],
-    highlights: [
-      "Created a visual-first web direction for a music and nightlife event brand",
-      "Centered the experience around event energy, media, and social discovery",
-      "Kept navigation direct for gallery, events, and contact paths",
-      "Used high-impact imagery to make the brand legible quickly",
-      "Built a responsive structure for visitors arriving from mobile and social links",
-    ],
-    heroImage: "/assets/previews/wicked-paradise/screenshot-1.webp",
-    screenshots: [
-      { type: "laptop", src: "/assets/previews/wicked-paradise/screenshot-1.webp", caption: "Homepage with event-led visual direction" },
-      { type: "laptop", src: "/assets/previews/wicked-paradise/screenshot-2.webp", caption: "Event brand and navigation system" },
-      { type: "laptop", src: "/assets/previews/wicked-paradise/screenshot-3.webp", caption: "Media-forward event presence" },
-      { type: "laptop", src: "/assets/previews/wicked-paradise/screenshot-4.webp", caption: "Supporting content and social paths" },
+      {
+        type: "laptop",
+        src: "/assets/previews/aer/screenshot-1.png",
+        caption: "Desktop weather interface with adaptive gradient state",
+      },
+      {
+        type: "phone",
+        src: "/assets/previews/aer/mobile-390x844.png",
+        caption: "Mobile forecast layout and system-aware dark mode",
+      },
     ],
   },
   {
@@ -308,27 +419,49 @@ The production pass brought the codebase into a cleaner state: strict TypeScript
     title: "Cherry Tooth",
     role: "Artist Website / Visual Direction",
     year: "2024",
+    conceptLinks: [
+      { label: "View Cherry Tooth concept", url: "https://cherrytooth.siftion.com/" },
+    ],
+    summary:
+      "A compact artist-site direction where a vivid portrait and red-pink palette lead into music, artist information, and merch.",
     description:
-      "Artist website direction for Cherry Tooth, built around a bold red-and-pink visual world, direct music/about/merch access, and a playful identity that feels specific to the artist instead of generic.",
+      "A website and visual direction for Cherry Tooth, a DJ and producer. A full-bleed portrait, oversized wordmark, and red-pink palette give the page its first impression; the navigation stays short, with direct paths to music, about, and merch.",
     challenge:
-      "The site needed to work as more than a simple artist page. It had to carry a strong visual identity, make the core paths obvious, and give visitors a quick sense of the artist's world without overcomplicating the experience.",
+      "An artist page has to establish a point of view quickly, then get fans to the music and merch without turning into a press-kit maze. The visual identity should do the introduction; the navigation should not make people search for the basics.",
     approach:
-      "The direction keeps the structure direct: home, music, about, and merch. Large-scale photography, oversized type, and a limited color system do most of the brand work. The goal was to make the page feel confident and memorable while keeping it usable for fans and first-time visitors.",
+      "I let one portrait, a saturated red-pink palette, and an oversized wordmark carry the visual weight. The page stays intentionally short: music, about, and merch are clear destinations rather than nested branches. That keeps the artist image in charge while giving fans a direct way through.",
     outcome:
-      "The result is a distinctive artist presence with clear navigation, strong recall, and a visual system that can extend into releases, merch, and social moments. It feels like an artist world rather than a neutral template.",
-    stack: ["Web Design", "Artist Website", "Creative Direction", "Responsive Design"],
+      "The result is a focused artist-site direction with a strong first image and a short route to music, artist information, and merch. It is presented here as website and visual-direction work, without claiming a separate commercial outcome.",
+    stack: [
+      "Web Design",
+      "Artist Website",
+      "Creative Direction",
+      "Responsive Design",
+    ],
     highlights: [
       "Created a bold artist-site direction around photography, color, and oversized type",
       "Kept the page structure focused on music, about, merch, and discovery",
-      "Built a memorable red-and-pink visual system for stronger brand recall",
+      "Built a red-and-pink visual system around photography and oversized type",
       "Designed the experience to feel playful without losing clarity",
       "Supported fan-facing paths with simple navigation and mobile-friendly hierarchy",
     ],
     heroImage: "/assets/previews/cherry-tooth/screenshot-1.webp",
     screenshots: [
-      { type: "laptop", src: "/assets/previews/cherry-tooth/screenshot-1.webp", caption: "Homepage with bold artist identity" },
-      { type: "laptop", src: "/assets/previews/cherry-tooth/screenshot-2.webp", caption: "Music and artist-world direction" },
-      { type: "laptop", src: "/assets/previews/cherry-tooth/screenshot-3.webp", caption: "Supporting page and content system" },
+      {
+        type: "laptop",
+        src: "/assets/previews/cherry-tooth/screenshot-1.webp",
+        caption: "Homepage with bold artist identity",
+      },
+      {
+        type: "laptop",
+        src: "/assets/previews/cherry-tooth/screenshot-2.webp",
+        caption: "Music and artist-world direction",
+      },
+      {
+        type: "laptop",
+        src: "/assets/previews/cherry-tooth/screenshot-3.webp",
+        caption: "Supporting page and content system",
+      },
     ],
   },
   {
@@ -336,15 +469,17 @@ The production pass brought the codebase into a cleaner state: strict TypeScript
     title: "Sif's Utilities",
     role: "Creative Tools / Product Refresh",
     year: "2026",
-    url: "https://cat-gif-generator-three.vercel.app/",
+    url: "https://sifs-utils.vercel.app/",
+    summary:
+      "A browser-first toolbox for image, video, PDF, and metadata chores, designed to open straight into the work.",
     description:
-      "A collection of browser-based creative utilities, evolving from the original MeowGen experiment at meowgen.vercel.app into a sharper set of small tools for image, PDF, video, metadata, grain, icon, and playful generation workflows.",
+      "Sif’s Utilities groups small file jobs in one place: compress an image or video, crop, clean a PDF, remove metadata, build an icon, or format JSON and YAML. The interface starts with the task, not an account screen. Most work runs in the browser, with a direct path from file to adjustment to download.",
     challenge:
-      "The original version, MeowGen, was a fun single-purpose experiment hosted at meowgen.vercel.app. The opportunity was to treat that energy as a starting point and expand it into a more useful utility surface without making it feel heavy or overbuilt.",
+      "Small file jobs live in an awkward gap: too trivial for a desktop suite, too specific for a general-purpose editor. MeowGen was the one-off starting point. The next version needed more tools without making the hub feel like another product dashboard.",
     approach:
-      "The refresh turns the idea into a small tool system: individual cards, simple labels, direct entry points, and a light interface that lets each utility stand on its own. The structure is intentionally modular so new tools can be added without redesigning the whole experience.",
+      "I organized the hub around the job in front of you. Each utility gets its own entry point and controls, while the same quiet card system makes the growing list easy to scan. Most tools run in the browser; the flow is built around choosing the task, dropping in a file, making an adjustment, and downloading the result.",
     outcome:
-      "The current version moves from a one-off generator into a broader creative toolkit. It keeps the playful spirit of the original while making the system easier to scan, extend, and use across multiple practical browser-based tasks.",
+      "The original one-off experiment has become a wider set of small browser tools. The interface stays focused on quick file jobs instead of pretending each one needs a full application around it.",
     stack: ["Next.js", "React", "Creative Tools", "Product Design"],
     highlights: [
       "Evolved the original MeowGen concept into a broader utility collection",
@@ -355,7 +490,11 @@ The production pass brought the codebase into a cleaner state: strict TypeScript
     ],
     heroImage: "/assets/previews/sifs-utilities/screenshot-1.webp",
     screenshots: [
-      { type: "laptop", src: "/assets/previews/sifs-utilities/screenshot-1.webp", caption: "Refreshed utilities index" },
+      {
+        type: "laptop",
+        src: "/assets/previews/sifs-utilities/screenshot-1.webp",
+        caption: "Refreshed utilities index",
+      },
     ],
   },
   {
@@ -377,7 +516,13 @@ No external JavaScript framework was used. The goal was to prove that a careful,
     outcome: `The final concept balances aesthetic refinement with functional clarity. It feels handcrafted and editorial while still supporting discovery, trust, and gentle inquiry paths.
 
 Technically, the project demonstrates a zero-dependency front end, responsive behavior from mobile to desktop, accessible interaction patterns, and performance-minded animation choices using transforms, passive listeners, and IntersectionObserver.`,
-    stack: ["HTML", "CSS", "Vanilla JavaScript", "Design Systems", "Accessibility"],
+    stack: [
+      "HTML",
+      "CSS",
+      "Vanilla JavaScript",
+      "Design Systems",
+      "Accessibility",
+    ],
     highlights: [
       "Built a full design token system for color, spacing, typography, shadows, and motion",
       "Created a responsive floral e-commerce experience without external JavaScript frameworks",
@@ -386,15 +531,19 @@ Technically, the project demonstrates a zero-dependency front end, responsive be
       "Used IntersectionObserver, passive listeners, and transform-based animation for smooth rendering",
       "Designed a warm editorial visual language around artisan florals and founder storytelling",
     ],
-    metrics: [
-      { value: "0", label: "External JS dependencies" },
-      { value: "95+", label: "Estimated Lighthouse performance" },
-      { value: "100", label: "Estimated accessibility score" },
-    ],
+    metrics: [{ value: "0", label: "External JS dependencies" }],
     heroImage: "/assets/previews/petal-and-stem/screenshot-1.png",
     screenshots: [
-      { type: "laptop", src: "/assets/previews/petal-and-stem/screenshot-1.png", caption: "Desktop hero and shopping entry points" },
-      { type: "phone", src: "/assets/previews/petal-and-stem/mobile-390x844.png", caption: "Mobile floral e-commerce experience" },
+      {
+        type: "laptop",
+        src: "/assets/previews/petal-and-stem/screenshot-1.png",
+        caption: "Desktop hero and shopping entry points",
+      },
+      {
+        type: "phone",
+        src: "/assets/previews/petal-and-stem/mobile-390x844.png",
+        caption: "Mobile floral e-commerce experience",
+      },
     ],
   },
   {
@@ -431,32 +580,18 @@ They function as creative coding studies, technical demos, and reminders that th
     ],
     heroImage: "/assets/previews/experimental-sites/screenshot-1.png",
     screenshots: [
-      { type: "laptop", src: "/assets/previews/experimental-sites/screenshot-1.png", caption: "Retro web experiment with intentionally excessive visual language" },
-      { type: "phone", src: "/assets/previews/experimental-sites/mobile-390x844.png", caption: "Mobile view of the experimental retro interface" },
+      {
+        type: "laptop",
+        src: "/assets/previews/experimental-sites/screenshot-1.png",
+        caption:
+          "Retro web experiment with intentionally excessive visual language",
+      },
+      {
+        type: "phone",
+        src: "/assets/previews/experimental-sites/mobile-390x844.png",
+        caption: "Mobile view of the experimental retro interface",
+      },
     ],
-  },
-  {
-    slug: "qlo-agency",
-    title: "QLO Agency",
-    role: "Webflow Development",
-    year: "2024",
-    description:
-      "Custom Webflow development for agency-led client projects, including component systems, CMS collections, custom interactions, and editing guardrails.",
-    challenge:
-      "Agency clients needed sites they could edit themselves without breaking design integrity.",
-    approach:
-      "Built modular Webflow component libraries with reusable CMS collections. Custom interactions where CMS couldn't reach.",
-    outcome:
-      "Multiple client sites shipped. Clients edit content independently. Designer still controls the system.",
-    stack: ["Webflow", "JavaScript", "CSS"],
-    highlights: [
-      "Reusable component library in Webflow CMS",
-      "Custom interaction logic where CMS falls short",
-      "Client editing guardrails to protect design system",
-      "3rd-party API integrations for dynamic content",
-    ],
-    heroImage: "/assets/previews/qlo-agency/screenshot-1.webp",
-    screenshots: [{ type: "laptop", src: "/assets/previews/qlo-agency/screenshot-1.webp", caption: "Custom Webflow build with CMS collections" }],
   },
 ];
 

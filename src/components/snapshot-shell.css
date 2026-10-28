@@ -1,0 +1,17 @@
+/* Navigation and footer accessibility states. Layout lives in globals.css. */
+.footer-wordmark:focus-within .fw-letter {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer .fw-letter {
+    transition: none;
+    transition-delay: 0s;
+  }
+  .navbar-header .navbar-desktop-links,
+  .navbar-header > a,
+  .grid-menu,
+  .grid-menu .menu-dot {
+    transition: none !important;
+  }
+}

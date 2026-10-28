@@ -1,32 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Young_Serif } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
-<<<<<<< HEAD
 import LenisProvider from "@/components/lenis-provider";
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const youngSerif = Young_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-young-serif",
-  display: "swap",
-});
+import "./siftion-tokens.css";
+import "./siftion-controls.css";
+import "./siftion-portfolio.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Sifat Bhatia - Design Engineer and Creative Technologist in Los Angeles",
+    default:
+      "Sifat Bhatia - Design Engineer and Creative Technologist in Los Angeles",
     template: "%s | Sifat Bhatia",
   },
   description:
-    "Sifat Bhatia designs and builds websites, identities, and interactive tools for people with worlds worth meeting.",
+    "Sifat Bhatia is a Los Angeles-based design engineer with 8+ years building brand identities, websites, and full-stack web products for artists, agencies, and nonprofits.",
   keywords: [
     "Sifat Bhatia",
     "design engineer",
@@ -49,6 +36,15 @@ export const metadata: Metadata = {
   creator: "Sifat Bhatia",
   publisher: "Sifat Bhatia",
   metadataBase: new URL("https://sifat.tech"),
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   alternates: {
     canonical: "/",
   },
@@ -56,31 +52,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://sifat.tech",
-    siteName: "Sifat Bhatia — Design Engineer",
-    title: "Sifat Bhatia — Design Engineer & Creative Technologist",
+    siteName: "Sifat Bhatia: Design Engineer",
+    title: "Sifat Bhatia, Design Engineer",
     description:
-      "Design engineer based in Los Angeles. Building websites, identities, and interactive tools for people with worlds worth meeting.",
-<<<<<<< HEAD
-=======
+      "Sifat Bhatia is a Los Angeles-based design engineer. Work spans artist sites, brand identities, and web products.",
     images: [
       {
-        url: "/assets/og-image.png",
+        url: "/social-preview.png",
         width: 1200,
         height: 630,
-        alt: "Sifat Bhatia — Design Engineer & Creative Technologist",
+        alt: "Chrome S and B emblem beside a J. Worra artist website screenshot",
       },
     ],
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sifat Bhatia — Design Engineer & Creative Technologist",
+    title: "Sifat Bhatia, Design Engineer",
     description:
-      "Design engineer based in Los Angeles. Building websites, identities, and interactive tools for people with worlds worth meeting.",
-<<<<<<< HEAD
-=======
-    images: ["/assets/og-image.png"],
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
+      "Sifat Bhatia is a Los Angeles-based design engineer. Work spans artist sites, brand identities, and web products.",
+    images: ["/social-preview.png"],
     creator: "@sifatxo",
   },
   robots: {
@@ -93,13 +83,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  verification: {
-<<<<<<< HEAD
-    // google: "actual-verification-code-here",
-=======
-    google: "google-site-verification-code", // Replace with actual code when available
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
   },
   category: "portfolio",
 };
@@ -114,12 +97,8 @@ const personSchema = {
   url: "https://sifat.tech",
   sameAs: [
     "https://github.com/sifatbhatia",
-<<<<<<< HEAD
     "https://www.instagram.com/siftion/",
-=======
-    "https://www.instagram.com/sifatxo/",
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
-    "https://www.linkedin.com/in/sifatbhatia",
+    "https://www.linkedin.com/in/siftion",
   ],
   knowsAbout: [
     "React",
@@ -142,14 +121,19 @@ const personSchema = {
     {
       "@type": "EducationalOrganization",
       name: "Full Sail University",
-      description: "BS Degree, Valedictorian",
+      description: "B.S., Web Design & Development, Valedictorian (2021)",
     },
     {
       "@type": "EducationalOrganization",
-      name: "Westcliff University",
-      description: "MS in Information Technology (in progress)",
+      name: "Los Angeles City College",
+      description: "Computer Science studies, 2023–2026",
     },
   ],
+  affiliation: {
+    "@type": "EducationalOrganization",
+    name: "Westcliff University",
+    description: "M.S., Information Technology, 2026–Present (in progress)",
+  },
   address: {
     "@type": "PostalAddress",
     addressLocality: "Los Angeles",
@@ -161,7 +145,7 @@ const personSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Sifat Bhatia — Design Engineer",
+  name: "Sifat Bhatia: Design Engineer",
   url: "https://sifat.tech",
   description:
     "Portfolio of Sifat Bhatia, a design engineer and creative technologist based in Los Angeles.",
@@ -169,27 +153,16 @@ const websiteSchema = {
     "@type": "Person",
     name: "Sifat Bhatia",
   },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: "https://sifat.tech/projects?q={search_term_string}",
-    },
-    "query-input": {
-      "@type": "PropertyValueSpecification",
-      valueName: "search_term_string",
-    },
-  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <ViewTransitions>
-<<<<<<< HEAD
-      <html lang="en" className={`${inter.variable} ${youngSerif.variable}`} suppressHydrationWarning>
-=======
-      <html lang="en" className={`${inter.variable} ${youngSerif.variable}`}>
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
+      <html lang="en" data-mode="night">
         <head>
           <script
             type="application/ld+json"
@@ -200,13 +173,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
           />
         </head>
-<<<<<<< HEAD
         <body className="antialiased">
           <LenisProvider>{children}</LenisProvider>
         </body>
-=======
-        <body className="antialiased">{children}</body>
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
       </html>
     </ViewTransitions>
   );

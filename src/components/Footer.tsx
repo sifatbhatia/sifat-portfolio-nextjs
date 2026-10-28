@@ -1,338 +1,218 @@
 "use client";
 
-<<<<<<< HEAD
-=======
-import { useCallback, useState, useSyncExternalStore } from "react";
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
-import Image from "next/image";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type CSSProperties,
+  type MouseEvent,
+} from "react";
 import { Link } from "next-view-transitions";
+import ArrowIcon from "./ArrowIcon";
+import "./snapshot-shell.css";
 
 const primaryLinks = [
-<<<<<<< HEAD
+  { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
   { href: "/journal", label: "Journal" },
   { href: "/services", label: "Services" },
   { href: "/now", label: "Now" },
+  { href: "/contact", label: "Contact" },
 ];
-
-function FooterLink({ href, label }: { href: string; label: string }) {
-  return (
-    <Link href={href} className="footer-nav-link">
-      {label}
-=======
-  { href: "/projects", label: "PROJECTS" },
-  { href: "/journal", label: "JOURNAL" },
-  { href: "/services", label: "SERVICES" },
-  { href: "/now", label: "NOW" },
-];
-
 const socialLinks = [
-  { href: "https://www.instagram.com/siftion/", label: "INSTAGRAM", external: true },
-  { href: "mailto:sifatbht@gmail.com", label: "EMAIL" },
+  { href: "https://www.instagram.com/siftion/", label: "Instagram" },
+  { href: "https://www.behance.net/siftion", label: "Behance" },
+  { href: "https://x.com/siftion", label: "X" },
+  { href: "https://github.com/sifatbhatia", label: "GitHub" },
+  { href: "https://www.linkedin.com/in/sifatbhatia", label: "LinkedIn" },
+];
+const wordmarkPaths = [
+  "M140.691 18.7524L121.009 49.3552C106.349 41.5417 90.3923 37.6349 73.14 37.6349C64.3114 37.6349 57.6696 39.1976 53.2148 42.323C48.76 45.4484 46.5326 49.9195 46.5326 55.7362C46.5326 61.7265 49.165 66.5014 54.4298 70.0609C59.6946 73.5335 67.8752 76.4853 78.9718 78.9162C90.4733 81.5206 100.274 84.5158 108.374 87.9017C116.554 91.2007 123.682 95.2811 129.757 100.143C135.831 104.918 140.327 110.604 143.243 117.202C146.24 123.8 147.738 131.44 147.738 140.122C147.738 159.048 141.137 173.286 127.934 182.835C114.732 192.385 96.4671 197.16 73.14 197.16C42.3613 197.16 17.9813 189.694 0 174.762L19.6822 144.159C34.9096 154.403 52.7288 159.525 73.14 159.525C84.9655 159.525 93.5107 157.876 98.7755 154.577C104.121 151.278 106.794 146.459 106.794 140.122C106.794 134.218 104.081 129.66 98.654 126.448C93.2272 123.236 84.1151 120.241 71.3176 117.463C48.7195 112.34 32.1152 104.657 21.5046 94.4129C10.8941 84.0817 5.58877 71.1895 5.58877 55.7362C5.58877 49.8326 6.31774 44.233 7.77568 38.9372C9.23362 33.6414 11.623 28.606 14.9439 23.8311C18.3458 18.9694 22.5981 14.8022 27.7009 11.3295C32.8037 7.85689 39.2024 5.12217 46.8971 3.12539C54.6728 1.0418 63.4204 0 73.14 0C100.841 0 123.358 6.25078 140.691 18.7524Z",
+  "M164.747 191.951V5.20898H205.205V191.951H164.747Z",
+  "M270.084 80.4788H353.915V118.114H270.084V191.951H229.626V5.20898H359.139V42.8439H270.084V80.4788Z",
+  "M414.905 155.358L401.541 191.951H357.924L429.971 5.20898H470.064L542.111 191.951H498.494L485.13 155.358H414.905ZM450.018 59.9033L428.27 119.025H471.765L450.018 59.9033Z",
+  "M517.812 5.20898H673.933V42.8439H616.101V191.951H575.643V42.8439H517.812V5.20898Z",
+  "M844.998 191.951H760.802V5.20898H843.054C887.116 5.20898 909.147 21.8343 909.147 55.085C909.147 64.548 906.313 72.7956 900.643 79.8277C894.973 86.8598 887.886 91.2875 879.381 93.1106C890.883 95.7151 899.752 100.75 905.989 108.217C912.225 115.596 915.344 124.842 915.344 135.955C915.344 141.598 914.696 146.937 913.4 151.972C912.104 157.008 909.755 162.043 906.353 167.078C903.032 172.027 898.78 176.324 893.596 179.97C888.493 183.53 881.771 186.438 873.428 188.696C865.085 190.866 855.609 191.951 844.998 191.951ZM801.26 155.749H844.026C855.285 155.749 863.101 154.056 867.475 150.67C871.848 147.284 874.035 141.945 874.035 134.652C874.035 127.273 871.848 121.934 867.475 118.635C863.101 115.249 855.285 113.556 844.026 113.556H801.26V155.749ZM801.26 78.5255H844.026C860.225 78.5255 868.325 72.3615 868.325 60.0336C868.325 47.7056 860.225 41.5417 844.026 41.5417H801.26V78.5255Z",
+  "M1051.18 77.8743V5.20898H1091.63V191.951H1051.18V115.509H975.241V191.951H934.783V5.20898H975.241V77.8743H1051.18Z",
+  "M1162.1 155.358L1148.74 191.951H1105.12L1177.17 5.20898H1217.26L1289.31 191.951H1245.69L1232.32 155.358H1162.1ZM1197.21 59.9033L1175.46 119.025H1218.96L1197.21 59.9033Z",
+  "M1265.01 5.20898H1421.13V42.8439H1363.3V191.951H1322.84V42.8439H1265.01V5.20898Z",
+  "M1438.26 191.951V5.20898H1478.72V191.951H1438.26Z",
+  "M1549.18 155.358L1535.82 191.951H1492.2L1564.25 5.20898H1604.34L1676.39 191.951H1632.77L1619.41 155.358H1549.18ZM1584.3 59.9033L1562.55 119.025H1606.04L1584.3 59.9033Z",
 ];
 
-const bottomBarItems = [
-  { label: "LOS ANGELES", href: null as string | null, external: false },
-  { label: "© SIFTION", href: null as string | null, external: false },
-  { label: "SIFATBHT@GMAIL.COM", href: "mailto:sifatbht@gmail.com", external: false },
-  { label: "DESIGN & DEVELOPMENT", href: null as string | null, external: false },
-];
-
-function useMediaQuery(query: string): boolean {
-  const subscribe = useCallback((notify: () => void) => {
-    const mq = window.matchMedia(query);
-    mq.addEventListener("change", notify);
-    return () => mq.removeEventListener("change", notify);
-  }, [query]);
-
-  const getSnapshot = useCallback(() => window.matchMedia(query).matches, [query]);
-
-  return useSyncExternalStore(subscribe, getSnapshot, () => false);
-}
-
-function NavLink({ href, children, external }: { href: string; children: React.ReactNode; external?: boolean }) {
-  const [hovered, setHovered] = useState(false);
-
-  const style = {
-    color: hovered ? "#f7f7f2" : "rgba(247,247,242,0.86)",
-    fontSize: "clamp(1.15rem, 2vw, 23.9px)",
-    fontWeight: 700,
-    fontFamily: "var(--font-body)",
-    letterSpacing: "-0.03em",
-    lineHeight: "clamp(1.1rem, 1.85vw, 22px)",
-    textTransform: "uppercase" as const,
-    textDecoration: "none",
-    whiteSpace: "nowrap" as const,
-    transition: "color 200ms ease",
-  } as React.CSSProperties;
-
-  if (external) {
-    return (
-      <a href={href} target="_blank" rel="noreferrer" style={style}
-        onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-        {children}
-      </a>
+function FooterWordmark() {
+  const svgRef = useRef<SVGSVGElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.4 },
     );
-  }
-
+    observer.observe(svg);
+    return () => observer.disconnect();
+  }, []);
   return (
-    <Link href={href} style={style}
-      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-      {children}
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
-    </Link>
+    <svg
+      ref={svgRef}
+      viewBox="0 0 1677 198"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`fw-svg${visible ? " fw-on" : ""}`}
+      role="img"
+      aria-label="Sifat Bhatia"
+    >
+      {wordmarkPaths.map((path, index) => (
+        <path
+          key={index}
+          d={path}
+          fill="var(--sf-ink)"
+          className="fw-letter"
+          style={{ "--i": index } as CSSProperties}
+        />
+      ))}
+    </svg>
   );
 }
 
-<<<<<<< HEAD
+// Click copies the address; double-click or clipboard failure opens mail.
+export function CopyEmail({
+  className,
+  style,
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) {
+  const [copied, setCopied] = useState(false);
+  const hintId = useId();
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mountedRef = useRef(false);
+  const email = "sifatbht@gmail.com";
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
+  const copy = useCallback(async (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    try {
+      await navigator.clipboard.writeText(email);
+      if (!mountedRef.current) return;
+      setCopied(true);
+      if (timerRef.current) clearTimeout(timerRef.current);
+      timerRef.current = setTimeout(() => setCopied(false), 2000);
+    } catch {
+      if (mountedRef.current) window.location.href = `mailto:${email}`;
+    }
+  }, []);
+  return (
+    <span className="copy-email-wrap">
+      <a
+        className={className}
+        href={`mailto:${email}`}
+        style={style}
+        onClick={copy}
+        onDoubleClick={(event) => {
+          event.preventDefault();
+          window.location.href = `mailto:${email}`;
+        }}
+        aria-describedby={copied ? hintId : undefined}
+        aria-label="sifatbht@gmail.com: click to copy email; double-click to open mail"
+      >
+        {email}
+      </a>
+      {copied && (
+        <span
+          id={hintId}
+          className="copy-email-hint"
+          role="status"
+          aria-live="polite"
+        >
+          Copied - double-click to open mail
+        </span>
+      )}
+    </span>
+  );
+}
+
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-grid">
         <div className="footer-intro">
           <p className="footer-eyebrow">Siftion</p>
-          <p className="footer-statement">Designing and building things worth spending time with.</p>
+          <p className="footer-statement">
+            Designing and building things worth spending time with.
+          </p>
         </div>
-
         <nav aria-label="Footer navigation">
           <p className="footer-eyebrow">Explore</p>
-          {primaryLinks.map((link) => <FooterLink key={link.href} {...link} />)}
+          {primaryLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="footer-nav-link">
+              {link.label}
+            </Link>
+          ))}
         </nav>
-
         <nav aria-label="Social links">
           <p className="footer-eyebrow">Elsewhere</p>
-          <a className="footer-nav-link" href="https://www.instagram.com/siftion/" target="_blank" rel="noreferrer">Instagram</a>
-          <a className="footer-nav-link" href="mailto:sifatbht@gmail.com">Email</a>
+          {socialLinks.map((link) => (
+            <a
+              key={link.href}
+              className="footer-nav-link"
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
+        <div className="footer-contact">
+          <p className="footer-eyebrow">Contact</p>
+          <CopyEmail className="footer-nav-link" />
+          <p className="footer-avail">Open for new projects.</p>
+        </div>
       </div>
-
       <div className="footer-wordmark">
         <Link href="/" aria-label="Back to home">
-          <Image src="/assets/footer__logo.svg" alt="Sifat Bhatia" width={1702} height={203} unoptimized />
+          <FooterWordmark />
         </Link>
       </div>
-
       <div className="footer-bottom-bar">
         <span>© Siftion</span>
         <span>Los Angeles, CA</span>
         <span>Design + Development</span>
-        <button className="footer-bottom-link" type="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Back to top ↑</button>
-      </div>
-=======
-function BottomBarItem({ item, style }: { item: typeof bottomBarItems[0]; style: React.CSSProperties }) {
-  const [hovered, setHovered] = useState(false);
-  const finalStyle = {
-    ...style,
-    color: hovered && item.href ? "#f7f7f2" : style.color,
-    transition: "color 200ms ease",
-    cursor: item.href ? "pointer" : undefined,
-  } as React.CSSProperties;
-  const handlers = item.href ? {
-    onMouseEnter: () => setHovered(true),
-    onMouseLeave: () => setHovered(false),
-  } : {};
-
-  if (item.href && item.external) {
-    return <a href={item.href} target="_blank" rel="noreferrer" style={finalStyle} {...handlers}>{item.label}</a>;
-  }
-  if (item.href) {
-    return <a href={item.href} style={finalStyle} {...handlers}>{item.label}</a>;
-  }
-  return <span style={finalStyle}>{item.label}</span>;
-}
-
-export default function Footer() {
-  const isMobile = useMediaQuery("(max-width: 767px)");
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
-  const [logoHovered, setLogoHovered] = useState(false);
-
-  return (
-    <footer style={{
-      width: "100%",
-      background: "#030303",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-end",
-      gap: isMobile ? "clamp(1.5rem, 4vw, 2.5rem)" : "44.4px",
-      padding: isMobile
-        ? "clamp(3rem, 15vw, 5rem) clamp(1rem, 4vw, 1.5rem) clamp(2rem, 5vw, 3rem)"
-        : "220px 23px 44px 21px",
-    }}>
-      {/* Top: desktop=3-col grid, mobile=stacked flex */}
-      <div style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        paddingBottom: isMobile ? "clamp(2rem, 10vw, 4rem)" : "168px",
-      }}>
-        {/* On desktop: grid container. On mobile: flex column items */}
-        <div style={{
-          display: isMobile ? "flex" : "grid",
-          flexDirection: "column",
-          gridTemplateColumns: isDesktop
-            ? "minmax(0,1.25fr) minmax(0,1.55fr) minmax(0,1.05fr)"
-            : isMobile ? "1fr" : "1fr 1fr 1fr",
-          gap: isMobile ? "clamp(2rem, 5vw, 3rem)" : "72.32px",
-          width: "100%",
-        }}>
-          {/* Philosophy */}
-          <section
-            aria-label="Brand statement"
-            style={{
-              maxWidth: isMobile ? "none" : "265.43px",
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-            }}
-          >
-            <p style={{
-              margin: 0,
-              color: "rgba(247,247,242,0.86)",
-              fontSize: "clamp(1.15rem, 2vw, 23.9px)",
-              fontWeight: 700,
-              fontFamily: "var(--font-body)",
-              letterSpacing: "-0.03em",
-              lineHeight: "clamp(1.1rem, 1.85vw, 22px)",
-              textTransform: "uppercase",
-            }}>
-              Built on the belief<br />
-              that real living<br />
-              is meeting.
-            </p>
-          </section>
-
-          {/* Primary navigation */}
-          <nav
-            aria-label="Primary footer navigation"
-            style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              gap: "clamp(0.4rem, 0.6vw, 0.75rem)",
-            }}
-          >
-            {primaryLinks.map(link => (
-              <NavLink key={link.label} href={link.href}>{link.label}</NavLink>
-            ))}
-          </nav>
-
-          {/* Social links */}
-          <nav
-            aria-label="Social links"
-            style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              gap: "clamp(0.4rem, 0.6vw, 0.75rem)",
-            }}
-          >
-            {socialLinks.map((link, i) => (
-              <NavLink key={`${link.label}-${i}`} href={link.href} external={link.external}>{link.label}</NavLink>
-            ))}
-          </nav>
-        </div>
-      </div>
-
-      {/* Logo */}
-      <div style={{
-        width: "100%",
-        alignSelf: "stretch",
-      }}>
-        <Link
-          href="/"
-          aria-label="Back to home"
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            opacity: logoHovered ? 0.85 : 1,
-            transition: "opacity 300ms ease",
-          }}
-          onMouseEnter={() => setLogoHovered(true)}
-          onMouseLeave={() => setLogoHovered(false)}
+        <button
+          className="footer-bottom-link"
+          type="button"
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+                .matches
+                ? "instant"
+                : "smooth",
+            })
+          }
         >
-          <Image
-            src="/assets/footer__logo.svg"
-            alt="SIFAT BHATIA"
-            width={1702}
-            height={203}
-            priority={false}
-            unoptimized
+          Back to top{" "}
+          <ArrowIcon
+            direction="up"
+            className="footer-arrow"
             style={{
-              width: "100%",
-              height: "auto",
-              display: "block",
-              maxWidth: "100%",
+              width: "1em",
+              height: "1em",
+              display: "inline-block",
+              verticalAlign: "middle",
             }}
           />
-        </Link>
+        </button>
       </div>
-
-      {/* Bottom bar */}
-      {isMobile ? (
-        <div style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          gap: "clamp(0.3rem, 1vw, 0.5rem)",
-          width: "100%",
-        }}>
-          {bottomBarItems.map((item, index) => {
-            const isLast = index === bottomBarItems.length - 1;
-            return (
-              <BottomBarItem
-                key={item.label}
-                item={item}
-                style={{
-                  color: "rgba(247,247,242,0.72)",
-                  fontSize: "clamp(0.85rem, 3vw, 21px)",
-                  fontWeight: 700,
-                  fontFamily: "var(--font-body)",
-                  letterSpacing: "-0.02em",
-                  lineHeight: "clamp(0.8rem, 2.8vw, 19.3px)",
-                  textTransform: "uppercase",
-                  whiteSpace: "nowrap",
-                  textDecoration: "none",
-                  textAlign: isLast ? "right" : undefined,
-                  width: isLast ? "100%" : undefined,
-                } as React.CSSProperties}
-              />
-            );
-          })}
-        </div>
-      ) : (
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr",
-          width: "100%",
-        }}>
-          {bottomBarItems.map((item, index) => {
-            const isLast = index === bottomBarItems.length - 1;
-            return (
-              <BottomBarItem
-                key={item.label}
-                item={item}
-                style={{
-                  color: "rgba(247,247,242,0.72)",
-                  fontSize: "21px",
-                  fontWeight: 700,
-                  fontFamily: "var(--font-body)",
-                  letterSpacing: "-0.02em",
-                  lineHeight: "19.3px",
-                  textTransform: "uppercase",
-                  whiteSpace: "nowrap",
-                  textDecoration: "none",
-                  textAlign: isLast ? "right" : "left",
-                } as React.CSSProperties}
-              />
-            );
-          })}
-        </div>
-      )}
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
     </footer>
   );
 }

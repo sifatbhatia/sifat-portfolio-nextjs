@@ -1,461 +1,264 @@
-"use client";
+import { Link } from "next-view-transitions";
+import type { ProjectData } from "@/lib/projects";
+import media from "@/lib/project-media.json";
+import ArrowIcon from "./ArrowIcon";
+import ProjectImage from "./ProjectImage";
 
-<<<<<<< HEAD
-import { useEffect, useState } from "react";
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
-import Image from "next/image";
-import { ProjectData } from "@/lib/projects";
-import AnimatedText from "./AnimatedText";
+const dimensions: Record<string, { width: number; height: number }> = media;
 
-// ─── Section Block ────────────────────────────────────────────────────────────
-
-function SectionBlock({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
+function Prose({ text }: { text: string }) {
   return (
-    <section
-      className="case-study-section"
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 4fr",
-        gap: "clamp(2rem, 4vw, 3rem)",
-        marginBottom: "clamp(3rem, 6vh, 5rem)",
-        fontFamily: "var(--font-body)",
-      }}
-    >
-      <div
-        style={{
-          fontSize: "0.75rem",
-          fontWeight: 400,
-          letterSpacing: "0.2em",
-          textTransform: "uppercase",
-          color: "rgba(241,238,231,0.25)",
-          position: "sticky",
-          top: "2rem",
-          alignSelf: "start",
-        }}
-      >
-        {label}
-      </div>
-      <div>{children}</div>
-    </section>
-  );
-}
-
-// ─── Key Features Grid ────────────────────────────────────────────────────────
-
-function FeatureItem({
-  icon,
-  text,
-}: {
-  icon: React.ReactNode;
-  text: string;
-}) {
-  return (
-    <div className="feature-item">
-      <div className="feature-icon">{icon}</div>
-      <p>{text}</p>
+    <div className="cs-prose">
+      {text
+        .split("\n\n")
+        .filter(Boolean)
+        .map((block, index) => {
+          const lines = block.split("\n").filter(Boolean);
+          if (lines.every((line) => line.startsWith("- "))) {
+            return (
+              <ul key={index}>
+                {lines.map((line) => (
+                  <li key={line}>{line.slice(2)}</li>
+                ))}
+              </ul>
+            );
+          }
+          return <p key={index}>{block}</p>;
+        })}
     </div>
   );
 }
 
-<<<<<<< HEAD
-=======
-// ─── Screenshot Frame ────────────────────────────────────────────────────────
-
-function ScreenshotFrame({
+function Screen({
   src,
-  alt,
-  type,
+  caption,
+  priority = false,
+  className = "",
 }: {
   src: string;
-  alt: string;
-  type: "laptop" | "phone";
+  caption: string;
+  priority?: boolean;
+  className?: string;
 }) {
+  const size = dimensions[src] ?? { width: 1440, height: 1000 };
   return (
-    <div className="screenshot-frame" data-orientation={type}>
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes={type === "phone" ? "(max-width: 900px) 72vw, 320px" : "(max-width: 900px) 92vw, 640px"}
-        style={{ objectFit: type === "phone" ? "contain" : "cover" }}
-      />
-    </div>
+    <ProjectImage
+      src={src}
+      caption={caption}
+      width={size.width}
+      height={size.height}
+      priority={priority}
+      className={className}
+    />
   );
 }
-
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
-// ─── Metrics Callout ───────────────────────────────────────────────────────────
-
-function MetricsBlock({
-  metrics,
-}: {
-  metrics?: { value: string; label: string }[];
-}) {
-  if (!metrics || metrics.length === 0) return null;
-  return (
-    <div className="metrics-block">
-      <p className="metrics-label">Results & Impact</p>
-      <div className="metrics-grid">
-        {metrics.map((m, i) => (
-          <div key={i} className="metric-item">
-            <span className="metric-value">{m.value}</span>
-            <span className="metric-label">{m.label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function CaseStudy({ project }: { project: ProjectData }) {
-<<<<<<< HEAD
-  const [panelOpen, setPanelOpen] = useState(false);
-  const paragraphs = (text: string) =>
-    text.split("\n\n").filter(Boolean);
-
-  useEffect(() => {
-    const source = window.sessionStorage.getItem("project-open-source");
-    if (source === "hero-carousel") {
-      window.sessionStorage.removeItem("project-open-source");
-    }
-
-    const frame = window.requestAnimationFrame(() => {
-      setPanelOpen(true);
-    });
-
-    return () => window.cancelAnimationFrame(frame);
-  }, []);
+  const cover = project.caseStudyImage ?? project.heroImage;
+  const views = project.screenshots.filter((screen) => screen.src !== cover);
+  const portraitViews = views.filter((screen) => {
+    const size = dimensions[screen.src];
+    return size && size.width / size.height < 0.8;
+  });
+  const wideViews = views.filter((screen) => !portraitViews.includes(screen));
+  const coverCaption =
+    project.screenshots.find((screen) => screen.src === cover)?.caption ??
+    `${project.title}: project view`;
+  const hasDetails = Boolean(
+    project.highlights?.length || project.metrics?.length,
+  );
 
   return (
-    <article
-      className="case-study-article t-panel-slide"
-      data-open={panelOpen}
-=======
-  const paragraphs = (text: string) =>
-    text.split("\n\n").filter(Boolean);
-
-  return (
-    <article
-      className="case-study-article"
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
-      style={{
-        maxWidth: "1400px",
-        margin: "0 auto",
-        padding:
-          "clamp(4rem, 8vh, 8rem) clamp(1.5rem, 6vw, 4rem) clamp(2rem, 5vh, 4rem)",
-        color: "#f1eee7",
-      }}
-    >
-      {/* ── Header ── */}
-      <header
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "baseline",
-          borderBottom: "1px solid rgba(241,238,231,0.15)",
-          paddingBottom: "2rem",
-          marginBottom: "clamp(3rem, 6vh, 6rem)",
-        }}
-      >
-        <div>
-          <p
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: 400,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "rgba(241,238,231,0.55)",
-              margin: 0,
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            {project.role}
-          </p>
+    <article className="cs-page">
+      <header className="cs-header">
+        <div className="cs-topline">
+          <Link href="/projects" className="cs-back">
+            <ArrowIcon direction="left" />
+            All projects
+          </Link>
+          <span className="cs-year">{project.year}</span>
         </div>
-        <time
-          style={{
-            fontSize: "0.875rem",
-            fontWeight: 400,
-            letterSpacing: "0.05em",
-            color: "rgba(241,238,231,0.55)",
-          }}
-        >
-          {project.year}
-        </time>
+        <h1 className="cs-title">{project.title}</h1>
+        <div className="cs-intro-grid">
+          <div>
+            <p className="cs-intro">{project.summary ?? project.description}</p>
+            <div className="cs-actions">
+              {project.previewUrl && (
+                <a
+                  className="sf-button sf-button--secondary"
+                  href={project.previewUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View project preview
+                  <ArrowIcon direction="up-right" />
+                </a>
+              )}
+              {project.url && (
+                <a
+                  className="sf-button sf-button--secondary"
+                  href={project.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {project.previewUrl ? "Official website" : "Visit website"}
+                  <ArrowIcon direction="up-right" />
+                </a>
+              )}
+              {project.conceptLinks?.map((concept) => (
+                <a
+                  key={concept.url}
+                  className="sf-button sf-button--secondary"
+                  href={concept.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {concept.label}
+                  <ArrowIcon direction="up-right" />
+                </a>
+              ))}
+              <a href="#project-context" className="cs-text-link">
+                About the project
+                <ArrowIcon className="cs-down-arrow" />
+              </a>
+            </div>
+          </div>
+          <dl className="cs-credits">
+            <div>
+              <dt>Focus</dt>
+              <dd>{project.role}</dd>
+            </div>
+            {project.engagement && (
+              <div>
+                <dt>Engagement</dt>
+                <dd>{project.engagement}</dd>
+              </div>
+            )}
+            {project.client && (
+              <div>
+                <dt>Client</dt>
+                <dd>{project.client}</dd>
+              </div>
+            )}
+            <div>
+              <dt>Tools & disciplines</dt>
+              <dd>{project.stack.join(", ")}</dd>
+            </div>
+          </dl>
+        </div>
       </header>
 
-      {/* ── Hero Title + Meta ── */}
-      <section
-        className="case-study-header"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "2fr 1fr",
-          gap: "clamp(2rem, 6vw, 5rem)",
-          marginBottom: "clamp(3rem, 6vh, 6rem)",
-        }}
-      >
-        <div>
-          <AnimatedText
-            style={{
-              fontSize: "clamp(3rem, 8vw, 6rem)",
-              fontWeight: 400,
-              lineHeight: 0.95,
-              letterSpacing: "-0.02em",
-              margin: "0 0 2rem",
-              fontFamily: "var(--font-display)",
-            }}
+      <Screen
+        src={cover}
+        caption={coverCaption}
+        priority
+        className="cs-cover"
+      />
+
+      <div className="cs-body">
+        <aside className="cs-sidebar">
+          <nav aria-label="In this project">
+            <p className="cs-label">In this project</p>
+            <a href="#project-context">Context</a>
+            {wideViews.length > 0 && (
+              <a href="#project-views">Selected views</a>
+            )}
+            <a href="#project-approach">Approach</a>
+            <a href="#project-outcome">Outcome</a>
+            {hasDetails && <a href="#project-details">Project details</a>}
+          </nav>
+        </aside>
+
+        <div className="cs-content">
+          <section id="project-context" className="cs-section">
+            <h2>Context</h2>
+            <Prose text={project.challenge} />
+          </section>
+
+          {wideViews.length > 0 && (
+            <section id="project-views" className="cs-section cs-views">
+              <div className="cs-section-heading">
+                <h2>Selected views</h2>
+                <span className="cs-image-hint">
+                  Select an image to enlarge
+                </span>
+              </div>
+              <div className="cs-gallery">
+                {wideViews.map((view, index) => (
+                  <Screen
+                    key={view.src}
+                    src={view.src}
+                    caption={
+                      view.caption ?? `${project.title}: view ${index + 1}`
+                    }
+                    className={
+                      index === 0 || wideViews.length === 2
+                        ? "cs-gallery-lead"
+                        : ""
+                    }
+                  />
+                ))}
+              </div>
+            </section>
+          )}
+
+          <section
+            id="project-approach"
+            className={`cs-section${portraitViews.length ? " cs-approach-with-media" : ""}`}
           >
-            {project.title}
-          </AnimatedText>
-          <AnimatedText
-            as="p"
-            delay={0.1}
-            style={{
-              fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
-              fontWeight: 400,
-              lineHeight: 1.5,
-              color: "rgba(241,238,231,0.6)",
-              maxWidth: "40rem",
-              margin: 0,
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            {project.description}
-          </AnimatedText>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            gap: "1rem",
-            fontSize: "0.875rem",
-            fontWeight: 400,
-            fontFamily: "var(--font-body)",
-          }}
-        >
-          <p style={{ margin: 0, color: "rgba(241,238,231,0.6)" }}>
-            {project.role}
-          </p>
-          <p style={{ margin: 0, color: "rgba(241,238,231,0.55)" }}>
-            {project.year}
-          </p>
-          {project.url && (
-            <a
-<<<<<<< HEAD
-              className="case-study-live-link"
-=======
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
-              href={project.url}
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: "var(--accent)", textDecoration: "none" }}
-            >
-              Live Site →
-            </a>
+            <div>
+              <h2>Approach</h2>
+              <Prose text={project.approach} />
+            </div>
+            {portraitViews.length > 0 && (
+              <div className="cs-mobile-views">
+                {portraitViews.map((view) => (
+                  <Screen
+                    key={view.src}
+                    src={view.src}
+                    caption={view.caption ?? `${project.title}: mobile view`}
+                  />
+                ))}
+              </div>
+            )}
+          </section>
+
+          <section id="project-outcome" className="cs-section">
+            <h2>Outcome</h2>
+            <Prose text={project.outcome} />
+          </section>
+
+          {hasDetails && (
+            <section id="project-details" className="cs-section cs-details">
+              <h2>Project details</h2>
+              {project.metrics && project.metrics.length > 0 && (
+                <dl className="cs-facts">
+                  {project.metrics.map((metric) => (
+                    <div key={metric.label}>
+                      <dt>{metric.label}</dt>
+                      <dd>{metric.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+              {project.highlights && project.highlights.length > 0 && (
+                <ul className="cs-deliverables">
+                  {project.highlights.map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          )}
+
+          {project.testimonial && (
+            <figure className="cs-testimonial">
+              <blockquote>{project.testimonial.quote}</blockquote>
+              <figcaption>{project.testimonial.attribution}</figcaption>
+            </figure>
           )}
         </div>
-      </section>
-
-      {/* ── Full-width Featured Image ── */}
-      <section style={{ marginBottom: "clamp(3rem, 6vh, 6rem)" }}>
-        <div
-          style={{
-            aspectRatio: "16/9",
-            overflow: "hidden",
-            position: "relative",
-          }}
-        >
-          <Image
-            src={project.heroImage}
-            alt={project.title}
-            fill
-            sizes="(max-width: 767px) 100vw, 92vw"
-            style={{
-              objectFit: "cover",
-              filter: "grayscale(30%) contrast(0.9) brightness(0.9)",
-            }}
-          />
-        </div>
-        <p
-          style={{
-            fontSize: "0.75rem",
-            color: "rgba(241,238,231,0.3)",
-            letterSpacing: "0.05em",
-            marginTop: "0.75rem",
-            fontFamily: "var(--font-body)",
-          }}
-        >
-          Figure 01 — {project.title}
-        </p>
-      </section>
-
-      {/* ── Challenge / Approach / Outcome ── */}
-      <SectionBlock label="Challenge">
-        <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-          {paragraphs(project.challenge).map((p, i) => (
-            <p
-              key={i}
-              style={{
-                fontSize: "1.125rem",
-                lineHeight: 1.75,
-                color: "rgba(241,238,231,0.65)",
-                margin: 0,
-                fontFamily: "var(--font-body)",
-              }}
-            >
-              {p}
-            </p>
-          ))}
-        </div>
-      </SectionBlock>
-
-      <SectionBlock label="Approach">
-        <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-          {paragraphs(project.approach).map((p, i) => (
-            <p
-              key={i}
-              style={{
-                fontSize: "1.125rem",
-                lineHeight: 1.75,
-                color: "rgba(241,238,231,0.55)",
-                margin: 0,
-                fontFamily: "var(--font-body)",
-              }}
-            >
-              {p}
-            </p>
-          ))}
-        </div>
-      </SectionBlock>
-
-      <SectionBlock label="Outcome">
-        <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-          {paragraphs(project.outcome).map((p, i) => (
-            <p
-              key={i}
-              style={{
-                fontSize: "1.125rem",
-                lineHeight: 1.75,
-                color: "rgba(241,238,231,0.55)",
-                margin: 0,
-                fontFamily: "var(--font-body)",
-              }}
-            >
-              {p}
-            </p>
-          ))}
-        </div>
-      </SectionBlock>
-
-      {/* ── Key Features ── */}
-      {project.highlights && project.highlights.length > 0 && (
-        <section className="features-section">
-          <div className="features-header">
-            <span className="features-eyebrow">Key Features</span>
-          </div>
-          <div className="features-grid">
-            {project.highlights.map((h, i) => (
-              <FeatureItem
-                key={i}
-                icon={
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 18 18"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M3 9L7 13L15 5"
-                      stroke="var(--accent)"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                }
-                text={h}
-              />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ── Metrics ── */}
-      <MetricsBlock metrics={project.metrics} />
-
-<<<<<<< HEAD
-=======
-      {/* ── Screenshot Gallery ── */}
-      {project.screenshots && project.screenshots.length > 0 && (
-        <section className="gallery-section">
-          <div className="gallery-header">
-            <span className="gallery-eyebrow">Screenshots</span>
-          </div>
-          <div className="gallery-grid">
-            {project.screenshots.map((shot, i) => (
-              <div
-                key={i}
-                className={`gallery-item gallery-item--${shot.type}`}
-              >
-                <ScreenshotFrame src={shot.src} alt={`${project.title} screenshot ${i + 1}`} type={shot.type} />
-                <p className="gallery-caption">
-                  {shot.caption || `Fig ${String(i + 2).padStart(2, "0")} — ${project.title}`}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
->>>>>>> 3babd2b66149a1aa12626224c79a39167987fda2
-      {/* ── Testimonial ── */}
-      {project.testimonial && (
-        <section
-          style={{
-            padding: "clamp(4rem, 8vh, 6rem) 0",
-            margin: "clamp(3rem, 6vh, 6rem) 0",
-            borderTop: "1px solid rgba(241,238,231,0.1)",
-            borderBottom: "1px solid rgba(241,238,231,0.1)",
-          }}
-        >
-          <blockquote
-            style={{
-              maxWidth: "60rem",
-              margin: "0 auto",
-              fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-              fontWeight: 400,
-              lineHeight: 1.3,
-              letterSpacing: "-0.01em",
-              color: "rgba(241,238,231,0.72)",
-              fontFamily: "var(--font-display)",
-            }}
-          >
-            &ldquo;{project.testimonial.quote}&rdquo;
-          </blockquote>
-          <p
-            style={{
-              fontSize: "0.875rem",
-              color: "rgba(241,238,231,0.3)",
-              marginTop: "1.5rem",
-              textAlign: "center",
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            — {project.testimonial.attribution}
-          </p>
-        </section>
-      )}
+      </div>
     </article>
   );
 }

@@ -1,0 +1,250 @@
+.page {
+  display: grid;
+  min-height: 100svh;
+  align-items: center;
+  background: var(--sf-hero);
+  color: var(--sf-hero-ink);
+}
+
+.frame {
+  display: grid;
+  width: min(100%, var(--sf-max));
+  grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.92fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  margin-inline: auto;
+  padding: clamp(7.5rem, 14vh, 10rem) var(--sf-gutter) clamp(4rem, 7vh, 6rem);
+}
+
+.figure {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(0.25rem, 1vw, 1rem);
+  min-width: 0;
+  color: var(--sf-hero-ink);
+  font-family: var(--font-display);
+  font-size: clamp(12rem, 19.5vw, 19rem);
+  font-weight: 500;
+  letter-spacing: -0.11em;
+  line-height: 0.78;
+  white-space: nowrap;
+}
+
+.digit {
+  display: block;
+}
+
+.zero {
+  display: grid;
+  width: 0.76em;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  place-items: center;
+  margin-inline: 0.04em 0.02em;
+}
+
+.zero :global(.eyt) {
+  --bg: transparent;
+  --fill-slab: var(--sf-hero-ink);
+  --fill-on: var(--sf-hero);
+  width: 100%;
+  height: 100%;
+  flex: 0 0 100%;
+  background: transparent;
+}
+
+.zero :global(.eyt-body) {
+  fill: var(--sf-hero-ink);
+}
+
+.zero :global(.eyt-eye) {
+  fill: var(--sf-hero);
+}
+
+.message {
+  max-width: 34rem;
+}
+
+.title {
+  max-width: 10ch;
+  margin: 0;
+  color: var(--sf-hero-ink);
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 4.25vw, 4.5rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.copy {
+  max-width: 28rem;
+  margin: 1.25rem 0 0;
+  color: var(--sf-hero-soft);
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.address {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: baseline;
+  gap: 1rem;
+  margin-top: 2.25rem;
+  border-top: 1px solid rgba(var(--sf-hero-ink-rgb), 0.22);
+  padding-top: 1rem;
+}
+
+.addressLabel {
+  color: rgba(var(--sf-hero-ink-rgb), 0.58);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+}
+
+.addressPath {
+  min-width: 0;
+  color: var(--sf-hero-ink);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.destinations {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+}
+
+.primary {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.1rem;
+  border-radius: var(--sf-radius-button);
+  padding: 0.75rem 1.1rem;
+  background: var(--sf-hero-ink);
+  color: var(--sf-hero);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.primary:hover {
+  background: var(--sf-hot);
+  color: var(--sf-on-hot);
+}
+
+.primary:focus-visible,
+.secondary:focus-visible {
+  outline: 2px solid var(--sf-focus);
+  outline-offset: 4px;
+}
+
+.primary svg {
+  flex: 0 0 auto;
+  transition: transform 160ms ease;
+}
+
+.primary:hover svg {
+  transform: translateX(3px);
+}
+
+.secondary {
+  color: var(--sf-hero-ink);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--sf-hero-ink-rgb), 0.42);
+  text-underline-offset: 0.35em;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.secondary:hover {
+  color: var(--sf-hot);
+  text-decoration-color: currentColor;
+}
+
+@media (max-width: 850px) {
+  .page {
+    min-height: 100svh;
+    align-items: start;
+  }
+
+  .frame {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.25rem;
+    padding-block: 7.5rem 4rem;
+  }
+
+  .figure {
+    font-size: clamp(9rem, 28vw, 16rem);
+  }
+
+  .message {
+    max-width: 42rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .frame {
+    gap: 2rem;
+    padding-block: 6.5rem 3.5rem;
+  }
+
+  .figure {
+    gap: clamp(0.1rem, 1.5vw, 0.5rem);
+    font-size: clamp(6.5rem, 37vw, 10rem);
+  }
+
+  .zero {
+    width: 0.72em;
+  }
+
+  .title {
+    font-size: clamp(2.5rem, 11vw, 3.25rem);
+  }
+
+  .copy {
+    margin-top: 0.9rem;
+    font-size: 1rem;
+  }
+
+  .address {
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
+
+  .destinations {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .primary {
+    width: 100%;
+  }
+
+  .secondary {
+    align-self: flex-start;
+    min-height: 2.75rem;
+    padding-block: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary,
+  .primary svg,
+  .secondary {
+    transition: none;
+  }
+}
